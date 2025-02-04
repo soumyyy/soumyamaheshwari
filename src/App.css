@@ -1,0 +1,72 @@
+/* Overall page style */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Landing page container */
+.App {
+  text-align: center;
+  background: #000; /* Dark background */
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header styling */
+.App-header {
+  z-index: 1;
+}
+
+/* Garamond styled text for "Upcoming" */
+.upcoming-text {
+  font-family: 'Garamond', serif;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+/* Loader container styling */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;  /* Ensure the loader background is dark */
+}
+
+/* Dot styling for the loader */
+.dot {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+/* Stagger animation delays for a cascading bounce */
+.dot1 {
+  animation-delay: 0s;
+}
+
+.dot2 {
+  animation-delay: 0.3s;
+}
+
+.dot3 {
+  animation-delay: 0.6s;
+}
+
+/* Bounce animation keyframes */
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+}
