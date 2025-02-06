@@ -1,72 +1,214 @@
-/* Overall page style */
-body, html, #root {
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Borel&display=swap');
+/* SF Pro Display font import */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff');
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #000000;
+  color: white;
+  font-family: 'EB Garamond', serif;
+}
+
+.header {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: 'EB Garamond', serif;
+  text-transform: lowercase;
+  margin: 0;
+  color: white;
+}
+
+.landing-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hello-text {
+  font-family: 'Borel', cursive;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hello-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hello-text.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.main-text {
+  font-family: 'EB Garamond', serif;
+  opacity: 0;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  max-width: 600px;
+  position: absolute;
+  transform: translateY(20px);
+}
+
+.main-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+  color: #4ecdc4;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: none;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Ensure body background is black and scrollbar overlays */
+body {
+  background-color: #000000;
+  overflow-y: overlay;
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
-/* Landing page container */
-.App {
-  text-align: center;
-  background: #000; /* Dark background */
-  height: 100vh;
-  overflow: hidden;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.scroll-button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
-/* Header styling */
-.App-header {
-  z-index: 1;
+.scroll-button.visible {
+  opacity: 1;
+  animation: buttonPulse 2s infinite;
 }
 
-/* Garamond styled text for "Upcoming" */
-.upcoming-text {
-  font-family: 'Garamond', serif;
-  font-size: 2rem;
-  margin-top: 20px;
+.scroll-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Loader container styling */
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #000;  /* Ensure the loader background is dark */
-}
-
-/* Dot styling for the loader */
-.dot {
-  width: 20px;
-  height: 20px;
-  margin: 0 10px;
-  border-radius: 50%;
-  background-color: #fff;
-  animation: bounce 1.5s infinite ease-in-out;
-}
-
-/* Stagger animation delays for a cascading bounce */
-.dot1 {
-  animation-delay: 0s;
-}
-
-.dot2 {
-  animation-delay: 0.3s;
-}
-
-.dot3 {
-  animation-delay: 0.6s;
-}
-
-/* Bounce animation keyframes */
-@keyframes bounce {
-  0%, 80%, 100% {
-    transform: translateY(0);
+@keyframes buttonPulse {
+  0% {
+    transform: translateX(-50%) scale(1);
   }
-  40% {
-    transform: translateY(-30px);
+  50% {
+    transform: translateX(-50%) scale(1.02);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .landing-section {
+    padding: 1rem;
+  }
+
+  .main-text {
+    font-size: 18px;
+    padding: 0 1rem;
+  }
+
+  .scroll-button {
+    width: 250px;
+    height: 45px;
+    font-size: 14px;
+    bottom: 30px;
+  }
+
+  .header {
+    top: 15px;
+    left: 15px;
+  }
+
+  .brand-name {
+    font-size: 12px;
   }
 }
