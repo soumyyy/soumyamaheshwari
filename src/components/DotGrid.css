@@ -1,0 +1,230 @@
+.dot-grid-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  overflow: hidden;
+}
+
+.dot-grid-content {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  gap: 120px;
+}
+
+.dot-grid-section {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 540px;
+  position: relative; /* Ensure relative positioning for absolute button */
+}
+
+.dot-grid {
+  position: relative;
+  width: 400px;  /* Adjusted for 16x16 grid */
+  height: 400px; /* Adjusted for 16x16 grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  position: absolute;
+  width: 4px;  /* Increased from 3px */
+  height: 4px; /* Increased from 3px */
+  background-color: rgba(255, 255, 255, 0.85); /* Increased from 0.3 */
+  border-radius: 50%;
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.dot.active {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .dot-grid {
+    width: 450px;
+    height: 450px;
+  }
+  
+  .dot {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dot-grid-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .dot-grid {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .dot {
+    width: 2px;
+    height: 2px;
+  }
+}
+
+/* Philosophy section styles */
+.philosophy-section {
+  flex: 0.8;
+  padding-left: 0;
+}
+
+.philosophy-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 40px;
+}
+
+.philosophy-items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.phase-button {
+  font-family: 'EB Garamond', serif;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 18px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-weight: 400;
+}
+
+.phase-button.active {
+  color: rgba(255, 255, 255, 1); /* Full white when active */
+  font-size: 20px; /* Slightly bigger when active */
+  font-weight: 500;
+  background: none; /* Remove background highlight */
+}
+
+.phase-button:hover:not(:disabled) {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.philosophy-content {
+  max-width: 400px;
+  color: white;
+}
+
+.philosophy-text {
+  font-size: 18px;
+  color: #8c8c8c;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 60px;
+}
+
+.philosophy-items p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.philosophy-items p.active {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 1200px) {
+  .dot-grid-content {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .dot-grid-section,
+  .philosophy-section {
+    padding: 0;
+  }
+
+  .philosophy-content {
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .philosophy-title {
+    font-size: 32px;
+  }
+
+  .philosophy-text {
+    font-size: 16px;
+  }
+
+  .philosophy-items p {
+    font-size: 16px;
+  }
+}
+
+.about-scroll-button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.about-scroll-button.visible {
+  opacity: 1;
+}
+
+.about-scroll-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 768px) {
+  .about-scroll-button {
+    width: 80%;
+    max-width: 280px;
+    height: 45px;
+    font-size: 0.9rem;
+    bottom: 30px;
+  }
+} 
