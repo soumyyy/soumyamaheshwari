@@ -20,9 +20,10 @@ const DotGrid = () => {
 
   const generateDots = useMemo(() => {
     const newDots = [];
-    const spacing = 25;
-    const rows = 20;
-    const columns = 20;
+    const isMobile = window.innerWidth <= 768;
+    const spacing = isMobile ? 15 : 25;
+    const rows = isMobile ? 12 : 20;
+    const columns = isMobile ? 12 : 20;
     const centerX = columns / 2;
     const centerY = rows / 2;
     

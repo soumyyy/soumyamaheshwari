@@ -4,6 +4,9 @@ import BrainSection from './components/BrainSection';
 import WorkInProgress from './components/WorkInProgress';
 import DotGrid from './components/DotGrid';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import TwitterFeed from './components/TwitterFeed';
+import ProjectsDotGrid from './components/ProjectsDotGrid';
+import RippleButton from './components/RippleButton';
 
 function App() {
   const [showHello, setShowHello] = useState(false);
@@ -14,9 +17,9 @@ function App() {
   const [headerVisible, setHeaderVisible] = useState(true);
   const [showButton, setShowButton] = useState(false);
   const [showAboutButton, setShowAboutButton] = useState(false);
-  const brainSectionRef = useRef(null);
-  const lastScrollY = useRef(0);
   const textContainerRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const brainSectionRef = useRef(null);
 
   const hello = "Hello.";
   const mainContent = "I break things, fix them, and sometimes build cool stuff along the way.";
@@ -109,7 +112,7 @@ function App() {
         >
           <div className="flip-button-inner">
             <div className="flip-button-front">
-              Open to Work
+              open to work
             </div>
             <div className="flip-button-back">
               soumyamaheshwari1234@gmail.com
@@ -126,20 +129,25 @@ function App() {
           {mainText}
           <span className="cursor">|</span>
         </div>
-        <button 
+        <RippleButton 
           className={`scroll-button ${showButton ? 'visible' : ''}`}
-          onClick={() => {
-            const gridSection = document.querySelector('.dot-grid-container');
-            if (gridSection) {
-              gridSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
+          onClick={() => document.getElementById('brain-section').scrollIntoView({ behavior: 'smooth' })}
         >
-          click to explore
-        </button>
+          inside my brain
+        </RippleButton>
       </section>
 
-      <div className="dot-grid-section">
+      <section id="brain-section" className="brain-section">
+        <BrainSection ref={brainSectionRef} />
+        <RippleButton 
+          className="scroll-button visible"
+          onClick={() => document.getElementById('working-philosophy').scrollIntoView({ behavior: 'smooth' })}
+        >
+          working philosophy
+        </RippleButton>
+      </section>
+
+      <section id="working-philosophy" className="dot-grid-section">
         <DotGrid />
         <button 
           className={`about-scroll-button ${showAboutButton ? 'visible' : ''}`}
@@ -147,7 +155,7 @@ function App() {
         >
           about me
         </button>
-      </div>
+      </section>
 
       <section className="about-section">
         <div className="intro-section">
@@ -202,14 +210,76 @@ function App() {
         </div>
       </section>
 
-      <BrainSection ref={brainSectionRef} />
+      <section className="projects-section">
+        <ProjectsDotGrid />
+        <div className="projects-container">
+          <div className="projects-grid">
+            <div className="section-header">
+              <h2>projects</h2>
+            </div>
+
+            <div className="projects-items">
+              <div className="project-item">
+                <div className="project-info">
+                  <h3 className="project-name">
+                    <a href="https://github.com/soumyyy/Jarvis-V0" target="_blank" rel="noopener noreferrer">
+                      Jarvis
+                    </a>
+                  </h3>
+                  <span className="project-type">Personalized AI Assistant</span>
+                </div>
+                <p className="project-description">
+                  Inspired from the Iron Man universe, Jarvis is my take on a personalized AI assistant. 
+                  Built using NLP models and automation frameworks, it's designed to understand and respond 
+                  to queries, execute commands, and integrate with various tools for enhanced productivity.
+                </p>
+              </div>
+
+              <div className="project-item">
+                <div className="project-info">
+                  <h3 className="project-name">
+                    <a href="https://github.com/soumyyy/Eclipse" target="_blank" rel="noopener noreferrer">
+                      Eclipse
+                    </a>
+                  </h3>
+                  <span className="project-type">A Conversational AI</span>
+                </div>
+                <p className="project-description">
+                  Eclipse (Enhanced Cognitive Linguistic Interactive Personal Support Engine) is an 
+                  AI-powered speech-to-text and text-to-speech chatbot designed for intuitive, 
+                  human-like interactions. The project integrates GPT-based models and MySQL for 
+                  memory persistence, ensuring a personalized user experience.
+                </p>
+              </div>
+
+              <div className="project-item">
+                <div className="project-info">
+                  <h3 className="project-name">
+                    <a href="https://github.com/soumyyy/SIH-BEL" target="_blank" rel="noopener noreferrer">
+                      SIH-BEL
+                    </a>
+                  </h3>
+                  <span className="project-type">Conversational Image Recognition Chatbot</span>
+                </div>
+                <p className="project-description">
+                  Developed during the Smart India Hackathon (SIH) for Bharat Electronics Limited (BEL), 
+                  this project combined YOLOv8 for object detection and Llama 3.1 for natural language 
+                  processing to create a cutting-edge Conversational Image Recognition Chatbot.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <WorkInProgress />
+      <TwitterFeed />
 
       {/* Footer Section */}
       <footer className="footer">
         <div className="footer-content">
           <h2 className="footer-title">
-            If you've something cool to build I'd be all ears
+            got something cool to build? I'm all ears
           </h2>
           <p className="footer-subtitle">
             If it's bold, ambitious, or slightly insane—I'm interested.
