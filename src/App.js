@@ -161,7 +161,7 @@ function App() {
         <div className="intro-section">
           <p className="intro-text">
             I'm Soumya, an AI undergrad. I design, I build, and 
-            I'm based in India. I work at the intersection of AI, 
+            I'm based out of India. I work at the intersection of AI, 
             design, and creative strategy. I'm naturally curious 
             about ideas that challenge the usual way of doing 
             things.
@@ -287,16 +287,16 @@ function App() {
           
           <div className="social-links">
             <a href="https://twitter.com/soumymaheshwri" target="_blank" rel="noopener noreferrer">
-              <img src="/X.png" alt="X (Twitter)" className="social-icon" />
+              <img src="social/X.png" alt="X (Twitter)" className="social-icon" />
             </a>
             <a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">
-              <img src="/Github.png" alt="GitHub" className="social-icon" />
+              <img src="social/Github.png" alt="GitHub" className="social-icon" />
             </a>
             <a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" rel="noopener noreferrer">
-              <img src="/Linkedin.png" alt="LinkedIn" className="social-icon" />
+              <img src="social/Linkedin.png" alt="LinkedIn" className="social-icon" />
             </a>
             <a href="https://instagram.com/soumymaheshwari" target="_blank" rel="noopener noreferrer">
-              <img src="/Instagram.png" alt="Instagram" className="social-icon" />
+              <img src="social/Instagram.png" alt="Instagram" className="social-icon" />
             </a>
           </div>
 

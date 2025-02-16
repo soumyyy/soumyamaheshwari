@@ -34,8 +34,8 @@
 
 .dot-grid {
   position: relative;
-  width: 400px;  /* Adjusted for 16x16 grid */
-  height: 400px; /* Adjusted for 16x16 grid */
+  width: 500px;  /* Adjusted for 16x16 grid */
+  height: 500px; /* Adjusted for 16x16 grid */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -259,6 +259,10 @@
     padding: 6px 12px;
     margin: 4px;
     text-align: center;
+  }
+
+  .phase-button.active {
+    font-size: 14px;
   }
   
   .philosophy-items {

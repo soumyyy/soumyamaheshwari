@@ -387,7 +387,7 @@ html {
 /* Projects Section */
 .projects-section {
   background-color: #FFF9E1;
-  padding: 80px 40px;
+  padding: 50px 40px;
   margin: 40px;
   border-radius: 12px;
   overflow: hidden;
@@ -455,7 +455,7 @@ html {
   line-height: 1.6;
 }
 
-/* Ripple Effect (for interactive buttons) */
+/* Common Button Styles */
 .ripple-button {
   position: absolute;
   left: 50%;
@@ -476,6 +476,7 @@ html {
   justify-content: center;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .ripple-button:hover {
@@ -491,6 +492,7 @@ html {
   background-color: rgba(255, 255, 255, 0.7);
   pointer-events: none;
 }
+
 @keyframes ripple {
   to {
     transform: scale(4);
@@ -542,7 +544,7 @@ section {
     margin-bottom: 15px;
   }
   .main-text {
-    font-size: 13px;
+    font-size: 12px;
     white-space: nowrap;
     overflow: hidden;
     padding: 0 15px;
@@ -620,6 +622,15 @@ section {
   }
   .project-description {
     font-size: 0.85rem;
+  }
+  
+  /* Ripple Button adjustments */
+  .ripple-button {
+    width: 80%;
+    max-width: 280px;
+    height: 45px;
+    font-size: 0.9rem;
+    bottom: 30px;
   }
 }
 
