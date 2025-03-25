@@ -388,7 +388,7 @@ html {
 .projects-section {
   background-color: #FFF9E1;
   padding: 40px 40px;
-  /* margin: 40px; */
+  margin: 40px;
   border-radius: 12px;
   overflow: hidden;
 }
