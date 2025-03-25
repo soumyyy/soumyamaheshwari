@@ -388,11 +388,16 @@ html {
 .projects-section {
   background-color: #FFF9E1;
   padding: 40px 40px;
-  margin: 40px;
+  /* margin: 40px; */
   border-radius: 12px;
   overflow: hidden;
 }
+.projects-section canvas {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .projects-container {
+  /* background-color: #FFF9E1; */
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -612,7 +617,7 @@ section {
   
   /* Projects Section */
   .projects-section {
-    margin: 10px;
+    margin: 25px;
     padding: 20px 0px;
   }
   .projects-items {

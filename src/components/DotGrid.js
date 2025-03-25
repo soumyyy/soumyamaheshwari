@@ -235,19 +235,6 @@ const DotGrid = () => {
               {dots.map(renderDot)}
             </AnimatePresence>
           </div>
-          {/* {isInitialAnimationComplete && ( 
-            <button 
-              className="about-scroll-button visible"
-              onClick={() => {
-                const aboutSection = document.getElementById('about');
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              about me
-            </button>
-          )} */}
         </div>
 
         <div className="philosophy-section">

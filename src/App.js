@@ -149,12 +149,12 @@ function App() {
 
       <section id="working-philosophy" className="dot-grid-section">
         <DotGrid />
-        <button 
+        {/* <button 
           className={`about-scroll-button ${showAboutButton ? 'visible' : ''}`}
           onClick={scrollToAbout}
         >
           about me
-        </button>
+        </button> */}
       </section>
 
       <section className="about-section">
@@ -242,13 +242,45 @@ function App() {
                       Eclipse
                     </a>
                   </h3>
-                  <span className="project-type">A Conversational AI</span>
+                  <span className="project-type">A conversational speech AI</span>
                 </div>
                 <p className="project-description">
                   Eclipse (Enhanced Cognitive Linguistic Interactive Personal Support Engine) is an 
                   AI-powered speech-to-text and text-to-speech chatbot designed for intuitive, 
                   human-like interactions. The project integrates GPT-based models and MySQL for 
                   memory persistence, ensuring a personalized user experience.
+                </p>
+              </div>
+
+              <div className="project-item">
+                <div className="project-info">
+                  <h3 className="project-name">
+                    <a href="https://github.com/soumyyy/photoCortexV2" target="_blank" rel="noopener noreferrer">
+                      PhotoCortex
+                    </a>
+                  </h3>
+                  <span className="project-type">Photo analysis and organization platform</span>
+                </div>
+                <p className="project-description">
+                  PhotoCortex is an AI-powered photo analysis and organization platform that helps you 
+                  understand and explore your photo collection in new ways. It combines face, object, scene, text
+                  detection with computer vision to provide rich insights about your images.
+                </p>
+              </div>
+
+              <div className="project-item">
+                <div className="project-info">
+                  <h3 className="project-name">
+                    <a href="https://github.com/soumyyy/StockPortfolio" target="_blank" rel="noopener noreferrer">
+                      Personal Stock Portfolio
+                    </a>
+                  </h3>
+                  <span className="project-type">A conversational speech AI</span>
+                </div>
+                <p className="project-description">
+                A minimalistic, real-time stock portfolio tracker built with Next.js and inspired by Zerodha's Kite platform. 
+                Track your stock market investments with live updates from Yahoo Finance couples with few convenience fearures.
+                Built as a personal use project.
                 </p>
               </div>
 
@@ -290,10 +322,10 @@ function App() {
               <img src="social/X.png" alt="X (Twitter)" className="social-icon" />
             </a>
             <a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">
-              <img src="social/Github.png" alt="GitHub" className="social-icon" />
+              <img src="social/GitHub.png" alt="GitHub" className="social-icon" />
             </a>
             <a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" rel="noopener noreferrer">
-              <img src="social/Linkedin.png" alt="LinkedIn" className="social-icon" />
+              <img src="social/LinkedIn.png" alt="LinkedIn" className="social-icon" />
             </a>
             <a href="https://instagram.com/soumymaheshwari" target="_blank" rel="noopener noreferrer">
               <img src="social/Instagram.png" alt="Instagram" className="social-icon" />
