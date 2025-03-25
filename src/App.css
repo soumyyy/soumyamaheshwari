@@ -387,7 +387,7 @@ html {
 /* Projects Section */
 .projects-section {
   background-color: #FFF9E1;
-  padding: 50px 40px;
+  padding: 40px 40px;
   margin: 40px;
   border-radius: 12px;
   overflow: hidden;
@@ -414,13 +414,14 @@ html {
   margin: 0;
   line-height: 1.2;
   color: #000;
+  padding-left: 15px;
 }
 .projects-items {
   display: grid;
-  gap: 1rem;
+  gap: 0rem;
 }
 .project-item {
-  padding: 1.5rem;
+  padding: 1.0rem 1.5rem;
   border-radius: 8px;
   pointer-events: none;
 }
@@ -611,17 +612,26 @@ section {
   
   /* Projects Section */
   .projects-section {
-    margin: 20px;
-    padding: 30px 15px;
+    margin: 10px;
+    padding: 20px 0px;
   }
   .projects-items {
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .project-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .project-type {
+    font-size: 0.75rem;
   }
   .project-description {
-    font-size: 0.85rem;
+    font-size: 0.6rem;
+  }
+  .project-item {
+    padding: .25rem 1.5rem;
+    border-radius: 8px;
+    pointer-events: none;
   }
   
   /* Ripple Button adjustments */

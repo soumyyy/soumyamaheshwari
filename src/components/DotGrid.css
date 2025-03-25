@@ -5,7 +5,7 @@
 /* Dot Grid Layout */
 .dot-grid-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,7 +196,7 @@
 @media screen and (max-width: 768px) {
   /* Dot Grid & Container Adjustments */
   .dot-grid-container {
-    min-height: auto;
+    min-height: 65vh;
     padding: 40px 0;
     display: flex;
     justify-content: center;

@@ -1,0 +1,49 @@
+/* Text Container */
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Main Text */
+.main-text {
+  font-family: 'EB Garamond', serif;
+  opacity: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+.main-text.fade-in {
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .main-text {
+    font-size: 12px;
+    padding: 0 15px;
+  }
+}

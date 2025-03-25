@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import BrainSection from './components/BrainSection';
-import WorkInProgress from './components/WorkInProgress';
+// import WorkInProgress from './components/WorkInProgress';
 import DotGrid from './components/DotGrid';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import TwitterFeed from './components/TwitterFeed';
+// import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+// import TwitterFeed from './components/TwitterFeed';
 import ProjectsDotGrid from './components/ProjectsDotGrid';
 import RippleButton from './components/RippleButton';
 
@@ -272,8 +272,8 @@ function App() {
         </div>
       </section>
 
-      <WorkInProgress />
-      <TwitterFeed />
+      {/* <WorkInProgress /> */}
+      {/* <TwitterFeed /> */}
 
       {/* Footer Section */}
       <footer className="footer">
