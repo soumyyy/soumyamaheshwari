@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.afb40350.css",
-    "main.js": "/static/js/main.3cf7dc71.js",
+    "main.css": "/static/css/main.c5c2856d.css",
+    "main.js": "/static/js/main.dc1f8006.js",
     "static/js/488.f9c92a9a.chunk.js": "/static/js/488.f9c92a9a.chunk.js",
     "index.html": "/index.html",
-    "main.afb40350.css.map": "/static/css/main.afb40350.css.map",
-    "main.3cf7dc71.js.map": "/static/js/main.3cf7dc71.js.map",
+    "main.c5c2856d.css.map": "/static/css/main.c5c2856d.css.map",
+    "main.dc1f8006.js.map": "/static/js/main.dc1f8006.js.map",
     "488.f9c92a9a.chunk.js.map": "/static/js/488.f9c92a9a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.afb40350.css",
-    "static/js/main.3cf7dc71.js"
+    "static/css/main.c5c2856d.css",
+    "static/js/main.dc1f8006.js"
   ]
 }
