@@ -22,7 +22,7 @@ function App() {
   const brainSectionRef = useRef(null);
 
   const hello = "Hello.";
-  const mainContent = "I break things, fix them, and sometimes build cool stuff along the way.";
+  const mainContent = "I break things, fix them, and build cool stuff along the way.";
 
   useEffect(() => {
     // Start animation immediately
@@ -160,19 +160,18 @@ function App() {
       <section className="about-section">
         <div className="intro-section">
           <p className="intro-text">
-            I'm Soumya, an AI undergrad. I design, I build, and 
-            I'm based out of India. I work at the intersection of AI, 
-            design, and creative strategy. I'm naturally curious 
-            about ideas that challenge the usual way of doing 
-            things.
+            I'm Soumya, an AI undergrad based out of India
+            I design and I build, so you can say I work at the intersection of 
+            tech and creative strategy. I'm naturally curious 
+            about any and everything.
           </p>
           
           <p className="intro-text">
-            I believe the most interesting problems don't come 
-            with instructions—they require experimenting, 
-            questioning assumptions, and sometimes, breaking 
-            things to rebuild them better. My work is driven 
-            by a mix of intuition and iteration.
+            I believe the problems that are worth solving don't come 
+            with instructions they require experimenting, 
+            questioning assumptions, and sometimes breaking 
+            things and buiding them from ground up. I make sure my work is  
+            a mix of intuition and iteration.
           </p>
         </div>
 
@@ -189,9 +188,9 @@ function App() {
                 <h3 className="company-name">Komma Financial Technologies</h3>
               </div>
               <p className="work-description">
-                Simplifying personal finance by developing digital 
-                tools that make managing money easier and more 
-                secure
+                Simplifying investing by developing personal finance
+                tools that make managing money easier because finance 
+                cant't be a one for all solution.
               </p>
             </div>
 
@@ -203,7 +202,7 @@ function App() {
               <p className="work-description">
                 Building a suite of digital healthcare services to help 
                 parents with vaccinations, manage medical records, 
-                and complimentary services
+                and complimentary services for the baby,
               </p>
             </div>
           </div>
@@ -314,7 +313,7 @@ function App() {
             got something cool to build? I'm all ears
           </h2>
           <p className="footer-subtitle">
-            If it's bold, ambitious, or slightly insane—I'm interested.
+            mail me ↗
           </p>
           
           <div className="social-links">

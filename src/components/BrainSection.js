@@ -41,9 +41,9 @@ const BrainSection = forwardRef((props, ref) => {
         <h2 className="brain-title">inside my brain</h2>
         <p className="brain-subtitle">
           Welcome to the part of the internet where my raw, unfiltered thoughts exist. 
-          This isn't a structured blog or a polished portfolio—it's a space for the ideas 
-          that keep me up at night, the crazy tech experiments I think of, the books that 
-          push me in a spiral of thought and the questions I haven't figured out yet.
+          Disclaimer: This isn't a structured blog or a polished portfolio: it's a space for 
+          the ideas in my head, the tech experiments I think of, the books that 
+          push me in a spiral and the questions I keep asking myself.
         </p>
       </div>
 
