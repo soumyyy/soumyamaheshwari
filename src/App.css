@@ -348,8 +348,10 @@ html {
 }
 .footer-subtitle {
   font-size: 20px;
-  color: #8c8c8c;
   margin-bottom: 40px;
+}
+.footer-subtitle a{
+  color: white;
 }
 .social-links {
   display: flex;
@@ -604,6 +606,7 @@ section {
   }
   .footer-subtitle {
     font-size: 16px;
+    color: white;
   }
   .social-links {
     gap: 15px;

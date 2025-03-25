@@ -313,7 +313,9 @@ function App() {
             got something cool to build? I'm all ears
           </h2>
           <p className="footer-subtitle">
+            <a href="mailto:soumyamaheshwari1234@gmail.com" target="_blank" rel="noopener noreferrer">
             mail me ↗
+            </a>
           </p>
           
           <div className="social-links">
