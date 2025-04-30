@@ -69,6 +69,20 @@ html {
 }
 
 /* Header & Brand */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 100%);
+  width: 0;
+  z-index: 9999;
+  transition: width 0.1s linear;
+  border-radius: 2px;
+  will-change: width;
+  pointer-events: none;
+}
+
 .header {
   position: fixed;
   top: 15px;
@@ -517,6 +531,15 @@ html {
   flex-direction: column;
   justify-content: center;
   margin-top: 0;
+}
+
+.footer-subtitle a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+.footer-subtitle a:hover {
+  text-decoration: underline;
 }
 
 /* Section Snap & Margin */

@@ -20,9 +20,32 @@ function App() {
   const textContainerRef = useRef(null);
   const lastScrollY = useRef(0);
   const brainSectionRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollAnimationFrame = useRef();
 
   const hello = "Hello.";
   const mainContent = "I break things, fix them, and build cool stuff along the way.";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollAnimationFrame.current) return;
+      scrollAnimationFrame.current = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        setScrollProgress(scrolled);
+        scrollAnimationFrame.current = null;
+      });
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollAnimationFrame.current) {
+        cancelAnimationFrame(scrollAnimationFrame.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     // Start animation immediately
@@ -57,6 +80,7 @@ function App() {
         typeText();
       }, 1000);
     }, 500);
+
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -96,11 +120,12 @@ function App() {
   };
 
   const handleResumeClick = () => {
-    window.open(`${window.location.origin}/resume.pdf`, '_blank', 'noopener,noreferrer');
+    window.open(`${window.location.origin}/SoumyaMaheshwari.pdf`, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="App">
+      <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />
       <header className={`header ${headerVisible ? 'visible' : 'hidden'}`}>
         <h1 className="brand-name">soumya maheshwari</h1>
       </header>
@@ -131,33 +156,13 @@ function App() {
         </div>
         <RippleButton 
           className={`scroll-button ${showButton ? 'visible' : ''}`}
-          onClick={() => document.getElementById('brain-section').scrollIntoView({ behavior: 'smooth' })}
-        >
-          inside my brain
-        </RippleButton>
-      </section>
-
-      <section id="brain-section" className="brain-section">
-        <BrainSection ref={brainSectionRef} />
-        <RippleButton 
-          className="scroll-button visible"
-          onClick={() => document.getElementById('working-philosophy').scrollIntoView({ behavior: 'smooth' })}
-        >
-          working philosophy
-        </RippleButton>
-      </section>
-
-      <section id="working-philosophy" className="dot-grid-section">
-        <DotGrid />
-        {/* <button 
-          className={`about-scroll-button ${showAboutButton ? 'visible' : ''}`}
-          onClick={scrollToAbout}
+          onClick={() => document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' })}
         >
           about me
-        </button> */}
+        </RippleButton>
       </section>
 
-      <section className="about-section">
+      <section id="about-section" className="about-section">
         <div className="intro-section">
           <p className="intro-text">
             I'm Soumya, an AI undergrad based out of India
@@ -170,7 +175,7 @@ function App() {
             I believe the problems that are worth solving don't come 
             with instructions they require experimenting, 
             questioning assumptions, and sometimes breaking 
-            things and buiding them from ground up. I make sure my work is  
+            things and building them from ground up. I make sure my work is  
             a mix of intuition and iteration.
           </p>
         </div>
@@ -190,7 +195,7 @@ function App() {
               <p className="work-description">
                 Simplifying investing by developing personal finance
                 tools that make managing money easier because finance 
-                cant't be a one for all solution.
+                can't be a one for all solution.
               </p>
             </div>
 
@@ -208,6 +213,7 @@ function App() {
           </div>
         </div>
       </section>
+
 
       <section className="projects-section">
         <ProjectsDotGrid />
@@ -254,8 +260,8 @@ function App() {
               <div className="project-item">
                 <div className="project-info">
                   <h3 className="project-name">
-                    <a href="https://github.com/soumyyy/photoCortexV2" target="_blank" rel="noopener noreferrer">
-                      PhotoCortex
+                    <a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">
+                      PhotoCortex ~ (MVP testing)
                     </a>
                   </h3>
                   <span className="project-type">Photo analysis and organization platform</span>
@@ -263,7 +269,7 @@ function App() {
                 <p className="project-description">
                   PhotoCortex is an AI-powered photo analysis and organization platform that helps you 
                   understand and explore your photo collection in new ways. It combines face, object, scene, text
-                  detection with computer vision to provide rich insights about your images.
+                  detection with computer vision to provide insights about your images.
                 </p>
               </div>
 
@@ -278,7 +284,7 @@ function App() {
                 </div>
                 <p className="project-description">
                 A minimalistic, real-time stock portfolio tracker built with Next.js and inspired by Zerodha's Kite platform. 
-                Track your stock market investments with live updates from Yahoo Finance couples with few convenience fearures.
+                Track your stock market investments with live updates from Yahoo Finance couples with few convenience features.
                 Built as a personal use project.
                 </p>
               </div>
@@ -303,6 +309,26 @@ function App() {
         </div>
       </section>
 
+      <section id="brain-section" className="brain-section">
+        <BrainSection ref={brainSectionRef} />
+        <RippleButton 
+          className="scroll-button visible"
+          onClick={() => document.getElementById('working-philosophy').scrollIntoView({ behavior: 'smooth' })}
+        >
+          working philosophy
+        </RippleButton>
+      </section>
+
+      <section id="working-philosophy" className="dot-grid-section">
+        <DotGrid />
+        {/* <button 
+          className={`about-scroll-button ${showAboutButton ? 'visible' : ''}`}
+          onClick={scrollToAbout}
+        >
+          about me
+        </button> */}
+      </section>
+
       {/* <WorkInProgress /> */}
       {/* <TwitterFeed /> */}
 
@@ -310,11 +336,11 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <h2 className="footer-title">
-            got something cool to build? I'm all ears
+            Got something cool to build - I'm all ears
           </h2>
           <p className="footer-subtitle">
             <a href="mailto:soumyamaheshwari1234@gmail.com" target="_blank" rel="noopener noreferrer">
-            mail me ↗
+            &lt;mail me&gt;
             </a>
           </p>
           
