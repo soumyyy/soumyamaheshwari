@@ -5,28 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog | Soumya Maheshwari</title>
-    <link rel="stylesheet" href="/blog/css/index.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="/blog/css/App.css">
+    <link rel="stylesheet" href="/blog/css/index.css">
+    
     <style>
-        /* Add some basic styling for the blog content area */
-        .blog-main {
-            padding: 120px 20px 40px;
-            max-width: 800px;
-            margin: 0 auto;
+        /* Base styles */
+        :root {
+            --primary-color: #00aaff;
+            --text-color: #fff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --bg-color: #0a0a0a;
         }
-        .blog-main h1, .blog-main h2, .blog-main h3 {
-            color: #fff;
-        }
-        .blog-main p, .blog-main li {
-            color: #ccc;
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
-        .blog-main a {
-            color: #00aaff;
+        
+        .App {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--primary-color);
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: all 0.3s ease;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .brand-name {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .brand-name a {
+            color: inherit;
             text-decoration: none;
         }
-        .blog-main a:hover {
-            text-decoration: underline;
+        
+        .blog-main {
+            padding: 120px 20px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .brand-name {
+                font-size: 1.25rem;
+            }
+            
+            .blog-main {
+                padding: 100px 1.5rem 60px;
+            }
         }
     </style>
 </head>
@@ -35,27 +104,114 @@
         <div class="scroll-progress-bar"></div>
         <header class="header visible">
             <h1 class="brand-name">
-                <a href="/" style="text-decoration: none; color: inherit;">soumya maheshwari</a>
+                <a href="/">soumya maheshwari</a>
             </h1>
         </header>
 
         <main class="blog-main">
             
-<h1>Blog</h1>
+<div class="blog-container">
+  <h1 class="blog-title">Blog</h1>
+  
+  <div class="posts-list"><article class="post-preview">
+        <a href="/blog/second-test/" class="post-link">
+          <h2 class="post-title">Your Blog Post Title</h2>
+          <time class="post-date">17 Jun 2025</time>
+        </a>
+      </article><article class="post-preview">
+        <a href="/blog/first-post/" class="post-link">
+          <h2 class="post-title">My First Blog Post</h2>
+          <time class="post-date">17 Jun 2025</time>
+        </a>
+      </article></div>
+</div>
 
-<ul><li>
-      <a href="/first-post/">
-        My First Blog Post
-      </a>
-      - <span>17 Jun 2025</span>
-    </li><li>
-      <a href="/second-test/">
-        Second blog
-      </a>
-      - <span>15 Jun 2025</span>
-    </li></ul>
+<style>
+  .blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+    color: #fff;
+  }
+
+  .blog-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-preview {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .post-link:hover {
+    opacity: 0.8;
+  }
+
+  .post-title {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+  }
+
+  .post-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 2.5rem;
+    }
+    
+    .post-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>
         </main>
     </div>
-    <script src="/blog/js/main.js"></script>
+    
+    <script>
+        // Simple scroll progress bar
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.scroll-progress-bar').style.width = scrolled + '%';
+            
+            // Toggle header visibility on scroll
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

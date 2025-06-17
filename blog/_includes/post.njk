@@ -2,11 +2,149 @@
 {% extends "base.njk" %}
 
 {% block content %}
-  <article>
-    <h1>{{ title }}</h1>
-    <p><em>Published on {{ date | readableDate }}</em></p>
-    <p>{{ description }}</p>
-    <hr>
-    {{ content | safe }}
+  <div class="blog-header">
+    <a href="/blog" class="back-to-blog">← Back to Blog</a>
+    <h1 class="blog-title">{{ title }}</h1>
+  </div>
+  
+  <article class="blog-post">
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="{{ page.date | w3DateFilter }}" class="post-date">
+          {{ page.date | readableDate }}
+        </time>
+        <span class="reading-time">{{ content | readingTime }} min read</span>
+      </div>
+      {% if description %}
+        <p class="post-subtitle">{{ description }}</p>
+      {% endif %}
+      <div class="post-divider"></div>
+    </header>
+
+    <div class="post-content">
+      {{ content | safe }}
+    </div>
   </article>
+
+  <style>
+    .blog-header {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      padding: 1rem 20px 0;
+    }
+
+    .back-to-blog {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-to-blog:hover {
+      color: #00aaff;
+    }
+
+    .blog-header .blog-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+
+    .blog-post {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+      color: #fff;
+    }
+
+    .post-header {
+      margin-bottom: 3rem;
+      text-align: left;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .post-subtitle {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 2rem;
+      font-weight: 400;
+    }
+
+    .post-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+      margin: 2rem 0;
+    }
+
+    .post-content {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .post-content h2,
+    .post-content h3,
+    .post-content h4 {
+      margin: 2.5rem 0 1.25rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .post-content h2 {
+      font-size: 1.8rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.5rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .post-content a {
+      color: #00aaff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 170, 255, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .post-content a:hover {
+      color: #66ccff;
+      border-bottom-color: rgba(102, 204, 255, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .blog-header .blog-title {
+        font-size: 2rem;
+      }
+      
+      .post-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .post-content {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+    }
+  </style>
 {% endblock %}

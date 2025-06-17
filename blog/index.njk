@@ -3,15 +3,85 @@ title: "My Blog"
 layout: "base.njk"
 ---
 
-<h1>Blog</h1>
+<div class="blog-container">
+  <h1 class="blog-title">Blog</h1>
+  
+  <div class="posts-list">
+    {%- for post in collections.posts | reverse -%}
+      <article class="post-preview">
+        <a href="/blog{{ post.url }}" class="post-link">
+          <h2 class="post-title">{{ post.data.title }}</h2>
+          <time class="post-date">{{ post.date | readableDate }}</time>
+        </a>
+      </article>
+    {%- endfor -%}
+  </div>
+</div>
 
-<ul>
-  {%- for post in collections.posts | reverse -%}
-    <li>
-      <a href="{{ post.url }}">
-        {{ post.data.title }}
-      </a>
-      - <span>{{ post.date | readableDate }}</span>
-    </li>
-  {%- endfor -%}
-</ul>
+<style>
+  .blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+    color: #fff;
+  }
+
+  .blog-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-preview {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .post-link:hover {
+    opacity: 0.8;
+  }
+
+  .post-title {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+  }
+
+  .post-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 2.5rem;
+    }
+    
+    .post-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>

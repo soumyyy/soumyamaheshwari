@@ -1,25 +1,53 @@
 ---
-title: "Second blog"
-date: "2025-06-15"
-description: "Jusgt testing"
+title: "Your Blog Post Title"
+date: 2025-06-17
+description: "A brief summary of your blog post that will appear in previews and search results."
+tags:
+  - web development
+  - design
+  - tutorial
 layout: "post.njk"
 permalink: "second-test/"
 ---
-Professional and semi-pro photographers managing high-volume shoots.
-***
-**Internal Task**
-Task 1: Assess current available tools, and pricing + pain points
-Task 2: Flutter stack requirements [Tech Side]
-Task 3: Intern Requirements [Hiring]
-Task 4: Talk to 1 photographer
-Task 5: MVP Requirements, features pov
-Task 6: Well work on the mvp
-***
-**Tasks to get started as a company**
-1. Pitch deck for internal clarification
-2. Reach out mechanism for photographers
-3. Hiring - Flutter + ML
-4. System architecture
-5. MVP development - Wire-framing
-6. Legal work
-7. Feature distillation
+
+Start your content here. This will be the main body of your blog post.
+
+## Section Header (H2)
+
+### Subsection (H3)
+
+#### Sub-subsection (H4)
+
+## Formatting Examples
+
+### Text Formatting
+- **Bold text**
+- *Italic text*
+- `inline code`
+- ~~Strikethrough~~
+
+### Lists
+
+#### Unordered List
+- Item 1
+- Item 2
+  - Nested item
+  - Another nested item
+
+#### Ordered List
+1. First item
+2. Second item
+3. Third item
+
+### Links and Images
+[Link text](https://example.com)
+
+![Alt text for image](/path/to/image.jpg)
+
+### Code Blocks
+
+```javascript
+// JavaScript code block
+function helloWorld() {
+  console.log('Hello, world!');
+}
