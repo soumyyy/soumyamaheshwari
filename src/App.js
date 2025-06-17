@@ -1,22 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import BrainSection from './components/BrainSection';
-// import WorkInProgress from './components/WorkInProgress';
 import DotGrid from './components/DotGrid';
-// import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-// import TwitterFeed from './components/TwitterFeed';
 import ProjectsDotGrid from './components/ProjectsDotGrid';
 import RippleButton from './components/RippleButton';
 
 function App() {
   const [showHello, setShowHello] = useState(false);
   const [hideHello, setHideHello] = useState(false);
-  const [showHeader, setShowHeader] = useState(false);
   const [mainText, setMainText] = useState('');
   const [showMainText, setShowMainText] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [showButton, setShowButton] = useState(false);
-  const [showAboutButton, setShowAboutButton] = useState(false);
   const textContainerRef = useRef(null);
   const lastScrollY = useRef(0);
   const brainSectionRef = useRef(null);
@@ -56,7 +51,6 @@ function App() {
         setHideHello(true);
         setShowMainText(true);
         setHeaderVisible(true);
-        setShowAboutButton(true);
         let mainIndex = 0;
 
         const typeText = () => {
@@ -98,22 +92,6 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const scrollToBrain = () => {
-    if (brainSectionRef.current) {
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollToAbout = () => {
-    const aboutSection = document.querySelector('.about-section');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const handleEmailClick = () => {
     window.location.href = 'mailto:soumyamaheshwari1234@gmail.com';
@@ -321,16 +299,7 @@ function App() {
 
       <section id="working-philosophy" className="dot-grid-section">
         <DotGrid />
-        {/* <button 
-          className={`about-scroll-button ${showAboutButton ? 'visible' : ''}`}
-          onClick={scrollToAbout}
-        >
-          about me
-        </button> */}
       </section>
-
-      {/* <WorkInProgress /> */}
-      {/* <TwitterFeed /> */}
 
       {/* Footer Section */}
       <footer className="footer">

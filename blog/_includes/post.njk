@@ -1,0 +1,12 @@
+{# /blog/_includes/post.njk #}
+{% extends "base.njk" %}
+
+{% block content %}
+  <article>
+    <h1>{{ title }}</h1>
+    <p><em>Published on {{ date | readableDate }}</em></p>
+    <p>{{ description }}</p>
+    <hr>
+    {{ content | safe }}
+  </article>
+{% endblock %}

@@ -6,14 +6,17 @@
   "dependencies": {
     "cra-template": "1.2.0",
     "deploy": "^1.0.3",
+    "framer-motion": "^11.2.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run build:blog && concurrently \"eleventy --watch\" \"react-scripts start\"",
+    "build:react": "react-scripts build",
+    "build:blog": "eleventy",
+    "build": "npm run build:react && npm run build:blog",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
@@ -38,7 +41,10 @@
     ]
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.3.0"
+    "concurrently": "^8.2.2",
+    "gh-pages": "^6.3.0",
+    "luxon": "^3.4.4"
   }
 }

@@ -33,7 +33,7 @@ const BrainSection = forwardRef((props, ref) => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [ref]);
 
   return (
     <section ref={ref} className="brain-section">
