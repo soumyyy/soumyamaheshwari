@@ -108,20 +108,45 @@ function App() {
         <h1 className="brand-name">soumya maheshwari</h1>
       </header>
 
-      <div className="flip-button-container">
-        <button 
-          className="flip-button"
-          onClick={handleEmailClick}
-        >
-          <div className="flip-button-inner">
-            <div className="flip-button-front">
-              open to work
+      <div className="header-buttons" style={{
+        position: 'fixed',
+        top: '20px',
+        right: '40px',
+        display: 'flex',
+        gap: '15px',
+        zIndex: 1000
+      }}>
+        <div className="flip-button-container">
+          <button 
+            className="flip-button"
+            onClick={() => window.open('/blog', '_self')}
+          >
+            <div className="flip-button-inner">
+              <div className="flip-button-front">
+                blog
+              </div>
+              <div className="flip-button-back">
+                read my thoughts
+              </div>
             </div>
-            <div className="flip-button-back">
-              soumyamaheshwari1234@gmail.com
+          </button>
+        </div>
+
+        <div className="flip-button-container">
+          <button 
+            className="flip-button"
+            onClick={handleEmailClick}
+          >
+            <div className="flip-button-inner">
+              <div className="flip-button-front">
+                open to work
+              </div>
+              <div className="flip-button-back">
+                soumyamaheshwari1234@gmail.com
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
       </div>
 
       <section className="landing-section">
@@ -333,6 +358,20 @@ function App() {
           </button>
         </div>
       </footer>
+
+      {/* Blog Button */}
+      <button 
+        className="blog-button"
+        onClick={() => window.open('/blog', '_self')}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8 7V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M16 7V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8 17H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        Blog
+      </button>
     </div>
   );
 }

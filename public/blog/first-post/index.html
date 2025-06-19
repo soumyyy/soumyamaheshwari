@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Blog Post | Soumya Maheshwari</title>
+    <title>NGL I love vibe coding | Soumya Maheshwari</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,49 +52,73 @@
         
         .header {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            top: 11px;
+            left: 20px;
             z-index: 100;
-            transition: all 0.3s ease;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            background: transparent;
+            backdrop-filter: none;
+            padding: 0;
+            width: auto;
+            justify-content: flex-start;
         }
         
         .brand-name {
             font-family: 'EB Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 400;
+            text-transform: lowercase;
             margin: 0;
+            color: white;
         }
         
         .brand-name a {
             color: inherit;
             text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .brand-name a:hover {
+            opacity: 0.8;
         }
         
         .blog-main {
-            padding: 120px 20px 80px;
+            padding: 100px 20px 80px;
             max-width: 800px;
             margin: 0 auto;
             width: 100%;
+            font-size: 18px;
+            line-height: 1.7;
+            box-sizing: border-box;
         }
         
         /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .blog-main {
+                padding: 100px 40px 60px;
+                max-width: 800px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header {
-                padding: 1rem;
+                top: 15px;
+                left: 20px;
             }
             
             .brand-name {
-                font-size: 1.25rem;
+                font-size: 20px;
             }
             
             .blog-main {
                 padding: 100px 1.5rem 60px;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 100%;
+                font-size: 16px;
+                line-height: 1.6;
             }
         }
     </style>
@@ -109,8 +133,9 @@
         </header>
 
         <main class="blog-main">
-            <h2>Hello, World!</h2>
-<p>This is the content of my very first blog post. I created it using Eleventy and Markdown.</p>
+            <h2>NGL I love vibe coding</h2>
+<p>I've wanted to create this blogsite for a while now, perpetually I've been in this coding rut since my vacation started, and i find this was the best way to break out of it. For the past couple of month I've entirely switched to obsidian from apple notes, and any other note taking apps. I found the markdown format very appealing, and how i can just push it on a private git repository, I someday plan to create a personal RAG-based assistant out of this data (I can do it right now as well, but I'm so sure the i wouldntt' really use it).</p>
+<p>I have no solid plan for what I'm going to write about, ig some amalgamation and bits of maybe some sensible thoughts and some random musings. With time hoping it a public diary.</p>
 
         </main>
     </div>

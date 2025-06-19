@@ -1,10 +1,10 @@
-{# /blog/_includes/base.njk #}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | Soumya Maheshwari</title>
+    <title>My Blog | Soumya Maheshwari</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/blog/css/App.css">
     <link rel="stylesheet" href="/blog/css/index.css">
+    
+    
     
     <style>
         /* Base styles */
@@ -94,14 +96,6 @@
             box-sizing: border-box;
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .blog-main {
-                padding: 100px 40px 60px;
-                max-width: 800px;
-            }
-        }
-        
         @media (max-width: 768px) {
             .header {
                 top: 15px;
@@ -116,7 +110,6 @@
                 padding: 100px 1.5rem 60px;
                 margin: 0 auto;
                 width: 100%;
-                max-width: 100%;
                 font-size: 16px;
                 line-height: 1.6;
             }
@@ -126,14 +119,14 @@
 <body>
     <div class="App">
         <div class="scroll-progress-bar"></div>
-        <header class="header visible">
+        <header class="header">
             <h1 class="brand-name">
                 <a href="/">soumya maheshwari</a>
             </h1>
         </header>
 
         <main class="blog-main">
-            {{ content | safe }}
+            
         </main>
     </div>
     

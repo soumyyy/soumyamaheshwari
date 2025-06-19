@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Blog Post Title | Soumya Maheshwari</title>
+    <title>My Blog | Soumya Maheshwari</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/blog/css/App.css">
     <link rel="stylesheet" href="/blog/css/index.css">
+    
+    
     
     <style>
         /* Base styles */
@@ -52,49 +54,64 @@
         
         .header {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            top: 11px;
+            left: 20px;
             z-index: 100;
-            transition: all 0.3s ease;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            background: transparent;
+            backdrop-filter: none;
+            padding: 0;
+            width: auto;
+            justify-content: flex-start;
         }
         
         .brand-name {
             font-family: 'EB Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 400;
+            text-transform: lowercase;
             margin: 0;
+            color: white;
         }
         
         .brand-name a {
             color: inherit;
             text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .brand-name a:hover {
+            opacity: 0.8;
         }
         
         .blog-main {
-            padding: 120px 20px 80px;
+            padding: 100px 20px 80px;
             max-width: 800px;
             margin: 0 auto;
             width: 100%;
+            font-size: 18px;
+            line-height: 1.7;
+            box-sizing: border-box;
         }
         
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
-                padding: 1rem;
+                top: 15px;
+                left: 20px;
             }
             
             .brand-name {
-                font-size: 1.25rem;
+                font-size: 20px;
             }
             
             .blog-main {
                 padding: 100px 1.5rem 60px;
+                margin: 0 auto;
+                width: 100%;
+                font-size: 16px;
+                line-height: 1.6;
             }
         }
     </style>
@@ -102,51 +119,14 @@
 <body>
     <div class="App">
         <div class="scroll-progress-bar"></div>
-        <header class="header visible">
+        <header class="header">
             <h1 class="brand-name">
                 <a href="/">soumya maheshwari</a>
             </h1>
         </header>
 
         <main class="blog-main">
-            <p>Start your content here. This will be the main body of your blog post.</p>
-<h2>Section Header (H2)</h2>
-<h3>Subsection (H3)</h3>
-<h4>Sub-subsection (H4)</h4>
-<h2>Formatting Examples</h2>
-<h3>Text Formatting</h3>
-<ul>
-<li><strong>Bold text</strong></li>
-<li><em>Italic text</em></li>
-<li><code>inline code</code></li>
-<li><s>Strikethrough</s></li>
-</ul>
-<h3>Lists</h3>
-<h4>Unordered List</h4>
-<ul>
-<li>Item 1</li>
-<li>Item 2
-<ul>
-<li>Nested item</li>
-<li>Another nested item</li>
-</ul>
-</li>
-</ul>
-<h4>Ordered List</h4>
-<ol>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-</ol>
-<h3>Links and Images</h3>
-<p><a href="https://example.com">Link text</a></p>
-<p><img src="/path/to/image.jpg" alt="Alt text for image"></p>
-<h3>Code Blocks</h3>
-<pre><code class="language-javascript">// JavaScript code block
-function helloWorld() {
-  console.log('Hello, world!');
-}</code></pre>
-
+            
         </main>
     </div>
     

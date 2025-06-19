@@ -522,6 +522,48 @@ html {
   }
 }
 
+/* Blog Button */
+.blog-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.blog-button:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .blog-button {
+    bottom: 40px;
+    right: 40px;
+    padding: 12px 24px;
+  }
+}
+
 /* Brain Section */
 .brain-section {
   min-height: 100vh;
