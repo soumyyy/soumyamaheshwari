@@ -2,8 +2,6 @@
 title: "NGL I love vibe coding"
 date: "2025-06-17"
 description: "This is the first post on my new blog!"
-layout: "post.njk"
-permalink: "first-post/"
 ---
 
 ## NGL I love vibe coding

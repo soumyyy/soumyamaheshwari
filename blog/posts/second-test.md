@@ -1,16 +1,12 @@
 ---
 title: "Your Blog Post Title"
-date: 2025-06-17
+date: "2025-06-17"
 description: "A brief summary of your blog post that will appear in previews and search results."
 tags:
   - web development
   - design
   - tutorial
-layout: "post.njk"
-permalink: "second-test/"
 ---
-
-Start your content here. This will be the main body of your blog post.
 
 ## Section Header (H2)
 
@@ -51,3 +47,4 @@ Start your content here. This will be the main body of your blog post.
 function helloWorld() {
   console.log('Hello, world!');
 }
+```

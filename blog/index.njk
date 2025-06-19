@@ -1,6 +1,7 @@
 ---
 title: "My Blog"
 layout: "base.njk"
+permalink: "blog/index.html"
 ---
 
 <div class="blog-container">
@@ -9,7 +10,7 @@ layout: "base.njk"
   <div class="posts-list">
     {%- for post in collections.posts | reverse -%}
       <article class="post-preview">
-        <a href="/blog{{ post.url }}" class="post-link">
+        <a href="{{ post.url | url }}" class="post-link">
           <h2 class="post-title">{{ post.data.title }}</h2>
           <time class="post-date">{{ post.date | readableDate }}</time>
         </a>
