@@ -92,6 +92,7 @@
             font-size: 18px;
             line-height: 1.7;
             box-sizing: border-box;
+            min-height: 100vh;
         }
         
         /* Responsive adjustments */
@@ -120,6 +121,78 @@
                 font-size: 16px;
                 line-height: 1.6;
             }
+
+            .footer {
+                padding: 40px 15px;
+            }
+            .footer-title {
+                font-size: 24px;
+            }
+            .footer-subtitle {
+                font-size: 16px;
+            }
+            .resume-button {
+                width: calc(100% - 30px);
+                max-width: 280px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 40px;
+            text-align: center;
+            color: white;
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-title {
+            font-size: 30px;
+            font-weight: normal;
+            line-height: 1.2;
+            font-family: 'EB Garamond', serif;
+        }
+        .footer-subtitle {
+            font-size: 20px;
+        }
+        .footer-subtitle a {
+            color: white;
+            text-decoration: none;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .social-icon:hover {
+            opacity: 1;
+        }
+        .resume-button {
+            height: 50px;
+            width: 300px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 40px;
+            border-radius: 6px;
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .resume-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
@@ -135,17 +208,20 @@
         <main class="blog-main">
             
 <div class="blog-container">
-  <h1 class="blog-title">Blog</h1>
+  <div class="blog-intro">
+    <p><strong>Hey, I’m Soumya Maheshwari, welcome to my learning pool.</strong></p>
+    <p>This is where I post my raw thoughts, and dig into rabbit holes that make me curious. 
+    Publishing here keeps me accountable — a small commitment to explore, research, and sometimes just think out loud.</p>
+    <p>Most of what you’ll find here are seeds, ideas in progress — but I hope they span in something worthwhile over time.</p>
+  </div>
   
   <div class="posts-list"><article class="post-preview">
-        <a href="/blog/second-test/" class="post-link">
-          <h2 class="post-title">Your Blog Post Title</h2>
-          <time class="post-date">17 Jun 2025</time>
-        </a>
-      </article><article class="post-preview">
         <a href="/blog/first-post/" class="post-link">
-          <h2 class="post-title">NGL I love vibe coding</h2>
-          <time class="post-date">17 Jun 2025</time>
+          <div class="post-header">
+            <h2 class="post-title">NGL I love vibe coding</h2>
+            <time class="post-date">~ 17 Jun 2025</time>
+          </div>
+          <p class="post-description">This is the first post on my new blog!</p>
         </a>
       </article></div>
 </div>
@@ -158,19 +234,22 @@
     color: #fff;
   }
 
-  .blog-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+  .blog-intro {
+    margin-bottom: 3rem;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+  }
+
+  .blog-intro p {
+    margin-bottom: 1rem;
   }
 
   .posts-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -178,7 +257,7 @@
 
   .post-preview {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 1.5rem;
+    padding: 2rem 0;
   }
 
   .post-link {
@@ -192,32 +271,72 @@
     opacity: 0.8;
   }
 
+  .post-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+    flex-wrap: wrap;
+  }
+
   .post-title {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     color: #fff;
+  }
+
+  .post-description {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    line-height: 1.5;
   }
 
   .post-date {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.6);
-    display: block;
   }
 
   @media (max-width: 768px) {
-    .blog-title {
-      font-size: 2.5rem;
-    }
-    
     .post-title {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
     }
   }
 </style>
         </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <h2 class="footer-title">
+                    Got something cool to build - I'm all ears
+                </h2>
+                <p class="footer-subtitle">
+                    <a href="mailto:soumyamaheshwari1234@gmail.com" target="_blank" rel="noopener noreferrer">
+                        &lt;mail me&gt;
+                    </a>
+                </p>
+                <div class="social-links">
+                    <a href="https://twitter.com/soumymaheshwri" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/X.png" alt="X (Twitter)" class="social-icon" />
+                    </a>
+                    <a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/GitHub.png" alt="GitHub" class="social-icon" />
+                    </a>
+                    <a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/LinkedIn.png" alt="LinkedIn" class="social-icon" />
+                    </a>
+                    <a href="https://instagram.com/soumymaheshwari" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/Instagram.png" alt="Instagram" class="social-icon" />
+                    </a>
+                </div>
+                <button class="resume-button" onclick="window.open('/SoumyaMaheshwari.pdf', '_blank', 'noopener,noreferrer')">
+                    resume
+                </button>
+            </div>
+        </footer>
     </div>
     
     <script>

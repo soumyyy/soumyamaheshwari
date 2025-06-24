@@ -359,7 +359,7 @@ function App() {
         </div>
       </footer>
 
-      {/* Blog Button */}
+      {/*
       <button 
         className="blog-button"
         onClick={() => window.open('/blog', '_self')}
@@ -372,6 +372,7 @@ function App() {
         </svg>
         Blog
       </button>
+      */}
     </div>
   );
 }

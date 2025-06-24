@@ -5,14 +5,22 @@ permalink: "blog/index.html"
 ---
 
 <div class="blog-container">
-  <h1 class="blog-title">Blog</h1>
+  <div class="blog-intro">
+    <p><strong>Hey, I’m Soumya Maheshwari, welcome to my learning pool.</strong></p>
+    <p>This is where I post my raw thoughts, and dig into rabbit holes that make me curious. 
+    Publishing here keeps me accountable — a small commitment to explore, research, and sometimes just think out loud.</p>
+    <p>Most of what you’ll find here are seeds, ideas in progress — but I hope they span in something worthwhile over time.</p>
+  </div>
   
   <div class="posts-list">
     {%- for post in collections.posts | reverse -%}
       <article class="post-preview">
         <a href="{{ post.url | url }}" class="post-link">
-          <h2 class="post-title">{{ post.data.title }}</h2>
-          <time class="post-date">{{ post.date | readableDate }}</time>
+          <div class="post-header">
+            <h2 class="post-title">{{ post.data.title }}</h2>
+            <time class="post-date">~ {{ post.date | readableDate }}</time>
+          </div>
+          <p class="post-description">{{ post.data.description }}</p>
         </a>
       </article>
     {%- endfor -%}
@@ -27,19 +35,22 @@ permalink: "blog/index.html"
     color: #fff;
   }
 
-  .blog-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+  .blog-intro {
+    margin-bottom: 3rem;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+  }
+
+  .blog-intro p {
+    margin-bottom: 1rem;
   }
 
   .posts-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -47,7 +58,7 @@ permalink: "blog/index.html"
 
   .post-preview {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 1.5rem;
+    padding: 2rem 0;
   }
 
   .post-link {
@@ -61,28 +72,38 @@ permalink: "blog/index.html"
     opacity: 0.8;
   }
 
+  .post-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+    flex-wrap: wrap;
+  }
+
   .post-title {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     color: #fff;
+  }
+
+  .post-description {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    line-height: 1.5;
   }
 
   .post-date {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.6);
-    display: block;
   }
 
   @media (max-width: 768px) {
-    .blog-title {
-      font-size: 2.5rem;
-    }
-    
     .post-title {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
     }
   }
 </style>

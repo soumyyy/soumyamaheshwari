@@ -92,6 +92,7 @@
             font-size: 18px;
             line-height: 1.7;
             box-sizing: border-box;
+            min-height: 100vh;
         }
         
         /* Responsive adjustments */
@@ -120,6 +121,78 @@
                 font-size: 16px;
                 line-height: 1.6;
             }
+
+            .footer {
+                padding: 40px 15px;
+            }
+            .footer-title {
+                font-size: 24px;
+            }
+            .footer-subtitle {
+                font-size: 16px;
+            }
+            .resume-button {
+                width: calc(100% - 30px);
+                max-width: 280px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 40px;
+            text-align: center;
+            color: white;
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-title {
+            font-size: 30px;
+            font-weight: normal;
+            line-height: 1.2;
+            font-family: 'EB Garamond', serif;
+        }
+        .footer-subtitle {
+            font-size: 20px;
+        }
+        .footer-subtitle a {
+            color: white;
+            text-decoration: none;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .social-icon:hover {
+            opacity: 1;
+        }
+        .resume-button {
+            height: 50px;
+            width: 300px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 40px;
+            border-radius: 6px;
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .resume-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
@@ -135,6 +208,36 @@
         <main class="blog-main">
             {{ content | safe }}
         </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <h2 class="footer-title">
+                    Got something cool to build - I'm all ears
+                </h2>
+                <p class="footer-subtitle">
+                    <a href="mailto:soumyamaheshwari1234@gmail.com" target="_blank" rel="noopener noreferrer">
+                        &lt;mail me&gt;
+                    </a>
+                </p>
+                <div class="social-links">
+                    <a href="https://twitter.com/soumymaheshwri" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/X.png" alt="X (Twitter)" class="social-icon" />
+                    </a>
+                    <a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/GitHub.png" alt="GitHub" class="social-icon" />
+                    </a>
+                    <a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/LinkedIn.png" alt="LinkedIn" class="social-icon" />
+                    </a>
+                    <a href="https://instagram.com/soumymaheshwari" target="_blank" rel="noopener noreferrer">
+                        <img src="/social/Instagram.png" alt="Instagram" class="social-icon" />
+                    </a>
+                </div>
+                <button class="resume-button" onclick="window.open('/SoumyaMaheshwari.pdf', '_blank', 'noopener,noreferrer')">
+                    resume
+                </button>
+            </div>
+        </footer>
     </div>
     
     <script>
