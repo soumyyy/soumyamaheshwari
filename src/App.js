@@ -359,7 +359,7 @@ function App() {
         </div>
       </footer>
 
-      {/*
+      {/* */}
       <button 
         className="blog-button"
         onClick={() => window.open('/blog', '_self')}
@@ -370,9 +370,8 @@ function App() {
           <path d="M16 7V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M8 17H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        Blog
+        Knowledge Pool
       </button>
-      */}
     </div>
   );
 }
