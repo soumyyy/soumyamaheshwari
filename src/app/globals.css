@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --accent: #555555;
+    --visited: #999999;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom selection color */
+::selection {
+    background: var(--foreground);
+    color: var(--background);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
