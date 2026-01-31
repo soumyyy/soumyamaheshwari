@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import DotGrid from "@/components/DotGrid";
+import SatelliteOrbit from "@/components/SatelliteOrbit";
 import { ChevronDown, ExternalLink } from "lucide-react";
 
 const ExperienceItem = ({ company, role, date, location, summary, bullets }: { company: string, role: string, date: string, location: string, summary: string, bullets: string[] }) => {
@@ -82,7 +83,7 @@ export default function Home() {
 
                 // Start typing after "Hello" fades
                 setTimeout(typeText, 800);
-            }, 1500); // Wait for Hello to stay a bit
+            }, 500); // Wait for Hello to stay a bit
         }, 500);
     }, []);
 
@@ -91,7 +92,7 @@ export default function Home() {
         if (showButton) {
             const timer = setTimeout(() => {
                 document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-            }, 1500);
+            }, 5000);
             return () => clearTimeout(timer);
         }
     }, [showButton]);
@@ -118,37 +119,54 @@ export default function Home() {
                 </FlipLink>
             </nav>
 
-            {/* Hero Section */}
-            <section className="h-screen w-full flex flex-col items-center justify-center px-6 text-center">
-                <AnimatePresence>
-                    {!hideHello && (
-                        <motion.h1
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: showHello ? 1 : 0 }}
-                            exit={{ opacity: 0 }}
-                            className="text-6xl md:text-9xl font-bold tracking-tighter absolute"
-                        >
-                            Hello.
-                        </motion.h1>
-                    )}
-                </AnimatePresence>
-
-                <div className={`transition-opacity duration-1000 ${hideHello ? 'opacity-100' : 'opacity-0'}`}>
-                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight w-full md:whitespace-nowrap leading-tight">
-                        {mainText}
-                        <span className="animate-pulse ml-1 text-neutral-500">|</span>
-                    </h1>
+            <section className="h-screen w-full flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
+                {/* "soumysphere" Background Text */}
+                <div className="absolute top-0 right-0 h-full flex items-center justify-end pointer-events-none z-0 select-none overflow-hidden pr-0 md:pr-0">
+                    <span className="text-[12vh] md:text-[14vh] font-black tracking-tighter text-[#050505] leading-none whitespace-nowrap rotate-90 origin-center translate-x-[42%]">
+                        soumysphere
+                    </span>
                 </div>
 
-                <motion.button
+                <SatelliteOrbit />
+
+                <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
+                    <AnimatePresence>
+                        {!hideHello && (
+                            <motion.h1
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: showHello ? 1 : 0 }}
+                                exit={{ opacity: 0 }}
+                                className="text-6xl md:text-9xl font-bold tracking-tighter absolute"
+                            >
+                                Hello.
+                            </motion.h1>
+                        )}
+                    </AnimatePresence>
+
+                    <div className={`transition-opacity duration-1000 ${hideHello ? 'opacity-100' : 'opacity-0'} w-full flex justify-center`}>
+                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight w-full leading-tight text-center flex flex-col md:block items-center justify-center">
+                            {mainText}
+                            <span className="animate-pulse ml-1 text-neutral-500 inline-block align-middle">|</span>
+                        </h1>
+                    </div>
+                </div>
+
+                {/* Scroll Prompt - Absolute positioning to not affect text centering */}
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: showButton ? 1 : 0, y: showButton ? 0 : 20 }}
                     transition={{ duration: 0.5 }}
-                    onClick={scrollToAbout}
-                    className="mt-16 text-sm text-neutral-500 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1"
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
                 >
-                    about me
-                </motion.button>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 mb-2">Scroll to explore</span>
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-neutral-800 to-transparent relative overflow-hidden">
+                        <motion.div
+                            animate={{ y: [0, 50] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                            className="w-full h-1/2 bg-white/50 absolute top-0"
+                        />
+                    </div>
+                </motion.div>
             </section>
 
             {/* About Section */}
@@ -284,7 +302,7 @@ export default function Home() {
 
                 {/* Other Projects - Grid Layout */}
                 <div className="w-full max-w-7xl">
-                    <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">More Experiments</h3>
+                    <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">side projects</h3>
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                         {projects.filter(p => !["jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
                             <ProjectCard key={project.id} project={project} index={index} />

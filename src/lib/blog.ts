@@ -20,26 +20,28 @@ export function getSortedPostsData(): PostData[] {
         return [];
     }
     const fileNames = fs.readdirSync(postsDirectory);
-    const allPostsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get id
-        const id = fileName.replace(/\.md$/, '');
+    const allPostsData = fileNames
+        .filter(fileName => fileName.endsWith('.md'))
+        .map((fileName) => {
+            // Remove ".md" from file name to get id
+            const id = fileName.replace(/\.md$/, '');
 
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+            // Read markdown file as string
+            const fullPath = path.join(postsDirectory, fileName);
+            const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-        // Use gray-matter to parse the post metadata section
-        const matterResult = matter(fileContents);
+            // Use gray-matter to parse the post metadata section
+            const matterResult = matter(fileContents);
 
-        // Validate date
-        const date = matterResult.data.date ? new Date(matterResult.data.date).toISOString().split('T')[0] : '1970-01-01';
+            // Validate date
+            const date = matterResult.data.date ? new Date(matterResult.data.date).toISOString().split('T')[0] : '1970-01-01';
 
-        return {
-            id,
-            ...matterResult.data,
-            date,
-        } as PostData;
-    });
+            return {
+                id,
+                ...matterResult.data,
+                date,
+            } as PostData;
+        });
     // Sort posts by date
     return allPostsData.sort((a, b) => {
         if (a.date < b.date) {
@@ -55,13 +57,15 @@ export function getAllPostIds() {
         return [];
     }
     const fileNames = fs.readdirSync(postsDirectory);
-    return fileNames.map((fileName) => {
-        return {
-            params: {
-                slug: fileName.replace(/\.md$/, ''),
-            },
-        };
-    });
+    return fileNames
+        .filter(fileName => fileName.endsWith('.md'))
+        .map((fileName) => {
+            return {
+                params: {
+                    slug: fileName.replace(/\.md$/, ''),
+                },
+            };
+        });
 }
 
 export async function getPostData(id: string) {

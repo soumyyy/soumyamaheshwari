@@ -77,13 +77,14 @@ export const projects: Project[] = [
   // --- Other Key Projects ---
   {
     id: "shit",
-    title: "SHIT (Student Helper Integrated Timetable)",
+    title: "SHIT",
     description: "An app for managing academic timetables and tracking attendance, with iOS apt UI.",
-    longDescription: "A minimal native app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and insights.",
+    longDescription: "[Student Helper Integrated Tool] A minimal native app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and insights.",
     techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
     link: "https://shitsort.com",
     github: "https://github.com/soumyyy/shit",
-    image: undefined
+    image: undefined,
+    video: "/demo/SHITdemo.mp4"
   },
   {
     id: "kochimetro",

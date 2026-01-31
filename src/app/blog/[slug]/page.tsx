@@ -9,8 +9,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
-    const postData = await getPostData(params.slug);
+export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const postData = await getPostData(slug);
 
     return (
         <main className="min-h-screen bg-black text-white px-6 py-20 md:py-40 flex flex-col items-center">
