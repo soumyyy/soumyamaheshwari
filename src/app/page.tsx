@@ -348,8 +348,16 @@ export default function Home() {
                 <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-6">
                     Got something cool to build?
                 </h2>
-                <a href="mailto:soumyamaheshwari1234@gmail.com" className="text-neutral-500 hover:text-white transition-colors text-lg mb-12">
+                <a href="mailto:soumyamaheshwari1234@gmail.com" className="text-neutral-500 hover:text-white transition-colors text-lg mb-8">
                     &lt;mail me&gt;
+                </a>
+
+                <a
+                    href="/SoumyaMaheshwariResume.pdf"
+                    target="_blank"
+                    className="inline-block text-xs md:text-sm font-medium uppercase tracking-wider text-black bg-white rounded-lg px-4 py-2 md:px-12 hover:bg-neutral-200 transition-colors mb-8"
+                >
+                    view resume
                 </a>
 
                 <div className="flex gap-8 opacity-50 hover:opacity-100 transition-opacity">
