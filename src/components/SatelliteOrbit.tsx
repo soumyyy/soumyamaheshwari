@@ -34,17 +34,19 @@ const SatelliteOrbit = () => {
             {/* Orbital Path and Satellite */}
             {/* Using a large responsive SVG */}
             <svg
-                className="w-[85vmin] h-[85vmin] opacity-60 absolute"
+                className="absolute w-full h-full md:w-[80vw] md:h-[80vh] opacity-60 pointer-events-none"
                 viewBox="0 0 1000 1000"
                 style={{
-                    transform: "rotate(-15deg)", // Tilted orbit
+                    // Rotate the whole system slightly for an angled view
+                    transform: "rotate(-10deg)",
                 }}
             >
-                {/* The Orbit Line */}
-                <circle
+                {/* The Elliptical Orbit Line */}
+                <ellipse
                     cx="500"
                     cy="500"
-                    r="450" // Radius
+                    rx="450"
+                    ry="200"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="0.5"
@@ -53,44 +55,48 @@ const SatelliteOrbit = () => {
                 />
 
                 {/* The Satellite (ISS) */}
-                {/* We animate the rotation of a group focused at center */}
                 <motion.g
-                    animate={{ rotate: 360 }}
+                    // Animate position along the ellipse
+                    animate={{
+                        x: Array.from({ length: 361 }, (_, i) => 500 + 450 * Math.cos((i * Math.PI) / 180)),
+                        y: Array.from({ length: 361 }, (_, i) => 500 + 200 * Math.sin((i * Math.PI) / 180)),
+                    }}
                     transition={{
-                        duration: 40, // Slow, majestic orbit
+                        duration: 50, // Slow, majestic orbit
                         repeat: Infinity,
                         ease: "linear",
                     }}
-                    style={{ originX: "500px", originY: "500px" }} // Rotate around center
                 >
-                    {/* Satellite Positioned on the ring (cx + r = 950) */}
-                    <g transform="translate(950, 500) rotate(90)">
-                        {/* ISS Style SVG */}
+                    {/* Inner rotation to keep it oriented or spinning specifically if needed */}
+                    {/* For now, just a slight rotation to match the path tangent would be cool, but simple translation is safer for 'floating' look */}
+                    <g transform="translate(0, 0) scale(0.8)">
+                        {/* ISS SVG Group - Centered at 0,0 for the motion group to move it */}
+                        <g transform="rotate(30)"> {/* Slight tilt of the station itself */}
+                            {/* Main Truss */}
+                            <rect x="-40" y="-2" width="80" height="4" fill="#888" stroke="#444" strokeWidth="1" />
 
-                        {/* Main Truss */}
-                        <rect x="-40" y="-2" width="80" height="4" fill="#888" stroke="#444" strokeWidth="1" />
+                            {/* Solar Arrays (Large, paired) */}
+                            {/* Left Pair */}
+                            <g transform="translate(-35, 0)">
+                                <rect x="-10" y="-40" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
+                                <rect x="-10" y="5" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
+                                <line x1="0" y1="-40" x2="0" y2="40" stroke="#666" strokeWidth="1" />
+                            </g>
 
-                        {/* Solar Arrays (Large, paired) */}
-                        {/* Left Pair */}
-                        <g transform="translate(-35, 0)">
-                            <rect x="-10" y="-40" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                            <rect x="-10" y="5" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                            <line x1="0" y1="-40" x2="0" y2="40" stroke="#666" strokeWidth="1" />
+                            {/* Right Pair */}
+                            <g transform="translate(35, 0)">
+                                <rect x="-10" y="-40" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
+                                <rect x="-10" y="5" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
+                                <line x1="0" y1="-40" x2="0" y2="40" stroke="#666" strokeWidth="1" />
+                            </g>
+
+                            {/* Radiators / Modules */}
+                            <rect x="-10" y="-8" width="20" height="16" fill="#ccc" stroke="#666" strokeWidth="1" />
+                            <rect x="-5" y="8" width="10" height="10" fill="#eee" stroke="#666" strokeWidth="1" />
+
+                            {/* Red light */}
+                            <circle cx="0" cy="0" r="2" fill="red" className="animate-pulse" />
                         </g>
-
-                        {/* Right Pair */}
-                        <g transform="translate(35, 0)">
-                            <rect x="-10" y="-40" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                            <rect x="-10" y="5" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                            <line x1="0" y1="-40" x2="0" y2="40" stroke="#666" strokeWidth="1" />
-                        </g>
-
-                        {/* Radiators / Modules */}
-                        <rect x="-10" y="-8" width="20" height="16" fill="#ccc" stroke="#666" strokeWidth="1" />
-                        <rect x="-5" y="8" width="10" height="10" fill="#eee" stroke="#666" strokeWidth="1" />
-
-                        {/* Red light */}
-                        <circle cx="0" cy="0" r="2" fill="red" className="animate-pulse" />
                     </g>
                 </motion.g>
             </svg>

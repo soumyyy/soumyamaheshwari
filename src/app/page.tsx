@@ -60,7 +60,7 @@ export default function Home() {
     const [showButton, setShowButton] = useState(false);
     const [showPrimitives, setShowPrimitives] = useState(false);
 
-    const mainContent = "I build cool stuff, break them, fix them along the way.";
+    const mainContent = "I break things, fix them, and build cool stuff along the way.";
 
     useEffect(() => {
         // Sequence animation
@@ -368,7 +368,7 @@ const FlipLink = ({ children, href }: { children: string; href: string }) => {
             initial="initial"
             whileHover="hovered"
             href={href}
-            className="relative block overflow-hidden whitespace-nowrap text-xs md:text-sm font-medium uppercase tracking-wider text-neutral-400 border border-neutral-800 rounded-full px-4 py-2 bg-black/50 backdrop-blur-sm hover:text-white hover:border-white transition-colors"
+            className="relative block overflow-hidden whitespace-nowrap text-xs md:text-sm font-medium uppercase tracking-wider text-neutral-400 border border-neutral-800 rounded-lg px-4 py-2 md:px-12 bg-black/50 backdrop-blur-sm hover:text-white hover:border-white transition-colors"
         >
             <motion.div
                 variants={{
