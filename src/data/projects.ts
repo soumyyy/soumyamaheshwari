@@ -6,11 +6,43 @@ export interface Project {
   link: string;
   github?: string;
   image?: string;
+  video?: string;
   longDescription: string;
 }
 
 export const projects: Project[] = [
   // --- The Jarvis Evolution Flow ---
+  {
+    id: "eclipsn",
+    title: "Eclipsn",
+    description: "A personal agent inspired by Bind.ai and Poke, focusing on a single user’s knowledge graph, Gmail, and long-term memory.",
+    longDescription: "Eclipsn is my personal AI agent, designed to be the central ecosystem of my digital life. It connects via Whoop API to track recovery, ingests my Gmail to stay updated on conversations, and maintains a long-term memory graph. It learns about me, anticipates updates, and serves as a unified interface for my data.\n\n(P.S. While I was building this, Peter Steinberger shipped OpenClaw (the 100x version). Great minds think alike, but he shipped faster.)",
+    techStack: ["Next.js", "Graph Database", "Gmail API", "Whoop API"],
+    link: "https://github.com/soumyyy/eclipsn",
+    github: "https://github.com/soumyyy/eclipsn",
+    image: undefined
+  },
+  {
+    id: "eclipse-obsidian",
+    title: "Eclipse Obsidian",
+    description: "The next iteration of Eclipse, integrated with Obsidian for personal knowledge management.",
+    longDescription: "I run this on a VPS, accessed via a custom PWA. Powered by Cerebras (3000 tokens/sec), it gives me instant access to my memories, past journals, and collections. It bridges the gap between personal AI and my knowledge base.",
+    techStack: ["TypeScript", "Obsidian API", "Cerebras", "PWA"],
+    link: "https://github.com/soumyyy/eclipse-obsidian",
+    github: "https://github.com/soumyyy/eclipse-obsidian",
+    image: undefined,
+    video: "/demo/EclipseDemo.mp4"
+  },
+  {
+    id: "eclipse",
+    title: "Eclipse",
+    description: "Enhanced Cognitive Linguistic Interactive Personal Support Engine. A significant evolution in conversational AI integration.",
+    longDescription: "Eclipse (Enhanced Cognitive Linguistic Interactive Personal Support Engine) represents the next step in personal AI, focusing on deeper cognitive linguistic understanding and interactive support.",
+    techStack: ["Python", "NLP", "MySQL"],
+    link: "https://github.com/soumyyy/Eclipse",
+    github: "https://github.com/soumyyy/Eclipse",
+    image: undefined,
+  },
   {
     id: "jarvis",
     title: "JARVIS V0",
@@ -21,34 +53,25 @@ export const projects: Project[] = [
     github: "https://github.com/soumyyy/Jarvis-V0",
     image: undefined
   },
+  // --- Client Work ---
   {
-    id: "eclipse",
-    title: "Eclipse",
-    description: "Enhanced Cognitive Linguistic Interactive Personal Support Engine. A significant evolution in conversational AI integration.",
-    longDescription: "Eclipse (Enhanced Cognitive Linguistic Interactive Personal Support Engine) represents the next step in personal AI, focusing on deeper cognitive linguistic understanding and interactive support.",
-    techStack: ["Python", "NLP", "MySQL"],
-    link: "https://github.com/soumyyy/Eclipse",
-    github: "https://github.com/soumyyy/Eclipse",
+    id: "vanshita",
+    title: "Vanshita Portfolio",
+    description: "A minimal, high-performance portfolio website built for Vanshita.",
+    longDescription: "A minimal, high-performance portfolio website built for Vanshita. Designed to showcase her work with a clean aesthetic.",
+    techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
+    link: "https://github.com/soumyyy/vanshita-portfolio",
+    github: "https://github.com/soumyyy/vanshita-portfolio",
     image: undefined
   },
   {
-    id: "eclipse-obsidian",
-    title: "Eclipse Obsidian",
-    description: "The next iteration of Eclipse, integrated with Obsidian for personal knowledge management.",
-    longDescription: "Eclipse Obsidian bridges the gap between personal AI assistance and knowledge management, embedding the Eclipse engine directly into the Obsidian workflow.",
-    techStack: ["TypeScript", "Obsidian API", "LLM Integration"],
-    link: "https://github.com/soumyyy/eclipse-obsidian",
-    github: "https://github.com/soumyyy/eclipse-obsidian",
-    image: undefined
-  },
-  {
-    id: "eclipsn",
-    title: "Eclipsn",
-    description: "A personal agent inspired by Bind.ai and Poke, focusing on a single user’s knowledge graph, Gmail, and long-term memory.",
-    longDescription: "Eclipsn is a personal agent inspired by Bind.ai and Poke that focuses on a single user’s knowledge graph, Gmail, and long-term memory. It offers a chat-first experience with a clear gateway and brain split so each layer can evolve independently.",
-    techStack: ["Next.js", "Graph Database", "Gmail API"],
-    link: "https://github.com/soumyyy/eclipsn",
-    github: "https://github.com/soumyyy/eclipsn",
+    id: "bykritika",
+    title: "ByKritika",
+    description: "A digital presence for ByKritika, focusing on brand identity.",
+    longDescription: "A digital presence for ByKritika, focusing on brand identity and online reach.",
+    techStack: ["React", "TailwindCSS"],
+    link: "https://github.com/soumyyy/bykritika.com",
+    github: "https://github.com/soumyyy/bykritika.com",
     image: undefined
   },
   // --- Other Key Projects ---
@@ -114,12 +137,12 @@ export const projects: Project[] = [
   },
   {
     id: "shit",
-    title: "SHIT (Smart Heuristic Intelligent Timetable)",
+    title: "SHIT (Student Helper Integrated Timetable)",
     description: "A minimal, efficient app for managing academic timetables and tracking attendance, built with React Native (Expo).",
     longDescription: "A minimal, efficient app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and smart insights.",
     techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
     link: "https://shitsort.com",
-    github: "https://github.com/soumyyy/kochimetro-sih",
+    github: "https://github.com/soumyyy/shit",
     image: undefined
   },
   {

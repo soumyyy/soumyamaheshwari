@@ -69,6 +69,19 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                     <p className="text-base text-neutral-400 leading-relaxed text-balance">
                         {project.longDescription}
                     </p>
+
+                    {project.video && (
+                        <div className="mt-6 rounded-lg overflow-hidden border border-neutral-800 bg-neutral-900/50">
+                            <video
+                                src={project.video}
+                                controls
+                                className="w-full h-auto max-h-[400px] object-cover"
+                                poster={project.image}
+                            >
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    )}
                 </div>
             </div>
         </motion.div>
