@@ -56,9 +56,9 @@ export const projects: Project[] = [
   // --- Client Work ---
   {
     id: "vanshita",
-    title: "Vanshita Portfolio",
+    title: "Vanshita's Portfolio",
     description: "A minimal, high-performance portfolio website built for Vanshita.",
-    longDescription: "A minimal, high-performance portfolio website built for Vanshita. Designed to showcase her work with a clean aesthetic.",
+    longDescription: "A minimal, high-performance portfolio website built for Vanshita. Designed to showcase her work.",
     techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
     link: "https://github.com/soumyyy/vanshita-portfolio",
     github: "https://github.com/soumyyy/vanshita-portfolio",
@@ -66,9 +66,9 @@ export const projects: Project[] = [
   },
   {
     id: "bykritika",
-    title: "ByKritika",
-    description: "A digital presence for ByKritika, focusing on brand identity.",
-    longDescription: "A digital presence for ByKritika, focusing on brand identity and online reach.",
+    title: "Kritika's Portfolio",
+    description: "A digital presence for Kritika, focusing on brand identity.",
+    longDescription: "A digital presence for Kritika, focusing on brand identity and online reach.",
     techStack: ["React", "TailwindCSS"],
     link: "https://github.com/soumyyy/bykritika.com",
     github: "https://github.com/soumyyy/bykritika.com",
@@ -76,10 +76,50 @@ export const projects: Project[] = [
   },
   // --- Other Key Projects ---
   {
+    id: "shit",
+    title: "SHIT (Student Helper Integrated Timetable)",
+    description: "An app for managing academic timetables and tracking attendance, with iOS apt UI.",
+    longDescription: "A minimal native app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and insights.",
+    techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
+    link: "https://shitsort.com",
+    github: "https://github.com/soumyyy/shit",
+    image: undefined
+  },
+  {
+    id: "kochimetro",
+    title: "Kochi Metro SIH",
+    description: "Smart India Hackathon project for Kochi Metro.",
+    longDescription: "A Smart India Hackathon (SIH) project developed for Kochi Metro, focusing on improving operational efficiency by solving the queuing and entire backend work of metro operations.",
+    techStack: ["SIH", "Hackathon"],
+    link: "https://github.com/soumyyy/kochimetro-sih",
+    github: "https://github.com/soumyyy/kochimetro-sih",
+    image: undefined
+  },
+  {
+    id: "hft",
+    title: "HFT Backtesting Engine",
+    description: "A high-frequency trading backtesting engine for XAU/USD built in Rust.",
+    longDescription: "A high-frequency trading backtesting engine for XAU/USD built in Rust, designed to run efficiently on a Macbook. Optimized for speed and low-latency simulation.",
+    techStack: ["Rust", "HFT", "Backtesting"],
+    link: "https://github.com/soumyyy/hft-backtest-engine",
+    github: "https://github.com/soumyyy/hft-backtest-engine",
+    image: undefined
+  },
+  {
+    id: "photocortex",
+    title: "PhotoCortex",
+    description: "AI-powered photo analysis and organization platform.",
+    longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform that made on top of ensemble of multimodal AI modals to helps you understand and explore your photo collection in new ways. It combines face, object, scene, text detection with computer vision (Google photos without the scale).",
+    techStack: ["Computer Vision", "AI"],
+    link: "https://github.com/soumyyy/PhotoCortex",
+    github: "https://github.com/soumyyy/PhotoCortex",
+    image: undefined
+  },
+  {
     id: "stockportfolio",
     title: "Stock Portfolio Tracker",
-    description: "A minimalistic, real-time stock portfolio tracker built with Next.js and inspired by Zerodha's Kite platform.",
-    longDescription: "A minimalistic, real-time stock portfolio tracker built with Next.js and inspired by Zerodha's Kite platform. Track your Indian stock market investments with live updates from Yahoo Finance.",
+    description: "A minimalistic, real-time stock portfolio tracker built for personal use.",
+    longDescription: "A minimalistic, real-time stock portfolio tracker based on Zerodha's Kite platform. Track your stock market investments with live updates, llaso it automaticaly fetches your stock portfolio from mulitple kite accounts so you can keep a track of your portfolio at one place.",
     techStack: ["Next.js", "TypeScript", "TailwindCSS", "Yahoo Finance API"],
     link: "https://github.com/soumyyy/StockPortfolio",
     github: "https://github.com/soumyyy/StockPortfolio",
@@ -89,7 +129,7 @@ export const projects: Project[] = [
     id: "sih-bel",
     title: "SIH-BEL Image Chatbot",
     description: "Smart India Hackathon 2024 project: Conversational Image Recognition Chatbot for Bharat Electronics Limited.",
-    longDescription: "Developed for SIH 2024 (Bharat Electronics Limited). This system integrates YoloV8 for computer vision and Llama 3.1 for NLP to analyze images and generate contextual responses for component identification.",
+    longDescription: "Developed for SIH 2024 (Bharat Electronics Limited). This system integrates YoloV8 for computer vision and Llama 3.1 for NLP to analyze images and generate contextual responses for component identification and retrieve information about the particular part from BEL's official documentation.",
     techStack: ["YOLOv8", "Llama 3.1", "Python", "Flask"],
     link: "https://github.com/soumyyy/SIH-BEL",
     github: "https://github.com/soumyyy/SIH-BEL",
@@ -98,11 +138,21 @@ export const projects: Project[] = [
   {
     id: "imagenerve",
     title: "ImageNerve",
-    description: "A full-stack photo management application with AI-powered face recognition.",
-    longDescription: "A full-stack photo management application with AI-powered face recognition, built with React Native (Expo) and FastAPI. Designed to organize and retrieve photos intelligently.",
+    description: "A full-stack photo management application that fetches all your photos.",
+    longDescription: "A native photo management application with AI-powered face recognition. Designed to organize and retrieve only your photos intelligently, Get your photos from any event in just one scan.",
     techStack: ["React Native", "Expo", "FastAPI", "Face Recognition"],
     link: "https://github.com/soumyyy/ImageNerve",
     github: "https://github.com/soumyyy/ImageNerve",
+    image: undefined
+  },
+  {
+    id: "alphafold-nano",
+    title: "AlphaFold Nano",
+    description: "Protein structure tools mimicing and understanding DeepMind's AlphaFold project.",
+    longDescription: "A compact repository implementing AlphaFold data preparation pipelines and Reinforcement Learning algorithms (Actor-Critic CartPole, Q-Learning FrozenLake). Features a dashboard for visualizing training metrics and comparing toy backbone inferences against AlphaFold traces.",
+    techStack: ["Python", "Streamlit", "PyTorch", "AlphaFold"],
+    link: "https://github.com/soumyyy/alphafold-nano",
+    github: "https://github.com/soumyyy/alphafold-nano",
     image: undefined
   },
   {
@@ -113,46 +163,6 @@ export const projects: Project[] = [
     techStack: ["Python", "Reinforcement Learning", "ACE Framework"],
     link: "https://github.com/soumyyy/ace-rl",
     github: "https://github.com/soumyyy/ace-rl",
-    image: undefined
-  },
-  {
-    id: "hft",
-    title: "HFT Backtesting Engine",
-    description: "A high-frequency trading backtesting engine for XAU/USD built in Rust.",
-    longDescription: "A high-frequency trading backtesting engine for XAU/USD built in Rust, designed to run efficiently on an 8GB MacBook. Optimized for speed and low-latency simulation.",
-    techStack: ["Rust", "HFT", "Backtesting"],
-    link: "https://github.com/soumyyy/hft-backtest-engine",
-    github: "https://github.com/soumyyy/hft-backtest-engine",
-    image: undefined
-  },
-  {
-    id: "photocortex",
-    title: "PhotoCortex",
-    description: "AI-powered photo analysis and organization platform.",
-    longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform that helps you understand and explore your photo collection in new ways. It combines face, object, scene, text detection with computer vision.",
-    techStack: ["Computer Vision", "AI"],
-    link: "https://github.com/soumyyy/PhotoCortex",
-    github: "https://github.com/soumyyy/PhotoCortex",
-    image: undefined
-  },
-  {
-    id: "shit",
-    title: "SHIT (Student Helper Integrated Timetable)",
-    description: "A minimal, efficient app for managing academic timetables and tracking attendance, built with React Native (Expo).",
-    longDescription: "A minimal, efficient app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and smart insights.",
-    techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
-    link: "https://shitsort.com",
-    github: "https://github.com/soumyyy/shit",
-    image: undefined
-  },
-  {
-    id: "kochimetro",
-    title: "Kochi Metro SIH",
-    description: "Smart India Hackathon project for Kochi Metro.",
-    longDescription: "A Smart India Hackathon (SIH) project developed for Kochi Metro, focusing on improving commuter experience and operational efficiency.",
-    techStack: ["SIH", "Hackathon"],
-    link: "https://github.com/soumyyy/kochimetro-sih",
-    github: "https://github.com/soumyyy/kochimetro-sih",
     image: undefined
   }
 ];

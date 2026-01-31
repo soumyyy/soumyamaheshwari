@@ -21,7 +21,7 @@ const DotGrid = () => {
     const generateDots = useMemo(() => {
         const newDots = [];
         const isMobile = (typeof window !== 'undefined') ? window.innerWidth <= 768 : false;
-        const spacing = isMobile ? 15 : 25;
+        const spacing = isMobile ? 20 : 25;
         const rows = isMobile ? 12 : 20;
         const columns = isMobile ? 12 : 20;
         const centerX = columns / 2;
@@ -140,7 +140,7 @@ const DotGrid = () => {
     const renderDot = useCallback((dot: any) => (
         <motion.div
             key={dot.id}
-            className="absolute w-[2px] h-[2px] bg-neutral-500 rounded-full"
+            className="absolute w-[2px] h-[2px] bg-neutral-400/80 rounded-full"
             initial={dotVariants.initial}
             animate={dotVariants.animate(dot) as any}
             exit={{ opacity: 0, scale: 0 }}
@@ -189,10 +189,16 @@ const DotGrid = () => {
     }, [startInitialAnimation]);
 
     return (
-        <div ref={sectionRef} className="w-full max-w-7xl mx-auto min-h-[70vh] grid md:grid-cols-2 gap-12 items-center px-6">
+        <div ref={sectionRef} className="w-full max-w-7xl mx-auto min-h-[50vh] flex flex-col md:grid md:grid-cols-2 gap-2 md:gap-12 items-center px-6 py-12 md:py-0">
+            {/* Mobile Title - Visible only on mobile */}
+            <h2 className="md:hidden text-4xl font-bold tracking-tighter text-white leading-tight text-left w-full mb-4">
+                working <br />
+                <span className="text-neutral-500">philosophy</span>
+            </h2>
+
             {/* Left: Interactive Grid */}
-            <div className="relative w-full aspect-square md:aspect-auto md:h-[500px] flex items-center justify-center overflow-hidden">
-                <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]">
+            <div className="relative w-full aspect-square md:aspect-auto md:h-[500px] flex items-center justify-center overflow-hidden mb-4 md:mb-0">
+                <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px] mx-auto">
                     <AnimatePresence>
                         {dots.map(renderDot)}
                     </AnimatePresence>
@@ -200,19 +206,20 @@ const DotGrid = () => {
             </div>
 
             {/* Right: Philosophy & Controls */}
-            <div className="flex flex-col justify-center items-start space-y-10 pl-0 md:pl-10">
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white leading-tight">
+            <div className="flex flex-col justify-center items-start space-y-6 md:space-y-10 pl-0 md:pl-10 w-full">
+                {/* Desktop Title - Visible only on desktop */}
+                <h2 className="hidden md:block text-4xl md:text-6xl font-bold tracking-tighter text-white leading-tight text-left">
                     working <br />
                     <span className="text-neutral-500">philosophy</span>
                 </h2>
 
-                <div className="flex flex-col items-start gap-3 border-l border-neutral-900 pl-6">
+                <div className="flex flex-col items-start gap-3 border-l border-neutral-900 pl-6 w-full">
                     {phases.map((phase) => (
                         <button
                             key={phase.id}
                             onClick={() => isInitialAnimationComplete && setCurrentPhase(phase.id)}
                             disabled={!isInitialAnimationComplete}
-                            className={`text-left text-lg md:text-xl transition-all duration-300 font-light hover:translate-x-2
+                            className={`text-left text-base md:text-xl transition-all duration-300 font-light hover:translate-x-2
                 ${currentPhase === phase.id
                                     ? 'text-white font-medium scale-105 origin-left'
                                     : 'text-neutral-600 hover:text-neutral-300'
@@ -226,7 +233,7 @@ const DotGrid = () => {
                 </div>
 
                 {!isInitialAnimationComplete && (
-                    <div className="text-xs font-mono text-neutral-800 animate-pulse">
+                    <div className="text-xs font-mono text-neutral-800 animate-pulse pl-6">
                       // initializing neural grid...
                     </div>
                 )}

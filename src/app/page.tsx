@@ -12,12 +12,10 @@ const ExperienceItem = ({ company, role, date, location, summary, bullets }: { c
 
     return (
         <div
-            className="group border-l-2 border-neutral-900 pl-6 md:pl-8 py-2 transition-all hover:border-neutral-700 hover:bg-neutral-900/10 rounded-r-lg pr-4"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
+            className="group border-l-2 border-neutral-900 pl-6 md:pl-8 py-2 transition-all hover:border-neutral-700 hover:bg-neutral-900/10 rounded-r-lg pr-4 cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
         >
-            <div className="cursor-pointer space-y-3">
+            <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
                     <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors flex items-center gap-2">
                         {company}
@@ -136,7 +134,7 @@ export default function Home() {
                 </AnimatePresence>
 
                 <div className={`transition-opacity duration-1000 ${hideHello ? 'opacity-100' : 'opacity-0'}`}>
-                    <h1 className="text-3xl md:text-6xl font-medium tracking-tight max-w-4xl leading-tight">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight w-full md:whitespace-nowrap leading-tight">
                         {mainText}
                         <span className="animate-pulse ml-1 text-neutral-500">|</span>
                     </h1>
@@ -154,24 +152,24 @@ export default function Home() {
             </section>
 
             {/* About Section */}
-            <section id="about" className="w-full max-w-5xl px-6 py-24 md:py-40 border-t border-neutral-900">
+            <section id="about" className="w-full max-w-5xl px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
                     <div>
                         <h2 className="text-neutral-500 font-medium text-sm tracking-widest uppercase mb-4 sticky top-24">Intro</h2>
                     </div>
-                    <div className="space-y-8 text-xl md:text-3xl font-light text-neutral-200 leading-relaxed text-balance lowercase">
+                    <div className="space-y-8 text-xl md:text-2xl font-light text-neutral-200 leading-relaxed text-balance lowercase">
                         <p>
-                            i'm soumya. i just build things.
+                            i’m soumya. i design, i build, and i mess with things just to see how they work. spent a couple years in startup ops & strategy, but recently i've put most of my energy in the deep end: ai tooling, agents, and the chaos of the new.
                         </p>
-                        <p className="text-neutral-400 text-lg md:text-xl">
-                            obsessed with agents, systems, and making computers feel a little more human. compulsive builder, chaotic tinkerer energy. currently trying to outsource my own cognition to code.
+                        <p className="text-neutral-400">
+                            i'm a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, devops, ml. i don't just skim the surface; i live in the weeds.
                         </p>
                     </div>
                 </div>
             </section>
 
             {/* Work Details Section */}
-            <section className="w-full max-w-5xl px-6 py-20 border-t border-neutral-900">
+            <section className="w-full max-w-5xl px-4 md:px-6 py-20 border-t border-neutral-900">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
                     <div>
                         <h2 className="text-neutral-500 font-medium text-sm tracking-widest uppercase mb-4 sticky top-24">Experience</h2>
@@ -184,7 +182,7 @@ export default function Home() {
                                     <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors">Komma Financial Technologies</h3>
                                     <span className="text-sm text-neutral-500 font-mono">Nov 2022 – Jan 2024</span>
                                 </div>
-                                <div className="text-sm text-neutral-500">Founder’s Office · Gurugram</div>
+                                <div className="text-sm text-neutral-500">Founder’s Office · Gurugram | Pune</div>
                             </div>
 
                             {/* Company Intro */}
@@ -227,7 +225,7 @@ export default function Home() {
             </section>
 
             {/* Projects Section - Refesigned */}
-            <section className="w-full px-6 py-24 md:py-40 border-t border-neutral-900 flex flex-col items-center">
+            <section className="w-full px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900 flex flex-col items-center">
                 <div className="mb-24 text-center">
                     <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white/80 mb-6">selected works</h2>
                     <p className="text-neutral-500 max-w-lg mx-auto">A collection of experiments, agents, and side-projects.</p>
@@ -235,7 +233,7 @@ export default function Home() {
 
                 {/* Evolution Flow - Vertical Timeline */}
                 <div className="w-full max-w-4xl space-y-12 mb-40">
-                    <div className="relative border-l-2 border-neutral-800 pl-8 md:pl-16 ml-4 md:ml-20 py-4">
+                    <div className="relative border-l-2 border-neutral-800 pl-3 md:pl-16 ml-0 md:ml-20 py-4">
                         <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-4 border-black box-content" />
                         <h3 className="text-sm font-bold tracking-widest text-neutral-500 uppercase mb-12">my personal agent timeline</h3>
 
@@ -255,7 +253,7 @@ export default function Home() {
                                     onClick={() => setShowPrimitives(!showPrimitives)}
                                     className="flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-400 transition-colors uppercase tracking-wider font-semibold"
                                 >
-                                    {showPrimitives ? "Hide Primitive Tech" : "View Primitive Tech"}
+                                    {showPrimitives ? "Hide the Primitive Tech" : "View the Primitive Tech that got me here"}
                                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showPrimitives ? "rotate-180" : ""}`} />
                                 </button>
                             </div>
@@ -270,7 +268,7 @@ export default function Home() {
                                         transition={{ duration: 0.5, ease: "easeInOut" }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="space-y-8 pt-8 border-l-2 border-neutral-800/50 -ml-[34px] md:-ml-[66px] pl-[32px] md:pl-[64px]">
+                                        <div className="space-y-8 pt-8 border-l-2 border-neutral-800/50 -ml-[23px] md:-ml-[66px] pl-[21px] md:pl-[64px]">
                                             {projects
                                                 .filter(p => ["eclipse", "jarvis"].includes(p.id))
                                                 .map((project, index) => (
@@ -284,8 +282,18 @@ export default function Home() {
                     </div>
                 </div>
 
+                {/* Other Projects - Grid Layout */}
+                <div className="w-full max-w-7xl">
+                    <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">More Experiments</h3>
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+                        {projects.filter(p => !["jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
+                            <ProjectCard key={project.id} project={project} index={index} />
+                        ))}
+                    </div>
+                </div>
+
                 {/* Client Work - Minimalist Section */}
-                <div className="w-full max-w-7xl mb-32">
+                <div className="w-full max-w-7xl mt-32">
                     <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">Client Work</h3>
                     <div className="flex flex-col border-t border-neutral-900">
                         {projects.filter(p => ["vanshita", "bykritika"].includes(p.id)).map((project) => (
@@ -307,16 +315,6 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-
-                {/* Other Projects - Grid Layout */}
-                <div className="w-full max-w-7xl">
-                    <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">More Experiments</h3>
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                        {projects.filter(p => !["jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
-                            <ProjectCard key={project.id} project={project} index={index} />
-                        ))}
-                    </div>
-                </div>
             </section>
 
             {/* Brain Section (Disabled) */}
@@ -329,7 +327,7 @@ export default function Home() {
 
             {/* Footer */}
             <footer className="w-full py-20 border-t border-neutral-900 flex flex-col items-center justify-center text-center px-6">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
+                <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-6">
                     Got something cool to build?
                 </h2>
                 <a href="mailto:soumyamaheshwari1234@gmail.com" className="text-neutral-500 hover:text-white transition-colors text-lg mb-12">
