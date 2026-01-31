@@ -19,7 +19,7 @@ function App() {
   const scrollAnimationFrame = useRef();
 
   const hello = "Hello.";
-  const mainContent = "I break things, fix them, and build cool stuff along the way.";
+  const mainContent = "I build cool stuff, break them, fix them along the way.";
 
   useEffect(() => {
     const handleScroll = () => {
