@@ -70,33 +70,15 @@ const SatelliteOrbit = () => {
                     {/* Inner rotation to keep it oriented or spinning specifically if needed */}
                     {/* For now, just a slight rotation to match the path tangent would be cool, but simple translation is safer for 'floating' look */}
                     <g transform="translate(0, 0) scale(0.8)">
-                        {/* ISS SVG Group - Centered at 0,0 for the motion group to move it */}
-                        <g transform="rotate(30)"> {/* Slight tilt of the station itself */}
-                            {/* Main Truss */}
-                            <rect x="-40" y="-2" width="80" height="4" fill="#888" stroke="#444" strokeWidth="1" />
-
-                            {/* Solar Arrays (Large, paired) */}
-                            {/* Left Pair */}
-                            <g transform="translate(-35, 0)">
-                                <rect x="-10" y="-40" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                                <rect x="-10" y="5" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                                <line x1="0" y1="-40" x2="0" y2="40" stroke="#666" strokeWidth="1" />
-                            </g>
-
-                            {/* Right Pair */}
-                            <g transform="translate(35, 0)">
-                                <rect x="-10" y="-40" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                                <rect x="-10" y="5" width="20" height="35" fill="#1a237e" stroke="#0d47a1" strokeWidth="1" />
-                                <line x1="0" y1="-40" x2="0" y2="40" stroke="#666" strokeWidth="1" />
-                            </g>
-
-                            {/* Radiators / Modules */}
-                            <rect x="-10" y="-8" width="20" height="16" fill="#ccc" stroke="#666" strokeWidth="1" />
-                            <rect x="-5" y="8" width="10" height="10" fill="#eee" stroke="#666" strokeWidth="1" />
-
-                            {/* Red light */}
-                            <circle cx="0" cy="0" r="2" fill="red" className="animate-pulse" />
-                        </g>
+                        {/* ISS Image from Public Dir */}
+                        <image
+                            href="/iss.svg"
+                            x="-50"
+                            y="-50"
+                            width="100"
+                            height="100"
+                            transform="rotate(30)" // Keep the slight tilt
+                        />
                     </g>
                 </motion.g>
             </svg>

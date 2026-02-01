@@ -91,7 +91,10 @@ export default function Home() {
     useEffect(() => {
         if (showButton) {
             const timer = setTimeout(() => {
-                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+                const scrollPos = window.scrollY || document.documentElement.scrollTop;
+                if (scrollPos < 20) {
+                    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+                }
             }, 5000);
             return () => clearTimeout(timer);
         }
