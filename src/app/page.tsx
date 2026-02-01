@@ -177,10 +177,10 @@ export default function Home() {
                     </div>
                     <div className="space-y-8 text-xl md:text-2xl font-light text-neutral-200 leading-relaxed text-balance lowercase">
                         <p>
-                            i’m soumya. i design, i build, and i mess with things just to see how they work. spent a couple years in startup ops & strategy, but recently i've put most of my energy in the deep end: ai tooling, agents, and the chaos of the new.
+                            i’m soumya. i design, i build, and i mess with things just to see how they work. spent a couple years in startup ops & strategy, but recently i've put most of my energy in the deep end: ai tooling, agents, frontier coding tools, and rapid prototyping.
                         </p>
                         <p className="text-neutral-400">
-                            i'm a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, devops, ml. i don't just skim the surface; i live in the weeds.
+                            i'm a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, webdev, ios, ml and everything in between.
                         </p>
                     </div>
                 </div>
@@ -233,8 +233,8 @@ export default function Home() {
 
                             {/* Bullets */}
                             <ul className="space-y-3 text-neutral-400 leading-relaxed list-disc list-outside ml-4 text-base">
-                                <li>Conceptualized and managed the roadmap for components, translating complex health metrics into actionable user insights via React.</li>
-                                <li>Led the Go-to-Market strategy for the brand’s digital presence; managed ad budgets and content operations to drive initial user acquisition and engagement.</li>
+                                <li>Conceptualized and managed the roadmap for components, translating complex health metrics into actionable user insights in React.</li>
+                                <li>Worked on Go-to-Market strategy for the brand’s digital presence; managed ad budgets and content operations to drive initial user acquisition and engagement.</li>
                                 <li>Worked the end-to-end development of the brand website and application, optimizing the User Journey (UX) to serve as the primary lead generation funnel.</li>
                             </ul>
                         </div>

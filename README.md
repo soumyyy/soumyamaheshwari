@@ -8,14 +8,6 @@ i’m soumya. i design, i build, and i mess with things just to see how they wor
 
 i'm a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, devops, ml. i don't just skim the surface; i live in the weeds.
 
-## Getting Started
-
-Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npm run dev
+```
