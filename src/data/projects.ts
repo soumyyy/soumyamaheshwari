@@ -114,7 +114,8 @@ export const projects: Project[] = [
     techStack: ["Computer Vision", "AI"],
     link: "https://github.com/soumyyy/PhotoCortex",
     github: "https://github.com/soumyyy/PhotoCortex",
-    image: undefined
+    image: undefined,
+    video: "/demo/PhotoCortexDemo.mp4"
   },
   {
     id: "stockportfolio",
