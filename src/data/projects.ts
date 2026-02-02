@@ -60,7 +60,7 @@ export const projects: Project[] = [
     description: "A minimal, high-performance portfolio website built for Vanshita.",
     longDescription: "A minimal, high-performance portfolio website built for Vanshita. Designed to showcase her work.",
     techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
-    link: "https://github.com/soumyyy/vanshita-portfolio",
+    link: "https://vanshitakalra.com",
     github: "https://github.com/soumyyy/vanshita-portfolio",
     image: undefined
   },
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     description: "A digital presence for Kritika, focusing on brand identity.",
     longDescription: "A digital presence for Kritika, focusing on brand identity and online reach.",
     techStack: ["React", "TailwindCSS"],
-    link: "https://github.com/soumyyy/bykritika.com",
+    link: "https://bykritika.com",
     github: "https://github.com/soumyyy/bykritika.com",
     image: undefined
   },

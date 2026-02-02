@@ -190,7 +190,7 @@ export default function Home() {
             </section>
 
             {/* Work Details Section */}
-            <section className="w-full max-w-5xl px-4 md:px-6 py-20 border-t border-neutral-900">
+            <section id="experience" className="w-full max-w-5xl px-4 md:px-6 py-20 border-t border-neutral-900">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
                     <div>
                         <h2 className="text-neutral-500 font-medium text-sm tracking-widest uppercase mb-4 sticky top-24">Experience</h2>
@@ -246,7 +246,7 @@ export default function Home() {
             </section>
 
             {/* Projects Section - Refesigned */}
-            <section className="w-full px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900 flex flex-col items-center">
+            <section id="projects" className="w-full px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900 flex flex-col items-center">
                 <div className="mb-24 text-center">
                     <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white/80 mb-6">selected works</h2>
                     <p className="text-neutral-500 max-w-lg mx-auto">A collection of experiments, agents, and side-projects.</p>
