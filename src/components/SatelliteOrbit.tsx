@@ -72,7 +72,7 @@ const SatelliteOrbit = () => {
                     <g transform="translate(0, 0) scale(0.8)">
                         {/* ISS Image from Public Dir */}
                         <image
-                            href="/iss.svg"
+                            href="/ISS.svg"
                             x="-50"
                             y="-50"
                             width="100"
