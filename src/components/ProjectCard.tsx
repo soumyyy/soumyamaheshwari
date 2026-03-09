@@ -74,14 +74,25 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                                 </a>
                             )}
                             {project.video && (
-                                <button
-                                    onClick={() => setIsModalOpen(true)}
-                                    className="flex items-center gap-2 px-3 py-1 bg-white text-black rounded-full hover:bg-neutral-200 transition-colors font-medium text-xs uppercase tracking-wider group/btn"
-                                    title="Watch Demo"
-                                >
-                                    <Play className="w-3 h-3 fill-current" />
-                                    <span>Demo</span>
-                                </button>
+                                <div className="flex items-center gap-1">
+                                    <button
+                                        onClick={() => setIsModalOpen(true)}
+                                        className="flex items-center gap-2 px-3 py-1 bg-white text-black rounded-full hover:bg-neutral-200 transition-colors font-medium text-xs uppercase tracking-wider"
+                                        title="Watch Demo"
+                                    >
+                                        <Play className="w-3 h-3 fill-current" />
+                                        <span>Demo</span>
+                                    </button>
+                                    <a
+                                        href={`/demo/${project.id}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-1.5 text-neutral-500 hover:text-white transition-colors"
+                                        title="Open shareable demo link"
+                                    >
+                                        <ExternalLink className="w-3.5 h-3.5" />
+                                    </a>
+                                </div>
                             )}
                         </div>
                     </div>
