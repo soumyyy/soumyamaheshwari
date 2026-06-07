@@ -13,6 +13,14 @@ export interface Project {
 export const projects: Project[] = [
   // --- The Jarvis Evolution Flow ---
   {
+    id: "hermes",
+    title: "Eclipse",
+    description: "My most capable personal agent — powered by Hermes, runs on a server, accessible via WhatsApp, Telegram, or a portal.",
+    longDescription: "Powered by Hermes. Runs 24/7 on a server — I talk to it through WhatsApp, Telegram, or a web portal depending on where I am. It has long-term memory across every conversation, ingests my Gmail, Whoop recovery data, Strava activity, and Swiggy orders — and uses all of it to actually know me. It knows my projects, my portfolio, my schedule, my patterns. Not a chatbot, not a tool — closer to a persistent digital version of me that's always on.",
+    techStack: ["WhatsApp API", "Telegram API", "Whoop API", "Gmail API", "Strava API", "Long-term Memory"],
+    github: undefined,
+  },
+  {
     id: "eclipsn",
     title: "Eclipsn",
     description: "A personal agent inspired by Bind.ai and Poke, focusing on a single user's knowledge graph, Gmail, and long-term memory.",
@@ -24,7 +32,7 @@ export const projects: Project[] = [
     id: "eclipse-obsidian",
     title: "Eclipse Obsidian",
     description: "The next iteration of Eclipse, integrated with Obsidian for personal knowledge management.",
-    longDescription: "I run this on a VPS, accessed via a custom PWA. Powered by Cerebras (3000 tokens/sec), it gives me instant access to my memories, past journals, and collections. considering i treat obisidian as my second brain, I've a gh hook that fetches and ingests my new memories at 2am everyday.  It bridges the gap between personal AI and my knowledge base beautifully.",
+    longDescription: "I run this on a VPS, accessed via a custom PWA. Powered by Cerebras (3000 tokens/sec), it gives me instant access to my memories, past journals, and collections. Considering I treat Obsidian as my second brain, I have a GitHub hook that fetches and ingests my new memories at 2am every day. It bridges the gap between personal AI and my knowledge base beautifully.",
     techStack: ["TypeScript", "Obsidian API", "Cerebras", "PWA"],
     github: "https://github.com/soumyyy/eclipse-obsidian",
     video: "/demo/EclipseDemo.mp4"
@@ -92,7 +100,7 @@ export const projects: Project[] = [
   {
     id: "shit",
     title: "SHIT",
-    description: "An app for managing academic timetables and tracking attendance, with iOS apt UI.",
+    description: "An app for managing academic timetables and tracking attendance, with a native iOS UI.",
     longDescription: "[Student Helper Integrated Tool] A minimal native app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and insights.",
     techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
     link: "https://shitsort.com",
@@ -104,7 +112,7 @@ export const projects: Project[] = [
     title: "Kochi Metro SIH",
     description: "Smart India Hackathon project for Kochi Metro.",
     longDescription: "A Smart India Hackathon (SIH) project developed for Kochi Metro, focusing on improving operational efficiency by solving ops problems like depot stabling & turnout order, and optimizes safety, service readiness, branding exposure and mileage balancing.",
-    techStack: ["SIH", "Hackathon"],
+    techStack: ["Python", "Optimization", "Operations Research", "Algorithm Design"],
     github: "https://github.com/soumyyy/kochimetro-sih",
   },
   {
@@ -119,7 +127,7 @@ export const projects: Project[] = [
     id: "photocortex",
     title: "PhotoCortex",
     description: "AI-powered photo analysis and organization platform.",
-    longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform that made on top of ensemble of multimodal AI modals to helps you understand and explore your photo collection in new ways. It combines face, object, scene, text detection with computer vision (Google photos but all local).",
+    longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform built on an ensemble of multimodal AI models to help you understand and explore your photo collection in new ways. It combines face, object, scene, and text detection with computer vision — Google Photos, but fully local.",
     techStack: ["Computer Vision", "AI"],
     github: "https://github.com/soumyyy/PhotoCortex",
     video: "/demo/PhotoCortexDemo.mp4"
@@ -128,7 +136,7 @@ export const projects: Project[] = [
     id: "stockportfolio",
     title: "Stock Portfolio Tracker",
     description: "A minimalistic, real-time stock portfolio tracker built for personal use.",
-    longDescription: "A minimalistic, real-time stock portfolio tracker based on Zerodha's Kite platform. Track your stock market investments with live updates, llaso it automaticaly fetches your stock portfolio from mulitple kite accounts so you can keep a track of your portfolio at one place.",
+    longDescription: "A minimalistic, real-time stock portfolio tracker based on Zerodha's Kite platform. Track your investments with live updates — automatically fetches your portfolio across multiple Kite accounts so everything is in one place.",
     techStack: ["Next.js", "TypeScript", "TailwindCSS", "Yahoo Finance API"],
     github: "https://github.com/soumyyy/StockPortfolio",
   },
@@ -151,7 +159,7 @@ export const projects: Project[] = [
   {
     id: "alphafold-nano",
     title: "AlphaFold Nano",
-    description: "Protein structure tools mimicing and understanding DeepMind's AlphaFold project.",
+    description: "Protein structure tools mimicking and understanding DeepMind's AlphaFold project.",
     longDescription: "A compact repository implementing AlphaFold data preparation pipelines and Reinforcement Learning algorithms (Actor-Critic CartPole, Q-Learning FrozenLake). Features a dashboard for visualizing training metrics and comparing toy backbone inferences against AlphaFold traces.",
     techStack: ["Python", "Streamlit", "PyTorch", "AlphaFold"],
     github: "https://github.com/soumyyy/alphafold-nano",

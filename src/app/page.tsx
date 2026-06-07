@@ -107,6 +107,16 @@ export default function Home() {
     return (
         <main className="min-h-screen flex flex-col items-center bg-black selection:bg-white selection:text-black">
 
+            {/* Background texture blobs — give backdrop-blur something to blur */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+                <div className="absolute -top-60 -right-60 w-[800px] h-[800px] rounded-full opacity-[0.045]"
+                    style={{ background: 'radial-gradient(circle, rgba(218,196,148,1) 0%, transparent 65%)' }} />
+                <div className="absolute top-[40%] -left-80 w-[700px] h-[700px] rounded-full opacity-[0.03]"
+                    style={{ background: 'radial-gradient(circle, rgba(160,178,210,1) 0%, transparent 65%)' }} />
+                <div className="absolute -bottom-60 right-[20%] w-[600px] h-[600px] rounded-full opacity-[0.03]"
+                    style={{ background: 'radial-gradient(circle, rgba(190,175,155,1) 0%, transparent 65%)' }} />
+            </div>
+
             {/* Scroll Progress - Optional, can add later */}
 
             {/* Navigation / Flip Buttons */}
@@ -252,54 +262,47 @@ export default function Home() {
                     <p className="text-neutral-500 max-w-lg mx-auto">A collection of experiments, agents, and side-projects.</p>
                 </div>
 
-                {/* Evolution Flow - Vertical Timeline */}
-                <div className="w-full max-w-4xl space-y-12 mb-16 md:mb-40">
-                    <div className="relative border-l-2 border-neutral-800 pl-6 md:pl-16 ml-0 md:ml-20 py-4">
-                        <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-4 border-black box-content" />
-                        <h3 className="text-sm font-bold tracking-widest text-neutral-500 uppercase mb-6 md:mb-12">my personal agent timeline</h3>
+                {/* Personal Agent Timeline */}
+                <div className="w-full max-w-4xl mb-16 md:mb-40">
+                    <h3 className="text-xs font-bold tracking-widest text-neutral-600 uppercase mb-6">my personal agent</h3>
 
-                        <div className="space-y-4 md:space-y-8">
-                            {/* The Latest / Hero Agent */}
-                            {projects
-                                .filter(p => ["eclipsn", "eclipse-obsidian"].includes(p.id))
-                                .map((project, index) => (
-                                    <div key={project.id}>
-                                        <ProjectCard project={project} index={index} />
-                                    </div>
-                                ))}
+                    <div className="space-y-4">
+                        {projects
+                            .filter(p => ["hermes"].includes(p.id))
+                            .map((project, index) => (
+                                <ProjectCard key={project.id} project={project} index={index} />
+                            ))}
 
-                            {/* Toggle for Primitive Tech */}
-                            <div className="pt-8">
-                                <button
-                                    onClick={() => setShowPrimitives(!showPrimitives)}
-                                    className="flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-400 transition-colors uppercase tracking-wider font-semibold"
-                                >
-                                    {showPrimitives ? "Hide the Primitive Tech" : "View the Primitive Tech that got me here"}
-                                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showPrimitives ? "rotate-180" : ""}`} />
-                                </button>
-                            </div>
-
-                            {/* Primitive Tech List */}
-                            <AnimatePresence>
-                                {showPrimitives && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="space-y-8 pt-8 border-l-2 border-neutral-800/50 -ml-[26px] md:-ml-[66px] pl-[24px] md:pl-[64px]">
-                                            {projects
-                                                .filter(p => ["eclipse", "jarvis"].includes(p.id))
-                                                .map((project, index) => (
-                                                    <ProjectCard key={project.id} project={project} index={index} />
-                                                ))}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+                        {/* Toggle for Primitive Tech */}
+                        <div className="pt-4">
+                            <button
+                                onClick={() => setShowPrimitives(!showPrimitives)}
+                                className="flex items-center gap-2 text-xs text-neutral-600 hover:text-neutral-400 transition-colors uppercase tracking-wider font-semibold"
+                            >
+                                {showPrimitives ? "Hide the Primitive Tech" : "View the Primitive Tech that got me here"}
+                                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${showPrimitives ? "rotate-180" : ""}`} />
+                            </button>
                         </div>
+
+                        <AnimatePresence>
+                            {showPrimitives && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="space-y-4 pt-4">
+                                        {projects
+                                            .filter(p => ["eclipsn", "eclipse-obsidian", "eclipse", "jarvis"].includes(p.id))
+                                            .map((project, index) => (
+                                                <ProjectCard key={project.id} project={project} index={index} />
+                                            ))}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
 
@@ -307,7 +310,7 @@ export default function Home() {
                 <div className="w-full max-w-7xl">
                     <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">side projects</h3>
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                        {projects.filter(p => !["jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
+                        {projects.filter(p => !["hermes", "jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
                             <ProjectCard key={project.id} project={project} index={index} />
                         ))}
                     </div>
