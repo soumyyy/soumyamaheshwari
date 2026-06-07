@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   description: string;
   techStack: string[];
-  link: string;
+  link?: string;
   github?: string;
   image?: string;
   video?: string;
@@ -15,12 +15,10 @@ export const projects: Project[] = [
   {
     id: "eclipsn",
     title: "Eclipsn",
-    description: "A personal agent inspired by Bind.ai and Poke, focusing on a single user’s knowledge graph, Gmail, and long-term memory.",
+    description: "A personal agent inspired by Bind.ai and Poke, focusing on a single user's knowledge graph, Gmail, and long-term memory.",
     longDescription: "Eclipsn is my personal AI agent, designed to be the central ecosystem of my digital life. It connects via Whoop API to track recovery, ingests my Gmail to stay updated on conversations, and maintains a long-term memory graph. It learns about me, anticipates updates, and serves as a unified interface for my data.\n\n(P.S. While I was building this, Peter Steinberger(@steinpete) shipped OpenClaw (the 100x version). Great minds think alike lol, but he shipped faster.)",
     techStack: ["Next.js", "Graph Database", "Gmail API", "Whoop API"],
-    link: "https://github.com/soumyyy/eclipsn",
     github: "https://github.com/soumyyy/eclipsn",
-    image: undefined
   },
   {
     id: "eclipse-obsidian",
@@ -28,9 +26,7 @@ export const projects: Project[] = [
     description: "The next iteration of Eclipse, integrated with Obsidian for personal knowledge management.",
     longDescription: "I run this on a VPS, accessed via a custom PWA. Powered by Cerebras (3000 tokens/sec), it gives me instant access to my memories, past journals, and collections. considering i treat obisidian as my second brain, I've a gh hook that fetches and ingests my new memories at 2am everyday.  It bridges the gap between personal AI and my knowledge base beautifully.",
     techStack: ["TypeScript", "Obsidian API", "Cerebras", "PWA"],
-    link: "https://github.com/soumyyy/eclipse-obsidian",
     github: "https://github.com/soumyyy/eclipse-obsidian",
-    image: undefined,
     video: "/demo/EclipseDemo.mp4"
   },
   {
@@ -39,9 +35,7 @@ export const projects: Project[] = [
     description: "Enhanced Cognitive Linguistic Interactive Personal Support Engine. A significant evolution in conversational AI integration.",
     longDescription: "Eclipse (Enhanced Cognitive Linguistic Interactive Personal Support Engine) represents the next step in personal AI, focusing on deeper cognitive linguistic understanding and interactive support.",
     techStack: ["Python", "NLP", "MySQL"],
-    link: "https://github.com/soumyyy/Eclipse",
     github: "https://github.com/soumyyy/Eclipse",
-    image: undefined,
   },
   {
     id: "jarvis",
@@ -49,9 +43,7 @@ export const projects: Project[] = [
     description: "A basic voice-controlled assistant that can process speech input, respond with text or speech, and perform simple system tasks.",
     longDescription: "Jarvis V0 is a basic voice-controlled assistant that can process speech input, respond with text or speech, and perform simple system tasks. It integrates speech recognition, text-to-speech, and basic automation to assist with everyday commands.",
     techStack: ["Python", "SpeechRecognition", "pyttsx3"],
-    link: "https://github.com/soumyyy/Jarvis-V0",
     github: "https://github.com/soumyyy/Jarvis-V0",
-    image: undefined
   },
   // --- Client Work ---
   {
@@ -62,7 +54,6 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
     link: "https://vanshitakalra.com",
     github: "https://github.com/soumyyy/vanshita-portfolio",
-    image: undefined
   },
   {
     id: "bykritika",
@@ -72,9 +63,32 @@ export const projects: Project[] = [
     techStack: ["React", "TailwindCSS"],
     link: "https://bykritika.com",
     github: "https://github.com/soumyyy/bykritika.com",
-    image: undefined
   },
   // --- Other Key Projects ---
+  {
+    id: "fulcrum",
+    title: "Fulcrum",
+    description: "AI-powered annual report risk analysis system for the Indian credit market.",
+    longDescription: "Upload any company's annual report PDF — Fulcrum extracts ~25 financial fields via Gemini, computes Tier-1A ratios, runs two ML models in parallel (trained on a cohort of wilful defaulters vs. controls), and synthesizes a structured analyst memo, streamed to the UI in real time. Built to replace manual ratio checks in Indian credit underwriting with a grounded, explainable scoring pipeline.",
+    techStack: ["Next.js", "FastAPI", "Gemini", "Python", "ML"],
+    github: "https://github.com/soumyyy/fulcrum",
+  },
+  {
+    id: "glai",
+    title: "Glai",
+    description: "Photo-based meal logging app with AI nutrition analysis, built for my mom's diabetes management.",
+    longDescription: "Snap a meal, and Glai runs a two-step OpenAI analysis — first identifying dishes, then estimating weights and nutrition ranges. Data is saved locally in SQLite with optional Supabase sync. Built for a single-user diabetes use case, with HealthKit/CGM integration planned. Shipped to TestFlight via EAS.",
+    techStack: ["React Native", "Expo", "OpenAI", "SQLite", "Supabase"],
+    github: "https://github.com/soumyyy/glai",
+  },
+  {
+    id: "room",
+    title: "Room",
+    description: "iOS app to control my Wiz smart bulbs and IR blaster from one interface.",
+    longDescription: "A personal home automation app that unifies control of my Wiz smart bulbs and IR blaster into a single native iOS interface. Built because the stock apps are slow and fragmented.",
+    techStack: ["TypeScript", "Expo", "iOS", "Wiz API"],
+    github: "https://github.com/soumyyy/Room",
+  },
   {
     id: "shit",
     title: "SHIT",
@@ -83,7 +97,6 @@ export const projects: Project[] = [
     techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
     link: "https://shitsort.com",
     github: "https://github.com/soumyyy/shit",
-    image: undefined,
     video: "/demo/SHITdemo.mp4"
   },
   {
@@ -92,9 +105,7 @@ export const projects: Project[] = [
     description: "Smart India Hackathon project for Kochi Metro.",
     longDescription: "A Smart India Hackathon (SIH) project developed for Kochi Metro, focusing on improving operational efficiency by solving ops problems like depot stabling & turnout order, and optimizes safety, service readiness, branding exposure and mileage balancing.",
     techStack: ["SIH", "Hackathon"],
-    link: "https://github.com/soumyyy/kochimetro-sih",
     github: "https://github.com/soumyyy/kochimetro-sih",
-    image: undefined
   },
   {
     id: "hft",
@@ -102,9 +113,7 @@ export const projects: Project[] = [
     description: "A high-frequency trading backtesting engine for XAU/USD built in Rust.",
     longDescription: "A high-frequency trading backtesting engine for XAU/USD built in Rust, designed to run efficiently on a Macbook. Optimized for speed and low-latency simulation.",
     techStack: ["Rust", "HFT", "Backtesting"],
-    link: "https://github.com/soumyyy/hft-backtest-engine",
     github: "https://github.com/soumyyy/hft-backtest-engine",
-    image: undefined
   },
   {
     id: "photocortex",
@@ -112,9 +121,7 @@ export const projects: Project[] = [
     description: "AI-powered photo analysis and organization platform.",
     longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform that made on top of ensemble of multimodal AI modals to helps you understand and explore your photo collection in new ways. It combines face, object, scene, text detection with computer vision (Google photos but all local).",
     techStack: ["Computer Vision", "AI"],
-    link: "https://github.com/soumyyy/PhotoCortex",
     github: "https://github.com/soumyyy/PhotoCortex",
-    image: undefined,
     video: "/demo/PhotoCortexDemo.mp4"
   },
   {
@@ -123,9 +130,7 @@ export const projects: Project[] = [
     description: "A minimalistic, real-time stock portfolio tracker built for personal use.",
     longDescription: "A minimalistic, real-time stock portfolio tracker based on Zerodha's Kite platform. Track your stock market investments with live updates, llaso it automaticaly fetches your stock portfolio from mulitple kite accounts so you can keep a track of your portfolio at one place.",
     techStack: ["Next.js", "TypeScript", "TailwindCSS", "Yahoo Finance API"],
-    link: "https://github.com/soumyyy/StockPortfolio",
     github: "https://github.com/soumyyy/StockPortfolio",
-    image: undefined
   },
   {
     id: "sih-bel",
@@ -133,9 +138,7 @@ export const projects: Project[] = [
     description: "Smart India Hackathon 2024 project: Conversational Image Recognition Chatbot for Bharat Electronics Limited.",
     longDescription: "Developed for SIH 2024 (Bharat Electronics Limited). This system integrates YoloV8 for computer vision and Llama 3.1 for NLP to analyze images and generate contextual responses for component identification and retrieve information about the particular part from BEL's official documentation.",
     techStack: ["YOLOv8", "Llama 3.1", "Python", "Flask"],
-    link: "https://github.com/soumyyy/SIH-BEL",
     github: "https://github.com/soumyyy/SIH-BEL",
-    image: undefined
   },
   {
     id: "imagenerve",
@@ -143,9 +146,7 @@ export const projects: Project[] = [
     description: "A full-stack photo management application that fetches all your photos.",
     longDescription: "A native photo management application with AI-powered face recognition. Designed to organize and retrieve only your photos intelligently, Get your photos from any event in just one scan.",
     techStack: ["React Native", "Expo", "FastAPI", "Face Recognition"],
-    link: "https://github.com/soumyyy/ImageNerve",
     github: "https://github.com/soumyyy/ImageNerve",
-    image: undefined
   },
   {
     id: "alphafold-nano",
@@ -153,9 +154,7 @@ export const projects: Project[] = [
     description: "Protein structure tools mimicing and understanding DeepMind's AlphaFold project.",
     longDescription: "A compact repository implementing AlphaFold data preparation pipelines and Reinforcement Learning algorithms (Actor-Critic CartPole, Q-Learning FrozenLake). Features a dashboard for visualizing training metrics and comparing toy backbone inferences against AlphaFold traces.",
     techStack: ["Python", "Streamlit", "PyTorch", "AlphaFold"],
-    link: "https://github.com/soumyyy/alphafold-nano",
     github: "https://github.com/soumyyy/alphafold-nano",
-    image: undefined
   },
   {
     id: "ace-rl",
@@ -163,8 +162,6 @@ export const projects: Project[] = [
     description: "A terminal-first Agentic Context Engineering agent that plans, executes, and self-tunes via RL.",
     longDescription: "A terminal-first ACE (Agentic Context Engineering) agent that plans, executes, validates, reflects, and self-tunes via a lightweight reinforcement-learning bandit.",
     techStack: ["Python", "Reinforcement Learning", "ACE Framework"],
-    link: "https://github.com/soumyyy/ace-rl",
     github: "https://github.com/soumyyy/ace-rl",
-    image: undefined
   }
 ];

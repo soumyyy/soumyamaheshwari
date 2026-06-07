@@ -253,12 +253,12 @@ export default function Home() {
                 </div>
 
                 {/* Evolution Flow - Vertical Timeline */}
-                <div className="w-full max-w-4xl space-y-12 mb-40">
-                    <div className="relative border-l-2 border-neutral-800 pl-3 md:pl-16 ml-0 md:ml-20 py-4">
+                <div className="w-full max-w-4xl space-y-12 mb-16 md:mb-40">
+                    <div className="relative border-l-2 border-neutral-800 pl-6 md:pl-16 ml-0 md:ml-20 py-4">
                         <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-4 border-black box-content" />
-                        <h3 className="text-sm font-bold tracking-widest text-neutral-500 uppercase mb-12">my personal agent timeline</h3>
+                        <h3 className="text-sm font-bold tracking-widest text-neutral-500 uppercase mb-6 md:mb-12">my personal agent timeline</h3>
 
-                        <div className="space-y-8">
+                        <div className="space-y-4 md:space-y-8">
                             {/* The Latest / Hero Agent */}
                             {projects
                                 .filter(p => ["eclipsn", "eclipse-obsidian"].includes(p.id))
@@ -289,7 +289,7 @@ export default function Home() {
                                         transition={{ duration: 0.5, ease: "easeInOut" }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="space-y-8 pt-8 border-l-2 border-neutral-800/50 -ml-[23px] md:-ml-[66px] pl-[21px] md:pl-[64px]">
+                                        <div className="space-y-8 pt-8 border-l-2 border-neutral-800/50 -ml-[26px] md:-ml-[66px] pl-[24px] md:pl-[64px]">
                                             {projects
                                                 .filter(p => ["eclipse", "jarvis"].includes(p.id))
                                                 .map((project, index) => (
@@ -320,7 +320,7 @@ export default function Home() {
                         {projects.filter(p => ["vanshita", "bykritika"].includes(p.id)).map((project) => (
                             <a
                                 key={project.id}
-                                href={project.link}
+                                href={project.link || project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group flex items-center justify-between py-6 border-b border-neutral-900 hover:bg-neutral-900/20 transition-colors px-4"
