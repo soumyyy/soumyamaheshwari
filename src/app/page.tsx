@@ -4,6 +4,7 @@ import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
 import ExperienceItem from "@/components/ExperienceItem";
+import BuildLog from "@/components/BuildLog";
 import PrimitivesToggle from "@/components/PrimitivesToggle";
 import FlipLink from "@/components/FlipLink";
 import Portrait from "@/components/Portrait";
@@ -208,7 +209,9 @@ export default function Home() {
                     view resume
                 </a>
 
-                <div className="flex gap-8 opacity-50 hover:opacity-100 transition-opacity">
+                <BuildLog />
+
+                <div className="mt-8 flex gap-8 opacity-50 hover:opacity-100 transition-opacity">
                     <a href="https://twitter.com/soumymaheshwri" target="_blank" className="hover:text-white">X / Twitter</a>
                     <a href="https://github.com/soumyyy" target="_blank" className="hover:text-white">GitHub</a>
                     <a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" className="hover:text-white">LinkedIn</a>
