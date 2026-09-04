@@ -19,6 +19,7 @@
 - **Deleted for good:** typewriter sequence, `Hello.` reveal, 5s auto-scroll, `soumysphere` background text, Space Grotesk, `SatelliteOrbit.tsx`, `src/app/type/`.
 - **Storage:** every `localStorage` access wrapped in try/catch; the page must render correctly when it throws or returns nothing.
 - **Commit style:** end every commit message with the Co-Authored-By and Claude-Session trailers already used in this repo's history.
+- **Lint gate (controller ruling):** `npm run lint` FAILS on the base commit with 20 pre-existing errors in files this plan never touches. Never run a whole-repo lint gate and never "fix" unrelated files. Gate on `npx eslint <only the files you changed>` — that must be clean.
 
 ## File Structure
 
@@ -1066,7 +1067,7 @@ Expected: `clean`.
 - [ ] **Step 5: Typecheck and commit**
 
 ```bash
-npx tsc --noEmit && npm run lint
+npx tsc --noEmit && npx eslint <the files you changed>
 git add src/app/page.tsx src/components/ExperienceItem.tsx src/components/PrimitivesToggle.tsx src/components/FlipLink.tsx
 git commit -m "$(cat <<'EOF'
 Rewrite hero as layered server-rendered content
@@ -1292,6 +1293,12 @@ In `ProjectCard.tsx`, add `"use client"` (already present) and a ref-driven hove
         className="w-full aspect-video object-cover opacity-70 transition-opacity duration-300 group-hover:opacity-100"
     />
 )}
+```
+
+Add the React import at the top of the file (the file currently imports nothing from react, so without this the task cannot typecheck):
+
+```tsx
+import { useRef } from "react";
 ```
 
 Add to the component body:
@@ -1840,7 +1847,7 @@ grep -rn "uppercase tracking\|Space Grotesk\|soumysphere\|think different" src/ 
 echo "--- unit tests ---"
 npm test
 echo "--- types + lint ---"
-npx tsc --noEmit && npm run lint
+npx tsc --noEmit && npx eslint <the files you changed>
 ```
 
 Expected: hero count ≥ 1; `clean`; all tests pass; no type or lint errors.
