@@ -722,17 +722,35 @@ With the dev server running, load `http://localhost:3000` and confirm the satell
 Then confirm cursor gravity actually displaces the path:
 
 ```js
-// Move the pointer to the middle of the hero, then to a corner, and compare
-// the rendered canvas. Different pixel data proves the path is warping.
+// Move the pointer into the hero and compare the rendered canvas before and
+// after. Different pixel data proves the path is warping.
 const c = document.querySelector('canvas');
-const snap = () => c.getContext('2d').getImageData(0, 0, c.width, c.height).data.slice(0, 20000).join(',');
-window.__a = snap();
-window.dispatchEvent(new PointerEvent('pointermove', { clientX: 200, clientY: 200 }));
-await new Promise(r => setTimeout(r, 500));
-snap() !== window.__a;
+const ctx = c.getContext('2d');
+// Count non-transparent pixels across the WHOLE canvas — do not sample a slice.
+const snap = () => {
+  const d = ctx.getImageData(0, 0, c.width, c.height).data;
+  let sum = 0;
+  for (let i = 3; i < d.length; i += 4) sum += d[i];
+  return sum;
+};
+const before = snap();
+window.dispatchEvent(new PointerEvent('pointermove', { clientX: c.width / 4, clientY: c.height / 2 }));
+await new Promise(r => setTimeout(r, 600));
+Math.abs(snap() - before) > 0;
 ```
 
 Expected: `true`.
+
+**Do not sample a slice of the pixel buffer.** An earlier version of this step
+read `.data.slice(0, 20000)`, which covers only the topmost rows of the canvas —
+a region that sits above the ellipse and never contains orbit content. That
+probe returns `false` even when the component is working perfectly.
+
+Note also that an automated/headless browser tab may never register as visible
+to Chrome, in which case native `requestAnimationFrame` is throttled and the
+canvas will not advance on its own. If that happens, drive the comparison from
+explicit pointer events as above rather than concluding the component is
+broken.
 
 - [ ] **Step 5: Verify reduced motion schedules no loop**
 
