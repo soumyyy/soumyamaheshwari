@@ -4,6 +4,7 @@ import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
 import ExperienceItem from "@/components/ExperienceItem";
+import NowStrip from "@/components/NowStrip";
 import BuildLog from "@/components/BuildLog";
 import PrimitivesToggle from "@/components/PrimitivesToggle";
 import FlipLink from "@/components/FlipLink";
@@ -80,6 +81,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <NowStrip />
 
             {/* Work Details Section */}
             <section id="experience" className="w-full max-w-5xl px-4 md:px-6 py-20 border-t border-neutral-900">

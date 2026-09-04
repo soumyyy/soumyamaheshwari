@@ -12,10 +12,10 @@ const DotGrid = () => {
     const animationStarted = useRef(false);
 
     const phases = useMemo(() => [
-        { id: 'thinkDifferent', text: 'think different' },
-        { id: 'thinkBigger', text: 'think bigger' },
-        { id: 'skipPerfect', text: 'skip the perfect plan. start. adjust. repeat' },
-        { id: 'buildBreak', text: 'build, break, outgrow. then do it again' }
+        { id: 'thinkDifferent', text: 'a github hook ingests my journal at 2am' },
+        { id: 'thinkBigger', text: 'a rust backtester, on a macbook, because why not' },
+        { id: 'skipPerfect', text: 'most of my software has exactly one user' },
+        { id: 'buildBreak', text: 'five attempts at the same agent, so far' }
     ], []);
 
     const generateDots = useMemo(() => {
