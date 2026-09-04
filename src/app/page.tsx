@@ -6,6 +6,7 @@ import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
+import LocalTime from "@/components/LocalTime";
 import { ChevronDown, ExternalLink } from "lucide-react";
 
 const ExperienceItem = ({ company, role, date, location, summary, bullets }: { company: string, role: string, date: string, location: string, summary: string, bullets: string[] }) => {
@@ -120,16 +121,19 @@ export default function Home() {
             {/* Scroll Progress - Optional, can add later */}
 
             {/* Navigation / Flip Buttons */}
-            <nav className="fixed top-6 right-6 md:right-12 z-50 flex gap-4">
-                {/* Blog Button - Commented out but codebase ready */}
-                {/* 
-         <a href="/blog" className="hidden md:flex items-center text-sm font-medium text-neutral-500 hover:text-white transition-colors">
-            blog
-         </a> 
-         */}
-                <FlipLink href="mailto:soumyamaheshwari1234@gmail.com">
-                    open to work
-                </FlipLink>
+            <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 z-50 flex justify-between items-center gap-4">
+                <LocalTime />
+                <div className="flex gap-4">
+                    {/* Blog Button - Commented out but codebase ready */}
+                    {/*
+             <a href="/blog" className="hidden md:flex items-center text-sm font-medium text-neutral-500 hover:text-white transition-colors">
+                blog
+             </a>
+             */}
+                    <FlipLink href="mailto:soumyamaheshwari1234@gmail.com">
+                        open to work
+                    </FlipLink>
+                </div>
             </nav>
 
             <section className="h-screen w-full flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
