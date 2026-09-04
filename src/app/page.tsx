@@ -6,6 +6,7 @@ import LocalTime from "@/components/LocalTime";
 import ExperienceItem from "@/components/ExperienceItem";
 import PrimitivesToggle from "@/components/PrimitivesToggle";
 import FlipLink from "@/components/FlipLink";
+import Portrait from "@/components/Portrait";
 import { ExternalLink } from "lucide-react";
 
 export default function Home() {
@@ -60,8 +61,9 @@ export default function Home() {
             {/* About Section */}
             <section id="about" className="w-full max-w-5xl px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
-                    <div>
-                        <h2 className="text-neutral-500 font-medium text-sm tracking-widest uppercase mb-4 sticky top-24">Intro</h2>
+                    <div className="flex flex-col gap-8">
+                        <h2 className="label sticky top-24 text-neutral-500">intro</h2>
+                        <Portrait />
                     </div>
                     <div className="space-y-8 text-xl md:text-2xl font-light text-neutral-200 leading-relaxed text-balance lowercase">
                         <p>
