@@ -10,6 +10,7 @@ const gradientMap: Record<string, [string, string]> = {
   "eclipse-obsidian": ["rgba(170,182,195,0.12)", "rgba(170,182,195,0.03)"], // slate
   "eclipse":          ["rgba(195,200,210,0.11)", "rgba(195,200,210,0.03)"], // silver
   "jarvis":           ["rgba(210,205,195,0.11)", "rgba(210,205,195,0.03)"], // warm silver
+  "billinsight":      ["rgba(200,210,200,0.12)", "rgba(200,210,200,0.03)"], // pale eucalyptus
   "fulcrum":          ["rgba(232,218,195,0.12)", "rgba(232,218,195,0.03)"], // champagne
   "glai":             ["rgba(210,220,210,0.11)", "rgba(210,220,210,0.03)"], // sage linen
   "room":             ["rgba(238,228,210,0.12)", "rgba(238,228,210,0.03)"], // warm linen

@@ -74,6 +74,13 @@ export const projects: Project[] = [
   },
   // --- Other Key Projects ---
   {
+    id: "billinsight",
+    title: "BillInsight",
+    description: "AI invoice and expense management, built as client work. On-device receipt detection in front of a durable extraction pipeline.",
+    longDescription: "A mobile expense-ingestion pipeline built for a client. A two-stage MobileNetV3 TensorFlow Lite classifier runs on-device to filter the camera roll, so only candidate receipts are ever sent up for multimodal extraction — cheaper, faster, and private by default. Behind it sits a durable FastAPI/Postgres processing system: idempotent uploads, job claims, exponential-backoff retries, background reconciliation, Clerk auth, and PII-scrubbed observability through Sentry and Grafana. Private repositories.",
+    techStack: ["Expo", "React Native", "FastAPI", "Neon Postgres", "TensorFlow Lite", "Gemini", "PaddleOCR", "Clerk", "Sentry", "Grafana"],
+  },
+  {
     id: "fulcrum",
     title: "Fulcrum",
     description: "AI-powered annual report risk analysis system for the Indian credit market.",
