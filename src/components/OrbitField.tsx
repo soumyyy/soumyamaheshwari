@@ -15,6 +15,7 @@ export default function OrbitField() {
     const eased = useRef<Point | null>(null);
     const theta = useRef(0);
     const raf = useRef<number | null>(null);
+    const boost = useRef(false);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -53,14 +54,17 @@ export default function OrbitField() {
 
             ctx.clearRect(0, 0, w, h);
 
-            // starfield
+            // starfield — density triples while the Konami boost is active
             ctx.save();
+            ctx.fillStyle = "#fff";
+            const density = boost.current ? 3 : 1;
             for (const s of STARS) {
-                ctx.globalAlpha = s.o;
-                ctx.fillStyle = "#fff";
-                ctx.beginPath();
-                ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
-                ctx.fill();
+                for (let d = 0; d < density; d++) {
+                    ctx.globalAlpha = s.o / (d + 1);
+                    ctx.beginPath();
+                    ctx.arc(((s.x + d * 0.31) % 1) * w, ((s.y + d * 0.47) % 1) * h, s.r, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
             ctx.restore();
 
@@ -118,7 +122,7 @@ export default function OrbitField() {
 
             const a = w * 0.42;
             const b = h * 0.3;
-            theta.current = keplerStep(theta.current, a, b, dt, 0.11) % (Math.PI * 2);
+            theta.current = keplerStep(theta.current, a, b, dt, boost.current ? 0.44 : 0.11) % (Math.PI * 2);
 
             // ease the cursor so the path bends instead of snapping
             const target = cursor.current;
@@ -155,6 +159,7 @@ export default function OrbitField() {
         };
         const onLeave = () => { cursor.current = null; };
         const onVisibility = () => (document.hidden ? stop() : start());
+        const onBoost = (e: Event) => { boost.current = (e as CustomEvent<boolean>).detail; };
 
         const io = new IntersectionObserver(
             ([entry]) => (entry.isIntersecting ? start() : stop()),
@@ -166,6 +171,7 @@ export default function OrbitField() {
         window.addEventListener("pointermove", onMove);
         window.addEventListener("pointerleave", onLeave);
         document.addEventListener("visibilitychange", onVisibility);
+        window.addEventListener("orbit:boost", onBoost);
         raf.current = requestAnimationFrame(frame);
 
         return () => {
@@ -175,6 +181,7 @@ export default function OrbitField() {
             window.removeEventListener("pointermove", onMove);
             window.removeEventListener("pointerleave", onLeave);
             document.removeEventListener("visibilitychange", onVisibility);
+            window.removeEventListener("orbit:boost", onBoost);
         };
     }, []);
 

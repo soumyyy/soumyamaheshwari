@@ -3,6 +3,8 @@ import ProjectCard from "@/components/ProjectCard";
 import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
+import VisitBadge from "@/components/VisitBadge";
+import KonamiBoost from "@/components/KonamiBoost";
 import ExperienceItem from "@/components/ExperienceItem";
 import NowStrip from "@/components/NowStrip";
 import BuildLog from "@/components/BuildLog";
@@ -14,6 +16,7 @@ import { ExternalLink } from "lucide-react";
 export default function Home() {
     return (
         <main className="min-h-screen flex flex-col items-center bg-black selection:bg-white selection:text-black">
+            <KonamiBoost />
 
             {/* Background texture blobs — give backdrop-blur something to blur */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -48,6 +51,7 @@ export default function Home() {
                         <span className="label text-neutral-500">soumya maheshwari</span>
                         <span className="label text-neutral-600">agentic systems · product builder</span>
                         <LocalTime />
+                        <VisitBadge />
                     </div>
 
                     <h1 className="font-display text-balance text-4xl lowercase leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
