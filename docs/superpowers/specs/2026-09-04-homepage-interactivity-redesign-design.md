@@ -196,10 +196,46 @@ be true, and it is exactly the kind of detail a reader checks.
 
 Replacing "A collection of experiments, agents, and side-projects":
 
-> five attempts at the same idea, plus everything i built while getting there.
+> curiosity is the only through-line here. everything else is a side effect.
+
+Placement is deliberate. This sits immediately above the grid, which is the
+first point where a reader confronts eighteen unrelated projects and might read
+the range as a lack of focus. The line preempts that reading, and "side effect"
+lands directly above the "side projects" heading.
 
 The existing "view the primitive tech that got me here" toggle copy is already
 good and human. Keep it.
+
+### Philosophy section — `DotGrid.tsx`
+
+The four cycling phrases are the weakest copy on the site:
+
+    'think different'
+    'think bigger'
+    'skip the perfect plan. start. adjust. repeat'
+    'build, break, outgrow. then do it again'
+
+`think different` is Apple's trademarked slogan. The other three are generic
+motivational filler. This is the emotional climax of the page and currently the
+most templated thing on it.
+
+**Direction:** replace the four slogans with four *true, specific facts*. The
+inversion is the point — a motivational-poster component that refuses to be
+motivational and states plain facts instead is distinctive in a way no slogan
+can be. Candidate material already in the repo:
+
+- a github hook ingests my journal at 2am
+- a rust backtester, on a macbook, because why not
+- built for my mom
+- five attempts at the same agent
+
+Soumya writes the final four; the direction is what matters here.
+
+### Glai
+
+`glai`'s `longDescription` contains "built for my mom's diabetes management" —
+the most human detail in the repo, currently buried where nobody reads it. Pull
+it into the card's visible description.
 
 ### Footer
 
