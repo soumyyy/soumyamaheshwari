@@ -104,8 +104,9 @@ export default function OrbitField() {
             // Static frame only. No rAF loop is ever scheduled.
             iss.onload = draw;
             draw();
-            window.addEventListener("resize", resize);
-            return () => window.removeEventListener("resize", resize);
+            const onResizeStatic = () => { resize(); draw(); };
+            window.addEventListener("resize", onResizeStatic);
+            return () => window.removeEventListener("resize", onResizeStatic);
         }
 
         let last = performance.now();
