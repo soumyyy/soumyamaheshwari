@@ -43,3 +43,7 @@ next-env.d.ts
 # backups
 _legacy_backup/
 legacy_backup/
+
+# agent workspaces
+.claude/worktrees/
+.superpowers/
