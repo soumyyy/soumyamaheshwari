@@ -36,6 +36,22 @@ describe("ellipsePoint", () => {
     });
 });
 
+describe("radiusAt", () => {
+    it("is at apogee (a) when theta = 0", () => {
+        expect(radiusAt(450, 200, 0)).toBeCloseTo(450);
+    });
+
+    it("is at perigee (b) when theta = PI/2", () => {
+        expect(radiusAt(450, 200, Math.PI / 2)).toBeCloseTo(200);
+    });
+
+    it("is between perigee and apogee at intermediate angles", () => {
+        const atQuarter = radiusAt(450, 200, Math.PI / 4);
+        expect(atQuarter).toBeGreaterThan(200);
+        expect(atQuarter).toBeLessThan(450);
+    });
+});
+
 describe("keplerStep", () => {
     it("advances faster at perigee than at apogee", () => {
         // For a=450 b=200, radius is smallest at theta=PI/2 (r=200, perigee)
@@ -52,6 +68,25 @@ describe("keplerStep", () => {
             expect(next).toBeGreaterThan(theta);
             theta = next;
         }
+    });
+
+    it("follows inverse-square law (1/r²), not inverse-distance (1/r)", () => {
+        const a = 450;
+        const b = 200;
+        const dt = 0.016;
+        const k = 1;
+
+        // At apogee (theta=0): r=450, scale = (a*b)/(r²) = 90000/202500
+        const atApogee = keplerStep(0, a, b, dt, k) - 0;
+
+        // At perigee (theta=π/2): r=200, scale = (a*b)/(r²) = 90000/40000
+        const atPerigee = keplerStep(Math.PI / 2, a, b, dt, k) - Math.PI / 2;
+
+        // Under 1/r² law, ratio of advances should be (90000/40000)/(90000/202500) = 202500/40000 ≈ 5.0625
+        // Under 1/r law, ratio would instead be 450/200 = 2.25
+        const expectedRatio = (a * b) / (b * b) / ((a * b) / (a * a));
+        const actualRatio = atPerigee / atApogee;
+        expect(actualRatio).toBeCloseTo(expectedRatio, 1);
     });
 });
 
