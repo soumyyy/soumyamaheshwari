@@ -40,6 +40,10 @@ an interaction.
 | Hermes on site | Out of scope |
 | Scope | Full homepage restructure |
 | Copy | Drafted here, user edits |
+| Hero shape | Layered (name / role / range / tail), not one sentence |
+| Location | Mumbai, India, with live local time |
+| Role line | agentic systems · product builder |
+| Aesthetic pivot | Rejected — dark editorial system stays; warmth comes from real artifacts |
 
 Removed: typewriter sequence, `Hello.` reveal, 5s auto-scroll, soumysphere
 background text, Space Grotesk, `src/app/type/` (specimen), the two `* 2.tsx`
@@ -159,23 +163,39 @@ for credibility than no widget.
 To be edited by Soumya. Written to be unusable on anyone else's site — that is
 the whole point, and the reason a draft is only a starting position.
 
-### Hero
+### Hero — FINAL
 
-The project list already contains a narrative that the site does not tell:
-JARVIS V0 → Eclipse → Eclipse Obsidian → Eclipsn → Hermes is five attempts at
-one idea. That is the most specific true thing on the page.
+Layered, not one sentence. This was the breakthrough: several attempts failed
+because identity, range and humility were being crammed into a single line. The
+reference (jackiezhang.co.za) layers them instead — name, role, thesis, location
+— and each piece does one job.
 
-**Verify before shipping:** the drafted line below claims three years. That is
-inferred from Komma starting Nov 2022, not from anything in the repo. Confirm
-the real span and correct the number — a factual claim in your own copy has to
-be true, and it is exactly the kind of detail a reader checks.
+    [mono, small caps, neutral-500]
+    soumya maheshwari
 
-1. *"i've been building the same agent for three years. it keeps getting better,
-   and i keep starting over."* — recommended
-2. *"two years in founders' offices taught me what to build. the last one taught
-   me to stop asking and build it myself."*
-3. *"i make things that read my email, track my recovery, and know me better
-   than they probably should."*
+    [mono, small caps, neutral-600]
+    agentic systems · product builder
+    mumbai, india · <live local time>
+
+    [Zodiak, ~5rem, lowercase, white]
+    agents, trading engines, ios apps, infra and saas.
+
+    [Instrument Sans, ~1.25rem, neutral-400]
+    i start building because i'm curious and stop when it works.
+
+The hierarchy inverts the usual move deliberately: **the range is set large, the
+humility is set quiet.** Big brag, small voice reads as confident. The reverse
+would read as insecure.
+
+Present in the SSR payload — no reveal, no typewriter, no timer.
+
+The closing line is Soumya's own, in the humble register he asked for: it makes
+no claim a reader can audit, which lets the projects grid do the proving on its
+own. "saas" is now evidenced by BillInsight (Clerk auth, Neon Postgres, durable
+job pipeline, Sentry/Grafana observability) — the earlier objection to that word
+is resolved.
+
+Casing: `saas` lowercase, consistent with the system.
 
 ### Intro
 
@@ -256,6 +276,44 @@ Note on voice: the `eclipsn` entry in `projects.ts` already contains the best
 line on the site — admitting Peter Steinberger shipped OpenClaw faster. That
 self-aware specificity is exactly the register the rest of the copy should
 match, and it is worth more than any animation in this document.
+
+## Making it personal
+
+Explicitly NOT an aesthetic pivot. Soumya rejected moving to a warm, illustrated,
+handmade direction and wants the dark editorial system to feel personal instead.
+
+The reference's warmth comes from visible human labour — someone drew those
+illustrations. That cannot be installed, and generating doodles neither of us
+drew would be precisely the failure mode this whole redesign exists to avoid.
+So the warmth has to come from real artifacts and real specifics:
+
+1. **A real signature.** Soumya writes his name once; it is traced to SVG and
+   set as a white stroke above the hero. This is the single highest-leverage
+   personal element available — it is genuine evidence of a human hand, costs
+   one afternoon, and requires no change to the visual system. Requires Soumya
+   to actually produce it.
+2. **Live local time.** `mumbai, india · 11:47 pm`, ticking, client-side after
+   hydration with a static server fallback to avoid a mismatch. Real data about
+   a real person in a real place.
+3. **A photograph.** One honest, non-corporate photo. Nothing establishes a
+   person faster, and a dark editorial layout carries a single image well.
+   Optional — Soumya's call.
+4. **People in the copy.** Glai is "built for my mom's diabetes management."
+   Room exists because "the stock apps are slow and fragmented." These already
+   exist in `projects.ts` and are simply buried.
+5. **The `now` strip** (already specified above).
+
+### Observation worth surfacing somewhere
+
+Six projects — Glai (his mom), Room (his bulbs), Eclipse (himself),
+StockPortfolio (his Kite accounts), SHIT (his timetable), PhotoCortex (his
+photos) — have exactly one user. That is a stance, not a coincidence, and the
+grid proves it without any assertion needed. Candidate framing for the projects
+section if the current intro line ever needs replacing:
+
+> most of my software has one user.
+
+Not adopted; recorded because it is true and unusually specific.
 
 ## Verification
 
