@@ -14,7 +14,7 @@ export const projects: Project[] = [
   // --- The Jarvis Evolution Flow ---
   {
     id: "hermes",
-    title: "Eclipse",
+    title: "Hermes",
     description: "My most capable personal agent — powered by Hermes, runs on a server, accessible via WhatsApp, Telegram, or a portal.",
     longDescription: "Powered by Hermes. Runs 24/7 on a server — I talk to it through WhatsApp, Telegram, or a web portal depending on where I am. It has long-term memory across every conversation, ingests my Gmail, Whoop recovery data, Strava activity, and Swiggy orders — and uses all of it to actually know me. It knows my projects, my portfolio, my schedule, my patterns. Not a chatbot, not a tool — closer to a persistent digital version of me that's always on.",
     techStack: ["WhatsApp API", "Telegram API", "Whoop API", "Gmail API", "Strava API", "Long-term Memory"],
@@ -91,8 +91,8 @@ export const projects: Project[] = [
   {
     id: "glai",
     title: "Glai",
-    description: "Photo-based meal logging app with AI nutrition analysis, built for my mom's diabetes management.",
-    longDescription: "Snap a meal, and Glai runs a two-step OpenAI analysis — first identifying dishes, then estimating weights and nutrition ranges. Data is saved locally in SQLite with optional Supabase sync. Built for a single-user diabetes use case, with HealthKit/CGM integration planned. Shipped to TestFlight via EAS.",
+    description: "Built for my mom's diabetes management — photo-based meal logging with AI nutrition analysis.",
+    longDescription: "Built for my mom's diabetes management. Snap a meal, and Glai runs a two-step OpenAI analysis — first identifying dishes, then estimating weights and nutrition ranges. Data is saved locally in SQLite with optional Supabase sync, with HealthKit/CGM integration planned. Shipped to TestFlight via EAS.",
     techStack: ["React Native", "Expo", "OpenAI", "SQLite", "Supabase"],
     github: "https://github.com/soumyyy/glai",
   },

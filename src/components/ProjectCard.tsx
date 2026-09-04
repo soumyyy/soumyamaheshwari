@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Play } from "lucide-react";
 import { Project } from "@/data/projects";
@@ -36,6 +37,10 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   const [from, to] = gradientMap[project.id] ?? defaultGradient;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const onEnter = () => { videoRef.current?.play().catch(() => {}); };
+  const onLeave = () => { const v = videoRef.current; if (v) { v.pause(); v.currentTime = 0; } };
 
   return (
     <motion.div
@@ -48,8 +53,22 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       }}
-      className="rounded-2xl border border-white/[0.07] overflow-hidden"
+      className="group rounded-2xl border border-white/[0.07] overflow-hidden"
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
     >
+      {project.video && (
+        <video
+          ref={videoRef}
+          src={project.video}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full aspect-video object-cover opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+        />
+      )}
+
       <div className="p-5 md:p-6 flex flex-col gap-4">
 
         {/* Title + action buttons */}
@@ -95,7 +114,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Tech chips */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 opacity-70 transition-opacity duration-300 group-hover:opacity-100">
           {project.techStack.map((tech) => (
             <span
               key={tech}
