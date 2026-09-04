@@ -269,8 +269,13 @@ Replacing "Got something cool to build?":
 `layout.tsx` description, replacing "AI Engineer & Builder. I build cool stuff,
 break them, fix them along the way.":
 
-> soumya maheshwari — i build personal ai agents, and i've rewritten mine five
-> times.
+> agentic systems and product building — agents, trading engines, ios apps,
+> infra and saas.
+
+**Superseded note:** an earlier draft here read "i build personal ai agents, and
+i've rewritten mine five times." That belonged to the agent-lineage hero, which
+was rejected for making the site about one project. The description must track
+the final hero, not the abandoned one.
 
 Note on voice: the `eclipsn` entry in `projects.ts` already contains the best
 line on the site — admitting Peter Steinberger shipped OpenClaw faster. That
