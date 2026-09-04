@@ -1,110 +1,14 @@
-"use client";
-
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
-import { ChevronDown, ExternalLink } from "lucide-react";
-
-const ExperienceItem = ({ company, role, date, location, summary, bullets }: { company: string, role: string, date: string, location: string, summary: string, bullets: string[] }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div
-            className="group border-l-2 border-neutral-900 pl-6 md:pl-8 py-2 transition-all hover:border-neutral-700 hover:bg-neutral-900/10 rounded-r-lg pr-4 cursor-pointer"
-            onClick={() => setIsOpen(!isOpen)}
-        >
-            <div className="space-y-3">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
-                    <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors flex items-center gap-2">
-                        {company}
-                        <ChevronDown className={`w-4 h-4 text-neutral-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-                    </h3>
-                    <span className="text-xs font-mono text-neutral-500">{date}</span>
-                </div>
-
-                <div className="text-sm text-neutral-500 uppercase tracking-wider">{role} · {location}</div>
-
-                <p className="text-neutral-400 leading-relaxed italic pr-4">
-                    {summary}
-                </p>
-            </div>
-
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                    >
-                        <ul className="pt-4 space-y-3 text-neutral-400 leading-relaxed list-disc list-outside ml-4 text-base border-t border-neutral-900/50 mt-4">
-                            {bullets.map((bullet, idx) => (
-                                <li key={idx}><span className="text-neutral-300">{bullet}</span></li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
+import ExperienceItem from "@/components/ExperienceItem";
+import PrimitivesToggle from "@/components/PrimitivesToggle";
+import FlipLink from "@/components/FlipLink";
+import { ExternalLink } from "lucide-react";
 
 export default function Home() {
-    const [showHello, setShowHello] = useState(false);
-    const [hideHello, setHideHello] = useState(false);
-    const [mainText, setMainText] = useState("");
-    const [showButton, setShowButton] = useState(false);
-    const [showPrimitives, setShowPrimitives] = useState(false);
-
-    const mainContent = "I break things, fix them, and build cool stuff along the way.";
-
-    useEffect(() => {
-        // Sequence animation
-        setTimeout(() => {
-            setShowHello(true);
-
-            setTimeout(() => {
-                setHideHello(true);
-
-                let i = 0;
-                const typeText = () => {
-                    if (i <= mainContent.length) {
-                        setMainText(mainContent.slice(0, i));
-                        i++;
-                        setTimeout(typeText, 30);
-                    } else {
-                        setShowButton(true);
-                    }
-                };
-
-                // Start typing after "Hello" fades
-                setTimeout(typeText, 800);
-            }, 500); // Wait for Hello to stay a bit
-        }, 500);
-    }, []);
-
-    // Auto-scroll effect after main text is done (when showButton becomes true)
-    useEffect(() => {
-        if (showButton) {
-            const timer = setTimeout(() => {
-                const scrollPos = window.scrollY || document.documentElement.scrollTop;
-                if (scrollPos < 20) {
-                    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-                }
-            }, 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [showButton]);
-
-    const scrollToAbout = () => {
-        document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-    };
-
     return (
         <main className="min-h-screen flex flex-col items-center bg-black selection:bg-white selection:text-black">
 
@@ -118,11 +22,8 @@ export default function Home() {
                     style={{ background: 'radial-gradient(circle, rgba(190,175,155,1) 0%, transparent 65%)' }} />
             </div>
 
-            {/* Scroll Progress - Optional, can add later */}
-
             {/* Navigation / Flip Buttons */}
-            <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 z-50 flex justify-between items-center gap-4">
-                <LocalTime />
+            <nav className="fixed top-6 left-6 right-6 md:left-12 md:right-12 z-50 flex justify-end items-center gap-4">
                 <div className="flex gap-4">
                     {/* Blog Button - Commented out but codebase ready */}
                     {/*
@@ -136,54 +37,24 @@ export default function Home() {
                 </div>
             </nav>
 
-            <section className="h-screen w-full flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
-                {/* "soumysphere" Background Text */}
-                <div className="absolute top-0 right-0 h-full flex items-center justify-end pointer-events-none z-0 select-none overflow-hidden pr-0 md:pr-0">
-                    <span className="text-[12vh] md:text-[14vh] font-black tracking-tighter text-[#050505] leading-none whitespace-nowrap rotate-90 origin-center translate-x-[42%]">
-                        soumysphere
-                    </span>
-                </div>
-
+            <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
                 <OrbitField />
 
-                <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
-                    <AnimatePresence>
-                        {!hideHello && (
-                            <motion.h1
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: showHello ? 1 : 0 }}
-                                exit={{ opacity: 0 }}
-                                className="text-6xl md:text-9xl font-bold tracking-tighter absolute"
-                            >
-                                Hello.
-                            </motion.h1>
-                        )}
-                    </AnimatePresence>
-
-                    <div className={`transition-opacity duration-1000 ${hideHello ? 'opacity-100' : 'opacity-0'} w-full flex justify-center`}>
-                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight w-full leading-tight text-center flex flex-col md:block items-center justify-center">
-                            {mainText}
-                            <span className="animate-pulse ml-1 text-neutral-500 inline-block align-middle">|</span>
-                        </h1>
+                <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col gap-8">
+                    <div className="flex flex-col gap-1">
+                        <span className="label text-neutral-500">soumya maheshwari</span>
+                        <span className="label text-neutral-600">agentic systems · product builder</span>
+                        <LocalTime />
                     </div>
+
+                    <h1 className="font-display text-balance text-4xl lowercase leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+                        agents, trading engines, ios apps, infra and saas.
+                    </h1>
+
+                    <p className="max-w-xl text-base leading-relaxed text-neutral-400 lowercase md:text-lg">
+                        i start building because i&rsquo;m curious and stop when it works.
+                    </p>
                 </div>
-
-                {/* Scroll Prompt - Absolute positioning to not affect text centering */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: showButton ? 1 : 0, y: showButton ? 0 : 20 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-                >
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 mb-2">Scroll to explore</span>
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-neutral-800 to-transparent relative overflow-hidden">
-                        <motion.div
-                            animate={{ y: [0, 50] }}
-                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                            className="w-full h-1/2 bg-white/50 absolute top-0"
-                        />
-                    </div>
-                </motion.div>
             </section>
 
             {/* About Section */}
@@ -194,10 +65,10 @@ export default function Home() {
                     </div>
                     <div className="space-y-8 text-xl md:text-2xl font-light text-neutral-200 leading-relaxed text-balance lowercase">
                         <p>
-                            i’m soumya. i design, i build, and i mess with things just to see how they work. spent a couple years in startup ops & strategy, but recently i've put most of my energy in the deep end: ai tooling, agents, frontier coding tools, and rapid prototyping.
+                            i’m soumya. i design, i build, and i mess with things just to see how they work. spent a couple years in startup ops & strategy, but recently i&rsquo;ve put most of my energy in the deep end: ai tooling, agents, frontier coding tools, and rapid prototyping.
                         </p>
                         <p className="text-neutral-400">
-                            i'm a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, webdev, ios, ml and everything in between.
+                            i&rsquo;m a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, webdev, ios, ml and everything in between.
                         </p>
                     </div>
                 </div>
@@ -210,51 +81,31 @@ export default function Home() {
                         <h2 className="text-neutral-500 font-medium text-sm tracking-widest uppercase mb-4 sticky top-24">Experience</h2>
                     </div>
                     <div className="space-y-16">
-                        {/* Komma */}
-                        <div className="group space-y-4">
-                            <div>
-                                <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
-                                    <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors">Komma Financial Technologies</h3>
-                                    <span className="text-sm text-neutral-500 font-mono">Nov 2022 – Jan 2024</span>
-                                </div>
-                                <div className="text-sm text-neutral-500">Founder’s Office · Gurugram | Pune</div>
-                            </div>
+                        <ExperienceItem
+                            company="Komma Financial Technologies"
+                            role="Founder’s Office"
+                            date="Nov 2022 – Jan 2024"
+                            location="Gurugram | Pune"
+                            summary="Simplifying investing by developing personal finance tools that make managing money easier."
+                            bullets={[
+                                "Worked directly with early-stage founders to drive day-to-day execution across operations and product, standardizing internal SOPs.",
+                                "Owned the translation of business and financial requirements into product flows, collaborating closely with engineers to ship website and internal tool updates.",
+                                "Spearheaded a cross-functional team of interns across analytics, marketing, and fintech research, setting workstreams, reviewing outputs, and driving execution against clear deliverables.",
+                            ]}
+                        />
 
-                            {/* Company Intro */}
-                            <p className="text-neutral-400 leading-relaxed italic">
-                                Simplifying investing by developing personal finance tools that make managing money easier.
-                            </p>
-
-                            {/* Bullets */}
-                            <ul className="space-y-3 text-neutral-400 leading-relaxed list-disc list-outside ml-4 text-base">
-                                <li>Worked directly with early-stage founders to drive day-to-day execution across operations and product, standardizing internal SOPs.</li>
-                                <li>Owned the translation of business and financial requirements into product flows, collaborating closely with engineers to ship website and internal tool updates.</li>
-                                <li>Spearheaded a cross-functional team of interns across analytics, marketing, and fintech research, setting workstreams, reviewing outputs, and driving execution against clear deliverables.</li>
-                            </ul>
-                        </div>
-
-                        {/* BabyKavach */}
-                        <div className="group space-y-4">
-                            <div>
-                                <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
-                                    <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors">BabyKavach</h3>
-                                    <span className="text-sm text-neutral-500 font-mono">Jan 2024 – Jan 2025</span>
-                                </div>
-                                <div className="text-sm text-neutral-500">Founder’s Office · Gurugram</div>
-                            </div>
-
-                            {/* Company Intro */}
-                            <p className="text-neutral-400 leading-relaxed italic">
-                                Building a suite of digital healthcare services to help parents with vaccinations and medical records.
-                            </p>
-
-                            {/* Bullets */}
-                            <ul className="space-y-3 text-neutral-400 leading-relaxed list-disc list-outside ml-4 text-base">
-                                <li>Conceptualized and managed the roadmap for components, translating complex health metrics into actionable user insights in React.</li>
-                                <li>Worked on Go-to-Market strategy for the brand’s digital presence; managed ad budgets and content operations to drive initial user acquisition and engagement.</li>
-                                <li>Worked the end-to-end development of the brand website and application, optimizing the User Journey (UX) to serve as the primary lead generation funnel.</li>
-                            </ul>
-                        </div>
+                        <ExperienceItem
+                            company="BabyKavach"
+                            role="Founder’s Office"
+                            date="Jan 2024 – Jan 2025"
+                            location="Gurugram"
+                            summary="Building a suite of digital healthcare services to help parents with vaccinations and medical records."
+                            bullets={[
+                                "Conceptualized and managed the roadmap for components, translating complex health metrics into actionable user insights in React.",
+                                "Worked on Go-to-Market strategy for the brand’s digital presence; managed ad budgets and content operations to drive initial user acquisition and engagement.",
+                                "Worked the end-to-end development of the brand website and application, optimizing the User Journey (UX) to serve as the primary lead generation funnel.",
+                            ]}
+                        />
                     </div>
                 </div>
             </section>
@@ -277,36 +128,13 @@ export default function Home() {
                                 <ProjectCard key={project.id} project={project} index={index} />
                             ))}
 
-                        {/* Toggle for Primitive Tech */}
-                        <div className="pt-4">
-                            <button
-                                onClick={() => setShowPrimitives(!showPrimitives)}
-                                className="flex items-center gap-2 text-xs text-neutral-600 hover:text-neutral-400 transition-colors uppercase tracking-wider font-semibold"
-                            >
-                                {showPrimitives ? "Hide the Primitive Tech" : "View the Primitive Tech that got me here"}
-                                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${showPrimitives ? "rotate-180" : ""}`} />
-                            </button>
-                        </div>
-
-                        <AnimatePresence>
-                            {showPrimitives && (
-                                <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                                    className="overflow-hidden"
-                                >
-                                    <div className="space-y-4 pt-4">
-                                        {projects
-                                            .filter(p => ["eclipsn", "eclipse-obsidian", "eclipse", "jarvis"].includes(p.id))
-                                            .map((project, index) => (
-                                                <ProjectCard key={project.id} project={project} index={index} />
-                                            ))}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <PrimitivesToggle>
+                            {projects
+                                .filter(p => ["eclipsn", "eclipse-obsidian", "eclipse", "jarvis"].includes(p.id))
+                                .map((project, index) => (
+                                    <ProjectCard key={project.id} project={project} index={index} />
+                                ))}
+                        </PrimitivesToggle>
                     </div>
                 </div>
 
@@ -379,40 +207,3 @@ export default function Home() {
         </main >
     );
 }
-
-const FlipLink = ({ children, href }: { children: string; href: string }) => {
-    return (
-        <motion.a
-            initial="initial"
-            whileHover="hovered"
-            href={href}
-            className="relative block overflow-hidden whitespace-nowrap text-xs md:text-sm font-medium uppercase tracking-wider text-neutral-400 border border-neutral-800 rounded-lg px-4 py-2 md:px-12 bg-black/50 backdrop-blur-sm hover:text-white hover:border-white transition-colors"
-        >
-            <motion.div
-                variants={{
-                    initial: { y: 0 },
-                    hovered: { y: "-100%" },
-                }}
-                transition={{
-                    duration: 0.25,
-                    ease: "easeInOut",
-                }}
-            >
-                {children}
-            </motion.div>
-            <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                variants={{
-                    initial: { y: "100%" },
-                    hovered: { y: 0 },
-                }}
-                transition={{
-                    duration: 0.25,
-                    ease: "easeInOut",
-                }}
-            >
-                email me
-            </motion.div>
-        </motion.a>
-    );
-};
