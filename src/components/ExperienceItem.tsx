@@ -34,7 +34,7 @@ export default function ExperienceItem({ company, role, date, location, summary,
                     <span className="text-xs font-mono text-neutral-500">{date}</span>
                 </div>
 
-                <div className="text-sm text-neutral-500 uppercase tracking-wider">{role} · {location}</div>
+                <div className="label text-neutral-500">{role} · {location}</div>
 
                 <p className="text-neutral-400 leading-relaxed italic pr-4">
                     {summary}

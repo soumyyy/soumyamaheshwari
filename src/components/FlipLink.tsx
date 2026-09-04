@@ -8,7 +8,7 @@ export default function FlipLink({ children, href }: { children: string; href: s
             initial="initial"
             whileHover="hovered"
             href={href}
-            className="relative block overflow-hidden whitespace-nowrap text-xs md:text-sm font-medium uppercase tracking-wider text-neutral-400 border border-neutral-800 rounded-lg px-4 py-2 md:px-12 bg-black/50 backdrop-blur-sm hover:text-white hover:border-white transition-colors"
+            className="label relative block overflow-hidden whitespace-nowrap text-neutral-400 border border-neutral-800 rounded-lg px-4 py-2 md:px-12 bg-black/50 backdrop-blur-sm hover:text-white hover:border-white transition-colors"
         >
             <motion.div
                 variants={{

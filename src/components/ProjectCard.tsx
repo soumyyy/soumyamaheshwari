@@ -54,7 +54,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Title + action buttons */}
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-base md:text-lg font-semibold tracking-widest uppercase text-white/90 leading-snug">
+          <h3 className="label text-base md:text-lg text-white/90 leading-snug">
             {project.title}
           </h3>
           <div className="flex items-center gap-2 shrink-0 pt-0.5">
@@ -85,10 +85,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 href={`/demo/${project.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.1] text-white/60 hover:text-white hover:bg-white/[0.14] transition-all text-xs font-medium uppercase tracking-wider"
+                className="label flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.1] text-white/60 hover:text-white hover:bg-white/[0.14] transition-all"
               >
                 <Play className="w-2.5 h-2.5 fill-current" />
-                Demo
+                demo
               </a>
             )}
           </div>

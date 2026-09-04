@@ -65,12 +65,16 @@ export default function Home() {
                         <h2 className="label sticky top-24 text-neutral-500">intro</h2>
                         <Portrait />
                     </div>
-                    <div className="space-y-8 text-xl md:text-2xl font-light text-neutral-200 leading-relaxed text-balance lowercase">
+                    <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-neutral-200 text-balance lowercase">
                         <p>
-                            i’m soumya. i design, i build, and i mess with things just to see how they work. spent a couple years in startup ops & strategy, but recently i&rsquo;ve put most of my energy in the deep end: ai tooling, agents, frontier coding tools, and rapid prototyping.
+                            i&rsquo;m soumya. i spent two years in founders&rsquo; offices at a fintech and a
+                            healthtech startup, translating what the business needed into what the engineers
+                            built. somewhere in there i got tired of writing the spec and handing it over.
                         </p>
                         <p className="text-neutral-400">
-                            i&rsquo;m a compulsive tinkerer. obsessed with the entire process of how things are built, curious about any and everything. i dig into everything: cloud, infra, webdev, ios, ml and everything in between.
+                            now most of my energy goes into agents, ai tooling, and prototypes that take a
+                            weekend. i&rsquo;m a compulsive tinkerer — cloud, infra, webdev, ios, ml, whatever
+                            the thing needs. i mostly want to know how it works.
                         </p>
                     </div>
                 </div>
@@ -80,7 +84,7 @@ export default function Home() {
             <section id="experience" className="w-full max-w-5xl px-4 md:px-6 py-20 border-t border-neutral-900">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
                     <div>
-                        <h2 className="text-neutral-500 font-medium text-sm tracking-widest uppercase mb-4 sticky top-24">Experience</h2>
+                        <h2 className="label sticky top-24 text-neutral-500 mb-4">experience</h2>
                     </div>
                     <div className="space-y-16">
                         <ExperienceItem
@@ -115,13 +119,17 @@ export default function Home() {
             {/* Projects Section - Refesigned */}
             <section id="projects" className="w-full px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900 flex flex-col items-center">
                 <div className="mb-24 text-center">
-                    <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white/80 mb-6">selected works</h2>
-                    <p className="text-neutral-500 max-w-lg mx-auto">A collection of experiments, agents, and side-projects.</p>
+                    <h2 className="font-display text-5xl md:text-7xl lowercase tracking-tight text-white/80 mb-6">
+                        selected work
+                    </h2>
+                    <p className="max-w-lg mx-auto text-neutral-500 lowercase">
+                        curiosity is the only through-line here. everything else is a side effect.
+                    </p>
                 </div>
 
                 {/* Personal Agent Timeline */}
                 <div className="w-full max-w-4xl mb-16 md:mb-40">
-                    <h3 className="text-xs font-bold tracking-widest text-neutral-600 uppercase mb-6">my personal agent</h3>
+                    <h3 className="label text-neutral-600 mb-6">my personal agent</h3>
 
                     <div className="space-y-4">
                         {projects
@@ -142,7 +150,7 @@ export default function Home() {
 
                 {/* Other Projects - Grid Layout */}
                 <div className="w-full max-w-7xl">
-                    <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">side projects</h3>
+                    <h3 className="label text-center text-neutral-500 mb-16">side projects</h3>
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                         {projects.filter(p => !["hermes", "jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
                             <ProjectCard key={project.id} project={project} index={index} />
@@ -152,7 +160,7 @@ export default function Home() {
 
                 {/* Client Work - Minimalist Section */}
                 <div className="w-full max-w-7xl mt-32">
-                    <h3 className="text-center text-sm font-bold tracking-widest text-neutral-500 uppercase mb-16">Client Work</h3>
+                    <h3 className="label text-center text-neutral-500 mb-16">client work</h3>
                     <div className="flex flex-col border-t border-neutral-900">
                         {projects.filter(p => ["vanshita", "bykritika"].includes(p.id)).map((project) => (
                             <a
@@ -166,7 +174,7 @@ export default function Home() {
                                     {project.title}
                                 </span>
                                 <div className="flex items-center gap-4 text-neutral-600 group-hover:text-neutral-400">
-                                    <span className="hidden md:inline-block text-sm uppercase tracking-wider">{project.techStack[0]}</span>
+                                    <span className="label hidden md:inline-block">{project.techStack[0]}</span>
                                     <ExternalLink className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
                                 </div>
                             </a>
@@ -185,8 +193,8 @@ export default function Home() {
 
             {/* Footer */}
             <footer className="w-full py-20 border-t border-neutral-900 flex flex-col items-center justify-center text-center px-6">
-                <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-6">
-                    Got something cool to build?
+                <h2 className="font-display text-2xl md:text-4xl lowercase tracking-tight text-white mb-6">
+                    building something strange? i&rsquo;d like to hear about it.
                 </h2>
                 <a href="mailto:soumyamaheshwari1234@gmail.com" className="text-neutral-500 hover:text-white transition-colors text-lg mb-8">
                     &lt;mail me&gt;
@@ -195,7 +203,7 @@ export default function Home() {
                 <a
                     href="/SoumyaMaheshwariResume.pdf"
                     target="_blank"
-                    className="inline-block text-xs md:text-sm font-medium uppercase tracking-wider text-black bg-white rounded-lg px-4 py-2 md:px-12 hover:bg-neutral-200 transition-colors mb-8"
+                    className="label inline-block text-black bg-white rounded-lg px-4 py-2 md:px-12 hover:bg-neutral-200 transition-colors mb-8"
                 >
                     view resume
                 </a>
