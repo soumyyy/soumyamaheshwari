@@ -5,12 +5,15 @@
     --foreground: #ffffff;
     --accent: #555555;
     --visited: #999999;
+    --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
+    --font-mono: 'Commit Mono', ui-monospace, monospace;
+    /* --font-display is injected by next/font in layout.tsx */
 }
 
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--font-body);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -50,5 +53,20 @@ body::after {
 @layer utilities {
     .text-balance {
         text-wrap: balance;
+    }
+
+    .label {
+        font-family: var(--font-mono);
+        font-variant-caps: small-caps;
+        text-transform: lowercase;
+        letter-spacing: 0.06em;
+    }
+
+    .font-display {
+        font-family: var(--font-display), Georgia, serif;
+    }
+
+    .font-mono {
+        font-family: var(--font-mono);
     }
 }

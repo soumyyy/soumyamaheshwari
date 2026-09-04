@@ -10,6 +10,8 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/commit-mono": "^5.3.0",
     "framer-motion": "^12.29.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.563.0",

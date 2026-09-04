@@ -1,27 +1,28 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
+import localFont from 'next/font/local';
+import '@fontsource-variable/instrument-sans';
+import '@fontsource/commit-mono';
 import './globals.css';
 
-const spaceGrotesk = Space_Grotesk({
-    subsets: ['latin'],
-    variable: '--font-grotesk',
+const zodiak = localFont({
+    src: [
+        { path: '../../public/fonts/zodiak-regular.woff2', weight: '400', style: 'normal' },
+        { path: '../../public/fonts/zodiak-italic.woff2', weight: '400', style: 'italic' },
+    ],
+    variable: '--font-display',
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
     title: 'Soumya Maheshwari',
-    description: 'AI Engineer & Builder. I build cool stuff, break them, fix them along the way.',
+    description:
+        'agentic systems and product building — agents, trading engines, ios apps, infra and saas.',
 };
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="dark">
-            <body className={`${spaceGrotesk.className} font-sans`}>
-                {children}
-            </body>
+        <html lang="en" className={`dark ${zodiak.variable}`}>
+            <body>{children}</body>
         </html>
     );
 }
