@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import DotGrid from "@/components/DotGrid";
-import SatelliteOrbit from "@/components/SatelliteOrbit";
+import OrbitField from "@/components/OrbitField";
 import { ChevronDown, ExternalLink } from "lucide-react";
 
 const ExperienceItem = ({ company, role, date, location, summary, bullets }: { company: string, role: string, date: string, location: string, summary: string, bullets: string[] }) => {
@@ -140,7 +140,7 @@ export default function Home() {
                     </span>
                 </div>
 
-                <SatelliteOrbit />
+                <OrbitField />
 
                 <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
                     <AnimatePresence>
