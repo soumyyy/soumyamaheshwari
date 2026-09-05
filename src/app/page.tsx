@@ -1,5 +1,7 @@
 import { projects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
+import CoreProject from "@/components/CoreProject";
+import ProjectGroup from "@/components/ProjectGroup";
+import styles from "./projects.module.css";
 import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
@@ -8,10 +10,8 @@ import KonamiBoost from "@/components/KonamiBoost";
 import ExperienceItem from "@/components/ExperienceItem";
 import NowStrip from "@/components/NowStrip";
 import BuildLog from "@/components/BuildLog";
-import PrimitivesToggle from "@/components/PrimitivesToggle";
 import FlipLink from "@/components/FlipLink";
 import Portrait from "@/components/Portrait";
-import { ExternalLink } from "lucide-react";
 
 export default function Home() {
     return (
@@ -124,77 +124,39 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Projects Section - Refesigned */}
-            <section id="projects" className="w-full px-4 md:px-6 py-24 md:py-40 border-t border-neutral-900 flex flex-col items-center">
-                <div className="mb-24 text-center">
-                    <h2 className="font-display text-5xl md:text-7xl lowercase tracking-tight text-white/80 mb-6">
-                        selected work
-                    </h2>
-                    <p className="max-w-lg mx-auto text-neutral-500 lowercase">
-                        curiosity is the only through-line here. everything else is a side effect.
-                    </p>
+            <section id="projects" className={`projects-paper ${styles.projects}`} aria-labelledby="projects-heading">
+                <div className="edge-top" aria-hidden="true" />
+                <div className={styles.ledger}>
+                    <header className={styles.masthead}>
+                        <h2 id="projects-heading">an audience of one</h2>
+                        <p>six of these have exactly one user. i am usually that user. once, it was my mother.</p>
+                    </header>
+                    {projects.filter(project => project.section === "core").map(project => (
+                        <CoreProject key={project.id} project={project} />
+                    ))}
+                    <ProjectGroup
+                        id="audience-one"
+                        title="an audience of one"
+                        count="four projects, one user each"
+                        projects={projects.filter(project => project.section === "one")}
+                        startNumber={2}
+                    />
+                    <ProjectGroup
+                        id="audience-someone"
+                        title="an audience of someone else"
+                        count="four projects, real users"
+                        projects={projects.filter(project => project.section === "someone")}
+                        startNumber={6}
+                    />
+                    <ProjectGroup
+                        id="audience-question"
+                        title="sometimes the question was enough"
+                        count="five projects, five questions"
+                        projects={projects.filter(project => project.section === "question")}
+                        startNumber={10}
+                    />
                 </div>
-
-                {/* Personal Agent Timeline */}
-                <div className="w-full max-w-4xl mb-16 md:mb-40">
-                    <h3 className="label text-neutral-600 mb-6">my personal agent</h3>
-
-                    <div className="space-y-4">
-                        {projects
-                            .filter(p => ["hermes"].includes(p.id))
-                            .map((project) => (
-                                <div key={project.id} data-card-cell className="relative h-[200px]">
-                                    <ProjectCard project={project} />
-                                </div>
-                            ))}
-
-                        <PrimitivesToggle>
-                            {projects
-                                .filter(p => ["eclipsn", "eclipse-obsidian", "eclipse", "jarvis"].includes(p.id))
-                                .map((project) => (
-                                    <div key={project.id} data-card-cell className="relative h-[200px]">
-                                        <ProjectCard project={project} />
-                                    </div>
-                                ))}
-                        </PrimitivesToggle>
-                    </div>
-                </div>
-
-                {/* Other Projects - Grid Layout */}
-                <div className="w-full max-w-7xl">
-                    <h3 className="label text-center text-neutral-500 mb-16">side projects</h3>
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                        {projects.filter(p => !["hermes", "jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project) => (
-                            <div key={project.id} data-card-cell className="relative h-[200px]">
-                                <ProjectCard project={project} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Client Work - Minimalist Section */}
-                <div className="w-full max-w-7xl mt-32">
-                    <h3 className="label text-center text-neutral-500 mb-16">client work</h3>
-                    <div className="flex flex-col border-t border-neutral-900">
-                        {projects.filter(p => ["vanshita", "bykritika"].includes(p.id)).map((project) => (
-                            <a
-                                key={project.id}
-                                href={project.link || project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group flex items-center justify-between py-6 border-b border-neutral-900 hover:bg-neutral-900/20 transition-colors px-4"
-                            >
-                                <span className="text-xl md:text-2xl font-medium text-neutral-400 group-hover:text-white transition-colors">
-                                    {project.title}
-                                </span>
-                                <div className="flex items-center gap-4 text-neutral-600 group-hover:text-neutral-400">
-                                    <span className="label hidden md:inline-block">{project.techStack[0]}</span>
-                                    <ExternalLink className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </div>
+                <div className="edge-bottom" aria-hidden="true" />
             </section>
 
             {/* Brain Section (Disabled) */}

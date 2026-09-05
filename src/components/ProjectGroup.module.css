@@ -1,0 +1,23 @@
+.group { margin-top: clamp(3rem, 8vh, 6rem); }
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem 2rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-top: 3px double var(--ink);
+  border-bottom: 1px solid var(--rule);
+  background: var(--ground);
+  font: 0.75rem/1.6 var(--font-mono);
+}
+.header p { color: var(--ink-faint); }
+.grid { --sep: clamp(2rem, 5vh, 3.5rem); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0; row-gap: 0; }
+@media (width < 820px) {
+  .header { flex-direction: column; gap: 0.35rem; margin-bottom: 0; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .header { position: static; } }

@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects.find((p) => p.id === id);
   if (!project?.video) return {};
   return {
-    title: `${project.title} — Demo`,
-    description: project.description,
+    title: `${project.name}. Demo`,
+    description: project.summary,
   };
 }
 
@@ -37,9 +37,9 @@ export default async function DemoPage({ params }: Props) {
           <div>
             <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Demo</p>
             <h1 className="text-2xl md:text-3xl font-bold tracking-tighter text-white">
-              {project.title}
+              {project.name}
             </h1>
-            <p className="text-sm text-neutral-400 mt-1 max-w-xl">{project.description}</p>
+            <p className="text-sm text-neutral-400 mt-1 max-w-xl">{project.summary}</p>
           </div>
           <a
             href="/"

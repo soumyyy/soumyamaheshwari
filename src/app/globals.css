@@ -11,11 +11,40 @@
     /* --font-display is injected by next/font in layout.tsx */
 }
 
+.projects-paper {
+    --site-dark: #0A0A0B;
+    --ground: #F5F3EA;
+    --lift: #EEEBDD;
+    --ink: #12100C;
+    --ink-soft: #3A362E;
+    --ink-faint: #575249;
+    --rule: #B4AD9B;
+    --hair: #D6D0C1;
+    --red: #9E241C;
+    --accent: var(--red);
+    color: var(--ink);
+    background: var(--ground);
+}
+
+.projects-paper .edge-top,
+.projects-paper .edge-bottom {
+    height: 96px;
+    pointer-events: none;
+}
+
+.projects-paper .edge-top {
+    background: linear-gradient(to bottom, var(--site-dark), transparent);
+}
+
+.projects-paper .edge-bottom {
+    background: linear-gradient(to top, var(--site-dark), transparent);
+}
+
 body {
     color: var(--foreground);
     background: var(--background);
     font-family: var(--font-body);
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
 }
 

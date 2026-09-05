@@ -1,0 +1,26 @@
+.core { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow-wrap: anywhere; }
+.lead { min-width: 0; padding-right: 34px; }
+.markers { position: relative; min-height: 2rem; display: flex; justify-content: flex-end; padding-right: 44px; margin-bottom: 1rem; }
+.number { position: absolute; top: 0; right: 0; border: 1px solid var(--rule); padding: 3px 6px; color: var(--ink-faint); font: 0.75rem var(--font-mono); }
+.name { font: clamp(2.6rem, 6vw, 4.2rem)/1.1 var(--font-display), Georgia, serif; }
+.name a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+.name a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.who { margin: 0.8rem 0 1.75rem; color: var(--red); font: italic 1.2rem/1.5 var(--font-display), Georgia, serif; }
+.prose { color: var(--ink-soft); line-height: 1.75; }
+.prose p + p { margin-top: 1.25rem; }
+.history { min-width: 0; border-left: 1px solid var(--hair); padding-left: 34px; }
+.label { font: 0.75rem/1.6 var(--font-mono); margin-bottom: 1rem; }
+.lineage { margin-bottom: 2rem; }
+.lineage li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 0.8rem; padding: 0.9rem 0; border-top: 1px solid var(--hair); }
+.lineage h5 { font: 0.72rem/1.6 var(--font-mono); text-transform: uppercase; margin-bottom: 0.35rem; }
+.lineage p { color: var(--ink-soft); font-size: 0.88rem; line-height: 1.65; }
+.version { color: var(--red); font: 0.72rem/1.6 var(--font-mono); }
+.pins { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pins li { border: 1px solid var(--rule); padding: 0.35rem 0.55rem; color: var(--ink-soft); font: 0.65rem/1.6 var(--font-mono); }
+@media (width < 820px) {
+  .core { grid-template-columns: minmax(0, 1fr); border-top: 2px solid var(--rule); padding: 1.7rem 0 1.9rem; }
+  .lead { padding-right: 0; }
+  .markers { justify-content: flex-start; align-items: center; gap: 10px; padding-right: 0; }
+  .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 4px; }
+  .history { border-left: 0; border-top: 1px solid var(--hair); margin-top: 2rem; padding: 1.5rem 0 0; }
+}
