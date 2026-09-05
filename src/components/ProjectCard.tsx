@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Play } from "lucide-react";
 import { Project } from "@/data/projects";
+import VideoLightbox from "@/components/VideoLightbox";
 
 const tintMap: Record<string, string> = {
   "hermes":           "235,220,195",
@@ -35,6 +36,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const [hovered, setHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [canHover, setCanHover] = useState(false);
+  const [lightbox, setLightbox] = useState(false);
   const enterT = useRef<number | null>(null);
   const leaveT = useRef<number | null>(null);
 
@@ -80,9 +82,24 @@ export default function ProjectCard({ project }: { project: Project }) {
     >
       <div className="flex items-start gap-3">
         {project.poster && (
-          <div className="relative shrink-0 w-[88px] h-[50px] rounded-md overflow-hidden border border-white/10">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              // Explicitly focus so the lightbox has a reliable element to
+              // return focus to on close (Safari doesn't focus buttons on
+              // click by default).
+              e.currentTarget.focus();
+              setLightbox(true);
+            }}
+            aria-label={`Play ${project.title} demo`}
+            className="relative shrink-0 w-[88px] h-[50px] rounded-md overflow-hidden border border-white/10 group/thumb focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          >
             <Image src={project.poster} alt="" fill sizes="88px" className="object-cover" />
-          </div>
+            <span className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity">
+              <Play className="w-4 h-4 fill-current text-[var(--accent)]" />
+            </span>
+          </button>
         )}
         <h3 className="label text-base text-white/90 leading-snug flex-1">{project.title}</h3>
         <div className="flex items-center gap-2 shrink-0 text-white/30">
@@ -111,6 +128,10 @@ export default function ProjectCard({ project }: { project: Project }) {
         <p className="text-sm text-white/55 leading-relaxed lowercase line-clamp-3">
           {project.longDescription}
         </p>
+      )}
+
+      {project.video && (
+        <VideoLightbox src={project.video} open={lightbox} onClose={() => setLightbox(false)} />
       )}
     </article>
   );
