@@ -216,9 +216,19 @@ Load the page: cards markedly shorter, the three demo cards show a real poster t
 
 **This is the task the whole redesign hinges on.** Get the no-reflow structure right before anything else.
 
-- [ ] **Step 1: Make grid cells fixed-height positioning contexts**
+- [ ] **Step 1: Make EVERY ProjectCard call site a fixed-height positioning context**
 
-In `src/app/page.tsx`, the side-projects grid becomes:
+**`ProjectCard` is used in THREE places, not one.** Once the card becomes `position: absolute`, any call site whose parent is not a sized, `relative` box will collapse to zero height and its cards will overlap. All three must be wrapped:
+
+1. `page.tsx` ~line 146 — the "my personal agent" card (`hermes`), inside a `space-y-4` stack
+2. `page.tsx` ~line 153 — the four cards inside `<PrimitivesToggle>`, in the same stack
+3. `page.tsx` ~line 164 — the side-projects grid
+
+Wrap each rendered card in `<div data-card-cell className="relative h-[220px]">`. For the two stacked sites the surrounding `space-y-4` still supplies the gap; only the height and positioning context are new.
+
+**Verify all three sections visually before moving on** — the personal-agent card and the primitive-tech cards are the ones that will look obviously broken if this is missed, and the primitive-tech ones are hidden behind a toggle so they are easy to forget. Expand that toggle and look.
+
+The side-projects grid becomes:
 
 ```tsx
 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
