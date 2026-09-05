@@ -5,11 +5,11 @@ import styles from "./projects.module.css";
 import Philosophy from "@/components/Philosophy";
 import ContributionGrid from "@/components/ContributionGrid";
 import Education from "@/components/Education";
+import SiteFooter from "@/components/SiteFooter";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
 import KonamiBoost from "@/components/KonamiBoost";
 import ExperienceItem from "@/components/ExperienceItem";
-import BuildLog from "@/components/BuildLog";
 import FlipLink from "@/components/FlipLink";
 import Portrait from "@/components/Portrait";
 
@@ -180,31 +180,7 @@ export default function Home() {
 
             <Education />
 
-            {/* Footer */}
-            <footer className="w-full py-20 border-t border-neutral-900 flex flex-col items-center justify-center text-center px-6">
-                <h2 className="font-display text-2xl md:text-4xl lowercase tracking-tight text-white mb-6">
-                    building something strange? i&rsquo;d like to hear about it.
-                </h2>
-                <a href="mailto:soumyamaheshwari1234@gmail.com" className="text-neutral-500 hover:text-white transition-colors text-lg mb-8">
-                    &lt;mail me&gt;
-                </a>
-
-                <a
-                    href="/SoumyaMaheshwariResume.pdf"
-                    target="_blank"
-                    className="label inline-block text-black bg-white rounded-lg px-4 py-2 md:px-12 hover:bg-neutral-200 transition-colors mb-8"
-                >
-                    view resume
-                </a>
-
-                <BuildLog />
-
-                <div className="mt-8 flex gap-8 opacity-50 hover:opacity-100 transition-opacity">
-                    <a href="https://twitter.com/soumymaheshwri" target="_blank" className="hover:text-white">X / Twitter</a>
-                    <a href="https://github.com/soumyyy" target="_blank" className="hover:text-white">GitHub</a>
-                    <a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" className="hover:text-white">LinkedIn</a>
-                </div>
-            </footer>
+            <SiteFooter />
         </main >
     );
 }

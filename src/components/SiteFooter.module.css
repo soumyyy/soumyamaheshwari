@@ -1,0 +1,161 @@
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  min-height: clamp(38rem, 82vh, 48rem);
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #1E1E22;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.photo img {
+  object-fit: cover;
+  /* The figure stands left of centre. Holding it there keeps the open sky on
+     the right, which is where the type goes. */
+  object-position: 32% 50%;
+}
+
+/* Two ramps. The vertical one seals the seam with the section above, opens up
+   through the middle so the view is actually visible, and closes again at the
+   bottom. The horizontal one darkens only the half the type sits in. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(10 10 11 / 10%) 0%,
+      rgb(10 10 11 / 18%) 30%,
+      rgb(10 10 11 / 72%) 58%,
+      rgb(10 10 11 / 86%) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #0a0a0b 0%,
+      rgb(10 10 11 / 52%) 26%,
+      rgb(10 10 11 / 28%) 55%,
+      rgb(10 10 11 / 90%) 100%
+    );
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(4rem, 10vh, 6rem) 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.content {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+.heading {
+  margin: 0;
+  max-width: 20ch;
+  font: clamp(1.9rem, 3.2vw, 2.9rem) / 1.14 var(--font-display), Georgia, serif;
+  letter-spacing: -0.02em;
+  color: #FFF;
+  text-wrap: balance;
+  /* The type sits on a photograph, so it carries its own shadow rather than
+     relying on the scrim alone to hold contrast at every viewport. */
+  text-shadow: 0 1px 24px rgb(0 0 0 / 55%);
+}
+
+.mail {
+  color: #C9C6BF;
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(201 198 191 / 35%);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.mail:hover { color: #FFF; border-bottom-color: #FFF; }
+
+.resume {
+  font-family: var(--font-mono);
+  font-variant-caps: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+  color: #0A0A0B;
+  background: #F2F0EB;
+  border-radius: 8px;
+  padding: 0.7rem 2.2rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.resume:hover { background: #FFF; }
+
+.log { color: #B8B5AF; }
+
+.social {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.75rem;
+  font: 0.72rem/1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.social a {
+  color: #8E8B85;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.social a:hover { color: #FFF; }
+
+.footer :focus-visible {
+  outline: 2px solid #F2F0EB;
+  outline-offset: 4px;
+}
+
+@media (width < 820px) {
+  .footer {
+    min-height: 0;
+    align-items: stretch;
+  }
+  .photo img { object-position: 36% 45%; }
+  /* One half is not available at this width, so the view sits above the type
+     and the ramp runs down instead of across. */
+  .scrim {
+    background: linear-gradient(
+      180deg,
+      #0a0a0b 0%,
+      rgb(10 10 11 / 34%) 18%,
+      rgb(10 10 11 / 72%) 42%,
+      rgb(10 10 11 / 94%) 62%,
+      #0a0a0b 100%
+    );
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    padding: 15rem 22px 3.5rem;
+  }
+  .content {
+    grid-column: 1;
+    gap: 1.4rem;
+  }
+  .heading { max-width: none; }
+  .resume { align-self: stretch; text-align: center; padding-inline: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mail, .resume, .social a { transition: none; }
+}
