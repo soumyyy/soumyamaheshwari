@@ -324,13 +324,17 @@ With the dev server running, in the browser console:
 const cells = [...document.querySelectorAll('#projects [data-card-cell]')];
 const target = cells[2], neighbour = cells[5];
 const before = neighbour.getBoundingClientRect().top;
-target.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+target.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
 await new Promise(r => setTimeout(r, 400));
 const after = neighbour.getBoundingClientRect().top;
 ({ before, after, moved: before !== after });
 ```
 
-Expected `moved: false`. **If a neighbour moves, the absolute positioning is wrong — fix it before continuing.**
+Expected `moved: false`, AND the target must visibly expand.
+
+**The event type matters.** Dispatch `mouseover`, not `mouseenter`: React 17+ attaches listeners at the root container and synthesises `onMouseEnter` from delegated `mouseover`/`mouseout`, so a raw `mouseenter` fires nothing and the probe reports `moved: false` against a card that never expanded — a false pass on the most important check in this plan. Confirm the target actually grew (its height changed, or the preview text appeared) before trusting the neighbour result. A real OS-level hover is stronger evidence than any synthetic event; prefer it when the tooling allows.
+
+**If a neighbour moves, the absolute positioning is wrong — fix it before continuing.**
 
 - [ ] **Step 6: Verify the delay**
 
