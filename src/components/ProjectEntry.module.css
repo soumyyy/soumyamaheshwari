@@ -143,7 +143,10 @@
     column-gap: 0.6rem;
     align-items: baseline;
   }
-  .markers { grid-row: 1; grid-column: 1; }
+  /* Baseline alignment drops a 0.75rem label to the foot of a 1.45rem serif
+     word, so it reads as having fallen rather than as a pair. Centred against
+     the name's line box instead. */
+  .markers { grid-row: 1; grid-column: 1; align-self: center; }
   /* clamp bottoms out at 1.75rem, which is most of a phone's width for one
      word and dwarfs the number sitting next to it */
   .name { font-size: 1.45rem; }
