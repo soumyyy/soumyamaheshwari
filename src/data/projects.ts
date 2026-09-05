@@ -10,7 +10,7 @@ export interface Project {
   poster?: string;
   github?: string;
   link?: string;
-  section: "core" | "one" | "someone" | "question";
+  section: "core" | "one" | "someone" | "hackathon" | "client" | "question";
   lineage?: { v: string; t: string; d: string }[]; // core only
   pins?: string[]; // core only
 }
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     ],
     stack: "expo · fastapi · neon postgres · tflite",
     note: "private repositories",
-    section: "someone",
+    section: "client",
   },
   {
     id: "sih-bel",
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     ],
     stack: "yolov8 · llama 3.1 · python · flask",
     github: "https://github.com/soumyyy/SIH-BEL",
-    section: "someone",
+    section: "hackathon",
   },
   {
     id: "imagenerve",
@@ -238,7 +238,7 @@ export const projects: Project[] = [
     ],
     stack: "python · operations research",
     github: "https://github.com/soumyyy/kochimetro-sih",
-    section: "question",
+    section: "hackathon",
   },
   {
     id: "alphafold-nano",
@@ -268,5 +268,35 @@ export const projects: Project[] = [
     stack: "python · reinforcement learning",
     github: "https://github.com/soumyyy/ace-rl",
     section: "question",
+  },
+  {
+    id: "vanshita",
+    name: "vanshita's portfolio",
+    who: "vanshita, and the work she wanted seen.",
+    summary: "a minimal, fast portfolio site built to put her work in front of people.",
+    problem: [
+      "a portfolio is a strange brief. the work is the point, so anything the site does to draw attention to itself is working against the person paying for it.",
+      "so this is deliberately quiet. fast to load, easy to read, and structured so the work is the first thing you see rather than an intro animation.",
+      "built in next.js with the motion kept to almost nothing. the only thing it needs to do well is get out of the way."
+    ],
+    stack: "next.js · tailwindcss · framer motion",
+    link: "https://vanshitakalra.com",
+    github: "https://github.com/soumyyy/vanshita-portfolio",
+    section: "client"
+  },
+  {
+    id: "bykritika",
+    name: "kritika's portfolio",
+    who: "kritika, and a brand that needed a front door.",
+    summary: "a digital presence built around brand identity rather than a project list.",
+    problem: [
+      "this one was not a portfolio in the usual sense. the brief was a brand, so a list of projects would have been the wrong shape entirely.",
+      "the site is built around identity first: the tone, the palette and the way it reads matter more here than any feature.",
+      "kept simple on purpose, because a brand site that needs explaining has already failed."
+    ],
+    stack: "react · tailwindcss",
+    link: "https://bykritika.com",
+    github: "https://github.com/soumyyy/bykritika.com",
+    section: "client"
   },
 ];

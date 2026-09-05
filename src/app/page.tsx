@@ -5,7 +5,6 @@ import styles from "./projects.module.css";
 import DotGrid from "@/components/DotGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
-import VisitBadge from "@/components/VisitBadge";
 import KonamiBoost from "@/components/KonamiBoost";
 import ExperienceItem from "@/components/ExperienceItem";
 import NowStrip from "@/components/NowStrip";
@@ -13,7 +12,28 @@ import BuildLog from "@/components/BuildLog";
 import FlipLink from "@/components/FlipLink";
 import Portrait from "@/components/Portrait";
 
+
+const GROUPS = [
+    { section: "one" as const, id: "audience-one", title: "an audience of one",
+      count: (n: number) => `${n === 4 ? "four" : n} projects, one user each` },
+    { section: "someone" as const, id: "audience-someone", title: "an audience of someone else",
+      count: (n: number) => `${n === 2 ? "two" : n} projects, real users` },
+    { section: "hackathon" as const, id: "hackathon", title: "hackathon bs",
+      count: () => "two smart india hackathons" },
+    { section: "client" as const, id: "client-work", title: "client work",
+      count: (n: number) => `${n === 3 ? "three" : n} projects, paid for` },
+    { section: "question" as const, id: "audience-question", title: "sometimes the question was enough",
+      count: (n: number) => `${n === 4 ? "four" : n} projects, four questions` },
+];
+
 export default function Home() {
+    let running = 1 + projects.filter(p => p.section === "core").length;
+    const startNumbers: Record<string, number> = {};
+    for (const group of GROUPS) {
+        startNumbers[group.section] = running;
+        running += projects.filter(p => p.section === group.section).length;
+    }
+
     return (
         <main className="min-h-screen flex flex-col items-center bg-black selection:bg-white selection:text-black">
             <KonamiBoost />
@@ -51,8 +71,7 @@ export default function Home() {
                         <span className="label text-neutral-500">soumya maheshwari</span>
                         <span className="label text-neutral-600">agentic systems · product builder</span>
                         <LocalTime />
-                        <VisitBadge />
-                    </div>
+                                </div>
 
                     <h1 className="font-display text-balance text-4xl lowercase leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
                         agents, trading engines, ios apps, infra and saas.
@@ -129,32 +148,25 @@ export default function Home() {
                 <div className={styles.ledger}>
                     <header className={styles.masthead}>
                         <h2 id="projects-heading">an audience of one</h2>
-                        <p>six of these have exactly one user. i am usually that user. once, it was my mother.</p>
+                        <p>five of these have exactly one user. i am usually that user. once, it was my mother.</p>
                     </header>
                     {projects.filter(project => project.section === "core").map(project => (
                         <CoreProject key={project.id} project={project} />
                     ))}
-                    <ProjectGroup
-                        id="audience-one"
-                        title="an audience of one"
-                        count="four projects, one user each"
-                        projects={projects.filter(project => project.section === "one")}
-                        startNumber={2}
-                    />
-                    <ProjectGroup
-                        id="audience-someone"
-                        title="an audience of someone else"
-                        count="four projects, real users"
-                        projects={projects.filter(project => project.section === "someone")}
-                        startNumber={6}
-                    />
-                    <ProjectGroup
-                        id="audience-question"
-                        title="sometimes the question was enough"
-                        count="five projects, five questions"
-                        projects={projects.filter(project => project.section === "question")}
-                        startNumber={10}
-                    />
+                    {GROUPS.map(group => {
+                        const items = projects.filter(project => project.section === group.section);
+                        const start = startNumbers[group.section];
+                        return items.length === 0 ? null : (
+                            <ProjectGroup
+                                key={group.section}
+                                id={group.id}
+                                title={group.title}
+                                count={group.count(items.length)}
+                                projects={items}
+                                startNumber={start}
+                            />
+                        );
+                    })}
                 </div>
                 <div className="edge-bottom" aria-hidden="true" />
             </section>
