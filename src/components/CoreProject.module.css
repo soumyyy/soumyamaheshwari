@@ -18,7 +18,7 @@
 .pins { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .pins li { border: 1px solid var(--rule); padding: 0.35rem 0.55rem; color: var(--ink-soft); font: 0.65rem/1.6 var(--font-mono); }
 @media (width < 820px) {
-  .core { grid-template-columns: minmax(0, 1fr); border-top: 2px solid var(--rule); padding: 1.7rem 0 1.9rem; }
+  .core { grid-template-columns: minmax(0, 1fr); border-top: 2px solid var(--rule); padding: 1.7rem var(--gutter, 1.25rem) 1.9rem; }
   .lead { padding-right: 0; }
   .markers { justify-content: flex-start; align-items: center; gap: 10px; padding-right: 0; }
   .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 4px; }

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Portrait() {
     return (
-        <div className="relative w-52 md:w-full md:max-w-[300px]">
+        <div className="relative mx-auto w-52 md:mx-0 md:w-full md:max-w-[300px]">
             <Image
                 src="/portrait-wide.webp"
                 alt="Soumya Maheshwari"

@@ -1,4 +1,4 @@
-.projects { position: relative; width: 100%; }
+.projects { position: relative; width: 100%; --gutter: 1.25rem; }
 .ledger { max-width: 1120px; margin: 0 auto; padding: 2rem 2rem 4rem; }
 .masthead { padding-bottom: 2rem; border-bottom: 3px double var(--ink); }
 .masthead h2 { font: clamp(2.5rem, 6vw, 4.75rem)/1.12 var(--font-display), Georgia, serif; letter-spacing: -0.04em; }
@@ -10,4 +10,11 @@
    first header sits straight under it. */
 .ledger > section:first-of-type { margin-top: 0; }
 .ledger > section:first-of-type > header { border-top: 0; padding-top: 0.85rem; }
-@media (width < 820px) { .ledger { padding: 1.5rem 1.25rem 3rem; } }
+/* On a phone the horizontal rules read as the structure of the page, so they
+   run edge to edge. The ledger gives up its side padding and each rule bearing
+   block takes it instead: padding sits inside the border box, so the text stays
+   inset while the border spans the full width. */
+@media (width < 820px) {
+  .ledger { padding: 1.5rem 0 3rem; }
+  .masthead { padding-inline: var(--gutter, 1.25rem); }
+}

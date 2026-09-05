@@ -91,7 +91,7 @@ export default function Home() {
                         <h2 className="label sticky top-24 text-neutral-500">intro</h2>
                         <Portrait />
                     </div>
-                    <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-neutral-200 text-balance lowercase">
+                    <div className="space-y-8 text-lg md:text-2xl font-light leading-relaxed text-neutral-200 text-balance lowercase">
                         <p>
                             i&rsquo;m soumya. i spent two years in founders&rsquo; offices at a fintech and a
                             healthtech startup, translating what the business needed into what the engineers

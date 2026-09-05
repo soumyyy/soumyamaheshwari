@@ -129,9 +129,13 @@
 .close { position: absolute; top: 0.45rem; right: 0.55rem; width: 1.75rem; height: 1.75rem; color: var(--red); cursor: pointer; }
 .entry :focus-visible, .preview:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 @media (width < 820px) {
-  .entry:nth-child(n) { min-height: 0; padding: 1.7rem 0 1.9rem; border-top: 2px solid var(--rule); border-left: 0; }
+  .entry:nth-child(n) { min-height: 0; padding: 1.7rem var(--gutter, 1.25rem) 1.9rem; border-top: 2px solid var(--rule); border-left: 0; }
   .markers, .markers:has(.preview) { justify-content: flex-start; align-items: center; min-height: 0; padding-right: 0; margin-bottom: 1rem; }
   .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 4px; }
+  /* The lift only exists so a floating panel clears its neighbours. Here the
+     panel is in the flow, and the lift beat the sticky group header instead,
+     so an open entry printed its text straight over the header. */
+  .entry[data-open="true"] { z-index: auto; }
   /* In the flow rather than floating, and positioned, because the close
      button is absolute and would otherwise anchor to .body, landing on the
      summary well above the panel it closes. */

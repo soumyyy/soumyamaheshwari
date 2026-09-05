@@ -17,7 +17,7 @@
 .header p { color: var(--ink-faint); }
 .grid { --sep: clamp(2rem, 5vh, 3.5rem); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0; row-gap: 0; }
 @media (width < 820px) {
-  .header { flex-direction: column; gap: 0.35rem; margin-bottom: 0; }
+  .header { flex-direction: column; gap: 0.35rem; margin-bottom: 0; padding-inline: var(--gutter, 1.25rem); }
   .grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .header { position: static; } }
