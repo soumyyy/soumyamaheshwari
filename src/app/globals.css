@@ -3,8 +3,8 @@
 :root {
     --background: #000000;
     --foreground: #ffffff;
-    --accent: #D9A441;
-    --accent-dim: #8A6A2B;
+    --accent: #E8E6E1;
+    --accent-dim: #6E6B66;
     --visited: #999999;
     --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
     --font-mono: 'Commit Mono', ui-monospace, monospace;
@@ -74,10 +74,17 @@ body::after {
     z-index: 40;
 }
 
-/* Custom selection color */
+/* Custom selection color. The dark site selects white on black; the paper
+   section inverts it so the highlight stays the darkest thing on the page
+   rather than washing out against the ground. */
 ::selection {
     background: var(--foreground);
     color: var(--background);
+}
+
+.projects-paper ::selection {
+    background: var(--ink);
+    color: var(--ground);
 }
 
 /* Scrollbar */

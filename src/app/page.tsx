@@ -2,12 +2,11 @@ import { projects } from "@/data/projects";
 import CoreProject from "@/components/CoreProject";
 import ProjectGroup from "@/components/ProjectGroup";
 import styles from "./projects.module.css";
-import DotGrid from "@/components/DotGrid";
+import Philosophy from "@/components/Philosophy";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
 import KonamiBoost from "@/components/KonamiBoost";
 import ExperienceItem from "@/components/ExperienceItem";
-import NowStrip from "@/components/NowStrip";
 import BuildLog from "@/components/BuildLog";
 import FlipLink from "@/components/FlipLink";
 import Portrait from "@/components/Portrait";
@@ -105,8 +104,6 @@ export default function Home() {
                 </div>
             </section>
 
-            <NowStrip />
-
             {/* Work Details Section */}
             <section id="experience" className="w-full max-w-5xl px-4 md:px-6 py-20 border-t border-neutral-900">
                 <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
@@ -147,8 +144,8 @@ export default function Home() {
                 <div className="edge-top" aria-hidden="true" />
                 <div className={styles.ledger}>
                     <header className={styles.masthead}>
-                        <h2 id="projects-heading">an audience of one</h2>
-                        <p>five of these have exactly one user. i am usually that user. once, it was my mother.</p>
+                        <h2 id="projects-heading">things i built</h2>
+                        <p>sixteen projects, grouped by who they were for. one i keep rebuilding, a few people paid for, and some just answered a question and stopped.</p>
                     </header>
                     {projects.filter(project => project.section === "core").map(project => (
                         <CoreProject key={project.id} project={project} />
@@ -175,9 +172,7 @@ export default function Home() {
             {/* <BrainSection /> */}
 
             {/* Philosophy Section */}
-            <section id="philosophy" className="w-full py-20 border-t border-neutral-900 bg-neutral-950/30">
-                <DotGrid />
-            </section>
+            <Philosophy />
 
             {/* Footer */}
             <footer className="w-full py-20 border-t border-neutral-900 flex flex-col items-center justify-center text-center px-6">
