@@ -2,13 +2,13 @@ import Image from "next/image";
 
 export default function Portrait() {
     return (
-        <div className="relative w-40 md:w-full md:max-w-[220px]">
+        <div className="relative w-52 md:w-full md:max-w-[300px]">
             <Image
                 src="/portrait-oval.webp"
                 alt="Soumya Maheshwari"
                 width={448}
                 height={560}
-                sizes="(min-width: 768px) 220px, 160px"
+                sizes="(min-width: 768px) 300px, 208px"
                 className="w-full select-none grayscale-[0.35] contrast-[1.05]"
                 style={{
                     // The frame is 4:5, so an ellipse at half its width and half its
