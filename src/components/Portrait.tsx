@@ -6,18 +6,20 @@ export default function Portrait() {
             <Image
                 src="/soumya-portrait.webp"
                 alt="Soumya Maheshwari"
-                width={560}
+                width={448}
                 height={560}
                 sizes="(min-width: 768px) 220px, 160px"
                 className="w-full select-none grayscale-[0.35] contrast-[1.05]"
                 style={{
-                    // A vignette, not an edge fix: this is a whole photograph rather than a
-                    // cutout, so it has content running to all four corners and needs the
-                    // fade to start well inside the frame and finish before it.
+                    // The frame is 4:5, so an ellipse at half its width and half its
+                    // height inscribes it exactly: a portrait oval that reaches every
+                    // edge and only has the four corners left over to dissolve. It
+                    // holds solid to 68% so the face and shoulders are untouched and
+                    // the fade is spent entirely on meeting the background.
                     maskImage:
-                        "radial-gradient(ellipse 58% 62% at 52% 46%, #000 26%, rgb(0 0 0 / 40%) 56%, transparent 88%)",
+                        "radial-gradient(ellipse 50% 50% at 50% 50%, #000 68%, rgb(0 0 0 / 72%) 86%, transparent 100%)",
                     WebkitMaskImage:
-                        "radial-gradient(ellipse 58% 62% at 52% 46%, #000 26%, rgb(0 0 0 / 40%) 56%, transparent 88%)",
+                        "radial-gradient(ellipse 50% 50% at 50% 50%, #000 68%, rgb(0 0 0 / 72%) 86%, transparent 100%)",
                 }}
             />
         </div>
