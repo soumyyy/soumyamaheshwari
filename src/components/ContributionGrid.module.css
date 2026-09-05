@@ -1,8 +1,7 @@
 /* The same ledger discipline as the section below it: a mono label, a double
-   rule, then the data. The ramp is white at rising alpha rather than a hue,
-   because the only colour on the dark half of this site is the one the paper
-   section owns, and a green heatmap here would read as a github screenshot
-   pasted into the page. */
+   rule, then the data. The ramp is github's own dark theme green, so the grid
+   is read as what it is on sight rather than needing its label to explain it.
+   These are github's published values, not an approximation. */
 .section {
   width: 100%;
   padding: clamp(3.5rem, 9vh, 5.5rem) 0 clamp(3rem, 7vh, 4.5rem);
@@ -66,13 +65,13 @@
 
 .day {
   aspect-ratio: 1;
-  border-radius: 1px;
-  background: rgba(255, 255, 255, 0.045);
+  border-radius: 2px;
+  background: #161B22;
 }
-.day[data-level="1"] { background: rgba(255, 255, 255, 0.24); }
-.day[data-level="2"] { background: rgba(255, 255, 255, 0.44); }
-.day[data-level="3"] { background: rgba(255, 255, 255, 0.68); }
-.day[data-level="4"] { background: rgba(255, 255, 255, 0.95); }
+.day[data-level="1"] { background: #0E4429; }
+.day[data-level="2"] { background: #006D32; }
+.day[data-level="3"] { background: #26A641; }
+.day[data-level="4"] { background: #39D353; }
 
 .foot {
   margin: 1.4rem 0 0;
