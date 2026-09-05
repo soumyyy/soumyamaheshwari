@@ -22,8 +22,8 @@ const NOTES = [
   },
   {
     n: "04",
-    text: "i keep rebuilding the same agent",
-    gloss: "five times so far, each rewrite keeping the question and dropping the answer",
+    text: "eleven years of photographs, searchable at last",
+    gloss: "it runs entirely on my own machine, which is slower and the whole point",
   },
 ];
 
