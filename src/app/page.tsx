@@ -142,15 +142,15 @@ export default function Home() {
                     <div className="space-y-4">
                         {projects
                             .filter(p => ["hermes"].includes(p.id))
-                            .map((project, index) => (
-                                <ProjectCard key={project.id} project={project} index={index} />
+                            .map((project) => (
+                                <ProjectCard key={project.id} project={project} />
                             ))}
 
                         <PrimitivesToggle>
                             {projects
                                 .filter(p => ["eclipsn", "eclipse-obsidian", "eclipse", "jarvis"].includes(p.id))
-                                .map((project, index) => (
-                                    <ProjectCard key={project.id} project={project} index={index} />
+                                .map((project) => (
+                                    <ProjectCard key={project.id} project={project} />
                                 ))}
                         </PrimitivesToggle>
                     </div>
@@ -160,8 +160,8 @@ export default function Home() {
                 <div className="w-full max-w-7xl">
                     <h3 className="label text-center text-neutral-500 mb-16">side projects</h3>
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                        {projects.filter(p => !["hermes", "jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project, index) => (
-                            <ProjectCard key={project.id} project={project} index={index} />
+                        {projects.filter(p => !["hermes", "jarvis", "eclipse", "eclipse-obsidian", "eclipsn", "vanshita", "bykritika"].includes(p.id)).map((project) => (
+                            <ProjectCard key={project.id} project={project} />
                         ))}
                     </div>
                 </div>

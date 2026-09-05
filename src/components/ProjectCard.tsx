@@ -1,136 +1,71 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "framer-motion";
-import { Github, ExternalLink, Play } from "lucide-react";
+import Image from "next/image";
+import { Github, ExternalLink } from "lucide-react";
 import { Project } from "@/data/projects";
 
-const gradientMap: Record<string, [string, string]> = {
-  "hermes":           ["rgba(235,220,195,0.14)", "rgba(235,220,195,0.03)"], // warm gold parchment
-  "eclipsn":          ["rgba(180,195,215,0.12)", "rgba(180,195,215,0.03)"], // steel blue
-  "eclipse-obsidian": ["rgba(170,182,195,0.12)", "rgba(170,182,195,0.03)"], // slate
-  "eclipse":          ["rgba(195,200,210,0.11)", "rgba(195,200,210,0.03)"], // silver
-  "jarvis":           ["rgba(210,205,195,0.11)", "rgba(210,205,195,0.03)"], // warm silver
-  "billinsight":      ["rgba(200,210,200,0.12)", "rgba(200,210,200,0.03)"], // pale eucalyptus
-  "fulcrum":          ["rgba(232,218,195,0.12)", "rgba(232,218,195,0.03)"], // champagne
-  "glai":             ["rgba(210,220,210,0.11)", "rgba(210,220,210,0.03)"], // sage linen
-  "room":             ["rgba(238,228,210,0.12)", "rgba(238,228,210,0.03)"], // warm linen
-  "shit":             ["rgba(205,200,195,0.11)", "rgba(205,200,195,0.03)"], // warm ash
-  "kochimetro":       ["rgba(195,188,182,0.12)", "rgba(195,188,182,0.03)"], // taupe
-  "hft":              ["rgba(230,215,185,0.12)", "rgba(230,215,185,0.03)"], // wheat
-  "photocortex":      ["rgba(235,225,215,0.12)", "rgba(235,225,215,0.03)"], // parchment
-  "stockportfolio":   ["rgba(215,220,210,0.11)", "rgba(215,220,210,0.03)"], // celadon
-  "sih-bel":          ["rgba(175,190,205,0.12)", "rgba(175,190,205,0.03)"], // cool steel
-  "imagenerve":       ["rgba(225,215,215,0.12)", "rgba(225,215,215,0.03)"], // blush
-  "alphafold-nano":   ["rgba(200,215,215,0.11)", "rgba(200,215,215,0.03)"], // mist
-  "ace-rl":           ["rgba(185,198,215,0.12)", "rgba(185,198,215,0.03)"], // steel
-  "vanshita":         ["rgba(240,232,220,0.11)", "rgba(240,232,220,0.03)"], // cream
-  "bykritika":        ["rgba(238,228,218,0.11)", "rgba(238,228,218,0.03)"], // ecru
+const tintMap: Record<string, string> = {
+  "hermes":           "235,220,195",
+  "eclipsn":          "180,195,215",
+  "eclipse-obsidian": "170,182,195",
+  "eclipse":          "195,200,210",
+  "jarvis":           "210,205,195",
+  "billinsight":      "200,210,200",
+  "fulcrum":          "232,218,195",
+  "glai":             "210,220,210",
+  "room":             "238,228,210",
+  "shit":             "205,200,195",
+  "kochimetro":       "195,188,182",
+  "hft":              "230,215,185",
+  "photocortex":      "235,225,215",
+  "stockportfolio":   "215,220,210",
+  "sih-bel":          "175,190,205",
+  "imagenerve":       "225,215,215",
+  "alphafold-nano":   "200,215,215",
+  "ace-rl":           "185,198,215",
+  "vanshita":         "240,232,220",
+  "bykritika":        "238,228,218",
 };
+const DEFAULT_TINT = "255,255,255";
 
-const defaultGradient: [string, string] = ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.02)"];
-
-interface ProjectCardProps {
-  project: Project;
-  index: number;
-}
-
-export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const [from, to] = gradientMap[project.id] ?? defaultGradient;
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const onEnter = () => { videoRef.current?.play().catch(() => {}); };
-  const onLeave = () => { const v = videoRef.current; if (v) { v.pause(); v.currentTime = 0; } };
+export default function ProjectCard({ project }: { project: Project }) {
+  const tint = tintMap[project.id] ?? DEFAULT_TINT;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.08 }}
-      viewport={{ once: true }}
+    <article
       style={{
-        background: `linear-gradient(135deg, ${from} 0%, ${to} 100%)`,
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
+        background: `linear-gradient(135deg, rgba(${tint},0.05) 0%, rgba(${tint},0.02) 100%)`,
       }}
-      className="group rounded-2xl border border-white/[0.07] overflow-hidden"
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
+      className="rounded-2xl border border-white/[0.07] p-5 md:p-6 flex flex-col gap-3"
     >
-      {project.video && (
-        <video
-          ref={videoRef}
-          src={project.video}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="w-full aspect-video object-cover opacity-70 transition-opacity duration-300 group-hover:opacity-100"
-        />
-      )}
-
-      <div className="p-5 md:p-6 flex flex-col gap-4">
-
-        {/* Title + action buttons */}
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="label text-base md:text-lg text-white/90 leading-snug">
-            {project.title}
-          </h3>
-          <div className="flex items-center gap-2 shrink-0 pt-0.5">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/30 hover:text-white/70 transition-colors"
-                title="Source"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            )}
-            {project.link && project.link !== project.github && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/30 hover:text-white/70 transition-colors"
-                title="Live"
-              >
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            )}
-            {project.video && (
-              <a
-                href={`/demo/${project.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="label flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.1] text-white/60 hover:text-white hover:bg-white/[0.14] transition-all"
-              >
-                <Play className="w-2.5 h-2.5 fill-current" />
-                demo
-              </a>
-            )}
+      <div className="flex items-start gap-3">
+        {project.poster && (
+          <div className="relative shrink-0 w-[88px] h-[50px] rounded-md overflow-hidden border border-white/10">
+            <Image src={project.poster} alt="" fill sizes="88px" className="object-cover" />
           </div>
+        )}
+        <h3 className="label text-base text-white/90 leading-snug flex-1">{project.title}</h3>
+        <div className="flex items-center gap-2 shrink-0 text-white/30">
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener noreferrer"
+               className="hover:text-[var(--accent)] transition-colors" aria-label="Source">
+              <Github className="w-4 h-4" />
+            </a>
+          )}
+          {project.link && project.link !== project.github && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer"
+               className="hover:text-[var(--accent)] transition-colors" aria-label="Live">
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
         </div>
-
-        {/* Tech chips */}
-        <div className="flex flex-wrap gap-2 opacity-70 transition-opacity duration-300 group-hover:opacity-100">
-          {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 rounded-full text-xs text-white/45 border border-white/[0.08] bg-white/[0.04]"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Description */}
-        <p className="text-sm text-white/45 leading-relaxed">
-          {project.longDescription}
-        </p>
-
       </div>
-    </motion.div>
+
+      <p className="text-sm text-white/45 leading-relaxed lowercase">{project.description}</p>
+
+      <div className="label text-xs text-white/35">
+        {project.techStack.slice(0, 4).join(" · ")}
+      </div>
+    </article>
   );
 }
