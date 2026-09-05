@@ -74,8 +74,10 @@ export default function Home() {
                         <LocalTime />
                                 </div>
 
-                    <h1 className="font-display text-balance text-4xl lowercase leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
-                        agents, ios apps, infra, saas and a backtesting engine.
+                    {/* No `lowercase` class here: the line is written lowercase, so the
+                        one word that carries capitals keeps them. */}
+                    <h1 className="font-display text-balance text-4xl leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+                        agents, ios apps, infra, SaaS, backtester and finance.
                     </h1>
 
                     <p className="max-w-xl text-base leading-relaxed text-neutral-400 lowercase md:text-lg">

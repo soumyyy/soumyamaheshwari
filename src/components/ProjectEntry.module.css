@@ -129,8 +129,29 @@
 .close { position: absolute; top: 0.45rem; right: 0.55rem; width: 1.75rem; height: 1.75rem; color: var(--red); cursor: pointer; }
 .entry :focus-visible, .preview:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 @media (width < 820px) {
-  .entry:nth-child(n) { min-height: 0; padding: 1.7rem var(--gutter, 1.25rem) 1.9rem; border-top: 2px solid var(--rule); border-left: 0; }
-  .markers, .markers:has(.preview) { justify-content: flex-start; align-items: center; min-height: 0; padding-right: 0; margin-bottom: 1rem; }
+  /* The number had a line to itself above the name, which is a whole row of
+     vertical space spent on two characters. On a phone it sits beside the name
+     instead. An entry with a demo poster keeps the old stack: a 92px thumbnail
+     in the first column would leave nothing for the name to wrap into. */
+  .entry:nth-child(n) {
+    min-height: 0;
+    padding: 1.7rem var(--gutter, 1.25rem) 1.9rem;
+    border-top: 2px solid var(--rule);
+    border-left: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.7rem;
+    align-items: baseline;
+  }
+  .markers { grid-row: 1; grid-column: 1; }
+  .nameRow { grid-row: 1; grid-column: 2; }
+  .whoRow { grid-row: 2; grid-column: 1 / -1; }
+  .body { grid-row: 3; grid-column: 1 / -1; }
+  .entry:has(.preview) .markers { grid-column: 1 / -1; margin-bottom: 0.9rem; }
+  .entry:has(.preview) .nameRow { grid-row: 2; grid-column: 1 / -1; }
+  .entry:has(.preview) .whoRow { grid-row: 3; }
+  .entry:has(.preview) .body { grid-row: 4; }
+  .markers, .markers:has(.preview) { justify-content: flex-start; align-items: center; min-height: 0; padding-right: 0; margin-bottom: 0; }
   .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 4px; }
   /* The lift only exists so a floating panel clears its neighbours. Here the
      panel is in the flow, and the lift beat the sticky group header instead,
