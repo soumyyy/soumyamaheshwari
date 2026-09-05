@@ -26,7 +26,9 @@ export default function ProjectGroup({
             name={project.name}
             video={project.video}
             poster={project.poster}
-            heading={<a href={project.link || project.github || `#project-${project.id}`}>{project.name}</a>}
+            heading={project.link ? <a href={project.link} target="_blank" rel="noopener noreferrer">{project.name}</a> : project.name}
+            github={project.github}
+            liveUrl={project.link}
             subtitle={project.who}
             summary={project.summary}
             credit={<><span>{project.stack}</span>{project.note && <span>{project.note}</span>}</>}

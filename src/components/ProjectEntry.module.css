@@ -123,3 +123,17 @@
   .panel { position: static; margin-top: 1rem; box-shadow: none; }
 }
 @media (prefers-reduced-motion: reduce) { .play { transition: none; } }
+
+/* repo and live links sit beside the name. previously the name itself linked
+   to its own anchor when a project had neither, which is a link that does
+   nothing. now the icons carry the links and their absence is honest. */
+.nameRow { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.nameRow .name { margin: 0; }
+.links { display: inline-flex; align-items: center; gap: 0.5rem; }
+.iconLink {
+  display: inline-flex; color: var(--ink-faint);
+  transition: color 0.18s ease; line-height: 0;
+}
+.iconLink:hover { color: var(--red); }
+.iconLink svg { width: 15px; height: 15px; stroke-width: 1.75; }
+@media (prefers-reduced-motion: reduce) { .iconLink { transition: none; } }

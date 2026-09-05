@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Github, ExternalLink } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import VideoLightbox from "./VideoLightbox";
 import styles from "./ProjectEntry.module.css";
@@ -25,6 +26,8 @@ type EntryProps = PreviewProps & {
   id: string;
   number: number;
   heading: ReactNode;
+  github?: string;
+  liveUrl?: string;
   subtitle: ReactNode;
   summary: ReactNode;
   credit: ReactNode;
@@ -125,7 +128,23 @@ export default function ProjectEntry(props: Props) {
         <span className={styles.number}>{String(props.number).padStart(2, "0")}</span>
         {preview}
       </div>
-      <h3 id={`project-${props.id}-name`} className={styles.name}>{props.heading}</h3>
+      <div className={styles.nameRow}>
+        <h3 id={`project-${props.id}-name`} className={styles.name}>{props.heading}</h3>
+        <span className={styles.links}>
+          {props.github && (
+            <a href={props.github} target="_blank" rel="noopener noreferrer"
+               aria-label={`${props.name} source on GitHub`} className={styles.iconLink}>
+              <Github aria-hidden="true" />
+            </a>
+          )}
+          {props.liveUrl && (
+            <a href={props.liveUrl} target="_blank" rel="noopener noreferrer"
+               aria-label={`${props.name} live site`} className={styles.iconLink}>
+              <ExternalLink aria-hidden="true" />
+            </a>
+          )}
+        </span>
+      </div>
       <div className={styles.whoRow}>
         <p className={styles.who}>{props.subtitle}</p>
         <button
