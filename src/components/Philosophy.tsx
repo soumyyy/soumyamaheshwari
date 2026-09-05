@@ -35,8 +35,8 @@ export default function Philosophy() {
       </div>
       <div className={styles.inner}>
         <header className={styles.head}>
-          <h2 id="philosophy-heading">working philosophy</h2>
-          <p>four true things</p>
+          <h2 id="philosophy-heading">four true things</h2>
+          <p>curiosity is the only through-line</p>
         </header>
         <ol className={styles.notes}>
           {NOTES.map((note) => (
