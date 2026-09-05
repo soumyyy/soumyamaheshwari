@@ -3,7 +3,7 @@ import ProjectEntry from "./ProjectEntry";
 import groupStyles from "./ProjectGroup.module.css";
 import styles from "./CoreProject.module.css";
 
-type Core = Pick<Project, "id" | "name" | "who" | "problem" | "lineage" | "pins" | "link" | "github" | "video" | "poster">;
+type Core = Pick<Project, "id" | "name" | "who" | "problem" | "lineage" | "pins" | "writing" | "link" | "github" | "video" | "poster">;
 
 export default function CoreProject({ project }: { project: Core }) {
   return (
@@ -24,6 +24,17 @@ export default function CoreProject({ project }: { project: Core }) {
           <p className={styles.who}>{project.who}</p>
           <div className={styles.prose}>
             {project.problem.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {project.writing?.map((piece) => (
+              <a key={piece.url} className={styles.writing} href={piece.url}
+                 target="_blank" rel="noopener noreferrer">
+                <span className={styles.writingLabel}>wrote about this</span>
+                <span className={styles.writingTitle}>{piece.title}</span>
+                <span className={styles.writingExcerpt}>{piece.excerpt}</span>
+                <span className={styles.writingMeta}>
+                  {piece.handle} &middot; {piece.date} &middot; read on x &rarr;
+                </span>
+              </a>
+            ))}
           </div>
         </div>
         <div className={styles.history}>

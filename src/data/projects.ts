@@ -11,6 +11,7 @@ export interface Project {
   github?: string;
   link?: string;
   section: "core" | "one" | "someone" | "hackathon" | "client" | "question";
+  writing?: { title: string; excerpt: string; handle: string; date: string; url: string }[];
   lineage?: { v: string; t: string; d: string }[]; // core only
   pins?: string[]; // core only
 }
@@ -32,6 +33,15 @@ export const projects: Project[] = [
     video: "/demo/EclipseDemo.mp4",
     poster: "/demo/posters/eclipse-obsidian.jpg",
     section: "core",
+    writing: [
+      {
+        title: "the agent is not the product: a guide to tinkering your way into hermes",
+        excerpt: "most people install hermes or openclaw for the same reason they install any cool new developer tool. it looks interesting. it feels fresh. you want to poke around and see what happens. i did the same.",
+        handle: "@soumymaheshwri",
+        date: "16 june 2026",
+        url: "https://x.com/Soumymaheshwri/status/2066821397624873257"
+      }
+    ],
     lineage: [
       {
         v: "01",

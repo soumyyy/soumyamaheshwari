@@ -24,3 +24,31 @@
   .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 4px; }
   .history { border-left: 0; border-top: 1px solid var(--hair); margin-top: 2rem; padding: 1.5rem 0 0; }
 }
+
+/* a piece of writing about this project. presented as a quoted extract in the
+   ledger's own voice rather than an embedded card, which would arrive with its
+   own typeface and rounded corners and read as a foreign object on paper. */
+.writing {
+  display: block; margin-top: 1.6rem; padding: 1.1rem 0 0;
+  border-top: 1px solid var(--rule); text-decoration: none; color: inherit;
+}
+.writingLabel {
+  display: block; margin-bottom: 0.55rem;
+  font: 0.61rem/1 var(--font-mono); letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.writingTitle {
+  display: block; margin-bottom: 0.5rem;
+  font: italic 1.12rem/1.32 var(--font-display), Georgia, serif;
+  color: var(--ink);
+}
+.writingExcerpt {
+  display: block; margin-bottom: 0.7rem; max-width: 46ch;
+  font-size: 0.9rem; line-height: 1.6; color: var(--ink-soft);
+}
+.writingMeta {
+  display: block;
+  font: 0.63rem/1 var(--font-mono); letter-spacing: 0.05em; color: var(--red);
+}
+.writing:hover .writingTitle { color: var(--red); }
+.writing:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
