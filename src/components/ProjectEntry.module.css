@@ -71,7 +71,28 @@
   color: var(--ink-faint);
   font: 0.68rem/1.7 var(--font-mono);
 }
-.disclosure { align-self: flex-start; margin-top: 0.85rem; color: var(--red); font: 0.72rem/1.6 var(--font-mono); cursor: pointer; }
+/* the label is gone. the glyph alone marks that there is more, and only
+   where the reader needs it: on touch, and on keyboard focus. a pointer
+   user gets the panel on hover and never needs a control at all. */
+.disclosure {
+  align-self: flex-start; margin-top: 0.85rem;
+  color: var(--red); font: 0.8rem/1 var(--font-mono); cursor: pointer;
+  opacity: 0; transition: opacity 0.2s ease;
+}
+.srOnly {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+.entry:hover .disclosure,
+.disclosure:focus-visible { opacity: 1; }
+
+@media (width < 820px) {
+  /* no hover here, so the affordance has to be permanently visible */
+  .disclosure { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .disclosure { transition: none; }
+}
 .panel {
   position: absolute;
   top: -6px;

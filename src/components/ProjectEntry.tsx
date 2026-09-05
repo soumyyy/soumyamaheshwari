@@ -141,7 +141,10 @@ export default function ProjectEntry(props: Props) {
             if (open) close();
             else { focusPanel.current = true; setActivePanel(props.id); }
           }}
-        >what i built ↓</button>
+        >
+          <span className={styles.srOnly}>what i built</span>
+          <span aria-hidden="true">↓</span>
+        </button>
         <div
           ref={panelRef}
           id={panelId}
