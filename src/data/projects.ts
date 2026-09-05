@@ -11,6 +11,7 @@ export interface Project {
   github?: string;
   link?: string;
   section: "core" | "one" | "someone" | "hackathon" | "client" | "question";
+  shots?: { src: string; alt: string; w: number; h: number; caption: string }[];
   writing?: { title: string; excerpt: string; handle: string; date: string; url: string }[];
   lineage?: { v: string; t: string; d: string }[]; // core only
   pins?: string[]; // core only
@@ -134,6 +135,16 @@ export const projects: Project[] = [
       "three apps, two remotes, and a four second cold start to switch off a light or drop the ac two degrees. the hardware was fine. the software between me and the hardware was the problem.",
       "wiz bulbs speak a simple protocol on the local network, so talking to them directly skips the round trip to a cloud service entirely. the ir blaster covers the ac and everything else older than wifi, so one interface reaches the whole room.",
       "one screen, one tap, no account. the smallest useful thing i have built, and the one i use most.",
+    ],
+    shots: [
+      {
+        src: "/projects/room/widget.png", alt: "Room home screen widget showing enter, leave, the ac at 24 degrees and lights at 100 percent",
+        w: 760, h: 396, caption: "the widget. two taps for the whole room."
+      },
+      {
+        src: "/projects/room/app.png", alt: "Room app screen with a power button, temperature at 24 degrees, ice day and night presets, mode and fan speed rows, and left and right light tiles",
+        w: 600, h: 1130, caption: "presets, modes, fan speed, and both lights on one screen."
+      }
     ],
     stack: "typescript · expo · ios · wiz api · ir",
     github: "https://github.com/soumyyy/Room",
