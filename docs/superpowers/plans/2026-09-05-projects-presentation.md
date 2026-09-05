@@ -223,7 +223,7 @@ In `src/app/page.tsx`, the side-projects grid becomes:
 ```tsx
 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
   {projects.filter(/* unchanged filter */).map((project) => (
-    <div key={project.id} className="relative h-[220px]">
+    <div key={project.id} data-card-cell className="relative h-[220px]">
       <ProjectCard project={project} />
     </div>
   ))}
@@ -233,6 +233,14 @@ In `src/app/page.tsx`, the side-projects grid becomes:
 The wrapper's fixed height is what the grid lays out; the card inside is absolutely positioned and free to grow past it.
 
 - [ ] **Step 2: Add state and debounced hover**
+
+First add the React import — after Task 2 the file imports nothing from react, so without this the task cannot compile:
+
+```tsx
+import { useState, useEffect, useRef } from "react";
+```
+
+Then:
 
 ```tsx
 const [hovered, setHovered] = useState(false);
@@ -303,7 +311,7 @@ Three clamped lines is the "a bit of text" the spec calls for — enough to deci
 With the dev server running, in the browser console:
 
 ```js
-const cells = [...document.querySelectorAll('#projects .relative')];
+const cells = [...document.querySelectorAll('#projects [data-card-cell]')];
 const target = cells[2], neighbour = cells[5];
 const before = neighbour.getBoundingClientRect().top;
 target.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
