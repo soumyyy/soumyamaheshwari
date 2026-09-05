@@ -4,7 +4,7 @@ export default function Portrait() {
     return (
         <div className="relative w-52 md:w-full md:max-w-[300px]">
             <Image
-                src="/portrait-oval.webp"
+                src="/portrait.webp"
                 alt="Soumya Maheshwari"
                 width={448}
                 height={560}
