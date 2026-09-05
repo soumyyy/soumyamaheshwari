@@ -145,7 +145,7 @@ export default function Home() {
                 <div className={styles.ledger}>
                     <header className={styles.masthead}>
                         <h2 id="projects-heading">things i built</h2>
-                        <p>sixteen projects, grouped by who they were for. one i keep rebuilding, a few people paid for, and some just answered a question and stopped.</p>
+                        <p>grouped by who they were for. one i keep rebuilding, a few people paid for, and some just answered a question and stopped.</p>
                     </header>
                     {projects.filter(project => project.section === "core").map(project => (
                         <CoreProject key={project.id} project={project} />
