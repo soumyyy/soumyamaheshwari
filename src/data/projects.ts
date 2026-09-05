@@ -1,186 +1,272 @@
 export interface Project {
   id: string;
-  title: string;
-  description: string;
-  techStack: string[];
-  link?: string;
-  github?: string;
-  image?: string;
+  name: string; // heading. lowercase.
+  who: string; // subtitle. who it was for, or the question it answered.
+  summary: string; // one or two lines, always visible
+  problem: string[]; // 3 paragraphs, revealed on hover or tap
+  stack: string; // mono, dot separated, already formatted
+  note?: string; // "on testflight", "live at shitsort.com", "fully local"
   video?: string;
   poster?: string;
-  longDescription: string;
+  github?: string;
+  link?: string;
+  section: "core" | "one" | "someone" | "question";
+  lineage?: { v: string; t: string; d: string }[]; // core only
+  pins?: string[]; // core only
 }
 
 export const projects: Project[] = [
-  // --- The Jarvis Evolution Flow ---
-  {
-    id: "hermes",
-    title: "Hermes",
-    description: "My most capable personal agent — powered by Hermes, runs on a server, accessible via WhatsApp, Telegram, or a portal.",
-    longDescription: "Powered by Hermes. Runs 24/7 on a server — I talk to it through WhatsApp, Telegram, or a web portal depending on where I am. It has long-term memory across every conversation, ingests my Gmail, Whoop recovery data, Strava activity, and Swiggy orders — and uses all of it to actually know me. It knows my projects, my portfolio, my schedule, my patterns. Not a chatbot, not a tool — closer to a persistent digital version of me that's always on.",
-    techStack: ["WhatsApp API", "Telegram API", "Whoop API", "Gmail API", "Strava API", "Long-term Memory"],
-    github: undefined,
-  },
-  {
-    id: "eclipsn",
-    title: "Eclipsn",
-    description: "A personal agent inspired by Bind.ai and Poke, focusing on a single user's knowledge graph, Gmail, and long-term memory.",
-    longDescription: "Eclipsn is my personal AI agent, designed to be the central ecosystem of my digital life. It connects via Whoop API to track recovery, ingests my Gmail to stay updated on conversations, and maintains a long-term memory graph. It learns about me, anticipates updates, and serves as a unified interface for my data.\n\n(P.S. While I was building this, Peter Steinberger(@steinpete) shipped OpenClaw (the 100x version). Great minds think alike lol, but he shipped faster.)",
-    techStack: ["Next.js", "Graph Database", "Gmail API", "Whoop API"],
-    github: "https://github.com/soumyyy/eclipsn",
-  },
-  {
-    id: "eclipse-obsidian",
-    title: "Eclipse Obsidian",
-    description: "The next iteration of Eclipse, integrated with Obsidian for personal knowledge management.",
-    longDescription: "I run this on a VPS, accessed via a custom PWA. Powered by Cerebras (3000 tokens/sec), it gives me instant access to my memories, past journals, and collections. Considering I treat Obsidian as my second brain, I have a GitHub hook that fetches and ingests my new memories at 2am every day. It bridges the gap between personal AI and my knowledge base beautifully.",
-    techStack: ["TypeScript", "Obsidian API", "Cerebras", "PWA"],
-    github: "https://github.com/soumyyy/eclipse-obsidian",
-    video: "/demo/EclipseDemo.mp4",
-    poster: "/demo/posters/eclipse-obsidian.jpg"
-  },
+  // --- Core ---
   {
     id: "eclipse",
-    title: "Eclipse",
-    description: "Enhanced Cognitive Linguistic Interactive Personal Support Engine. A significant evolution in conversational AI integration.",
-    longDescription: "Eclipse (Enhanced Cognitive Linguistic Interactive Personal Support Engine) represents the next step in personal AI, focusing on deeper cognitive linguistic understanding and interactive support.",
-    techStack: ["Python", "NLP", "MySQL"],
-    github: "https://github.com/soumyyy/Eclipse",
+    name: "eclipse",
+    who: "me. every day, for years.",
+    summary: "",
+    problem: [
+      "a personal agent that runs continuously on a server and is reachable wherever i already am, over whatsapp or telegram. it holds memory across every conversation rather than starting fresh each time, which is the single thing that decides whether an assistant becomes useful or gets abandoned.",
+      "it reads my mail, my recovery and sleep from whoop, my activity from strava, and my orders, so it has the context without being told it. a separate orchestrating agent decides what to actually do with a request, and codex handles the work that is really code.",
+      "i have rebuilt it five times over several years. each rewrite kept the same question and threw away the answer.",
+    ],
+    stack: "",
+    github: "https://github.com/soumyyy/eclipse-obsidian",
+    video: "/demo/EclipseDemo.mp4",
+    poster: "/demo/posters/eclipse-obsidian.jpg",
+    section: "core",
+    lineage: [
+      {
+        v: "01",
+        t: "jarvis v0",
+        d: "the first attempt. scripted commands, no memory, and it forgot everything the moment it closed. it taught me the problem was never the interface.",
+      },
+      {
+        v: "02",
+        t: "eclipse",
+        d: "enhanced cognitive linguistic interactive personal support engine. python, nlp and mysql. the first version with a real store behind it, and the first that could answer a question about last week.",
+      },
+      {
+        v: "03",
+        t: "eclipse obsidian",
+        d: "moved onto a vps behind a custom pwa, running on cerebras at roughly three thousand tokens a second. a github hook ingested my obsidian journal every night at 2am, so my second brain and the agent were finally the same thing.",
+      },
+      {
+        v: "04",
+        t: "eclipsn",
+        d: "rebuilt around a knowledge graph instead of a flat store, with gmail and whoop feeding it. the graph made connections between things i had never explicitly linked.",
+      },
+      {
+        v: "05",
+        t: "eclipse",
+        d: "the current one. always on, reachable over whatsapp and telegram, with an orchestrating agent above it and a memory layer underneath.",
+      },
+    ],
+    pins: [
+      "whatsapp",
+      "telegram",
+      "whoop",
+      "strava",
+      "gmail",
+      "memory layer",
+      "codex",
+      "orchestrating agent",
+      "backed by open source hermes",
+    ],
   },
-  {
-    id: "jarvis",
-    title: "JARVIS V0",
-    description: "A basic voice-controlled assistant that can process speech input, respond with text or speech, and perform simple system tasks.",
-    longDescription: "Jarvis V0 is a basic voice-controlled assistant that can process speech input, respond with text or speech, and perform simple system tasks. It integrates speech recognition, text-to-speech, and basic automation to assist with everyday commands.",
-    techStack: ["Python", "SpeechRecognition", "pyttsx3"],
-    github: "https://github.com/soumyyy/Jarvis-V0",
-  },
-  // --- Client Work ---
-  {
-    id: "vanshita",
-    title: "Vanshita's Portfolio",
-    description: "A minimal, high-performance portfolio website built for Vanshita.",
-    longDescription: "A minimal, high-performance portfolio website built for Vanshita. Designed to showcase her work.",
-    techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
-    link: "https://vanshitakalra.com",
-    github: "https://github.com/soumyyy/vanshita-portfolio",
-  },
-  {
-    id: "bykritika",
-    title: "Kritika's Portfolio",
-    description: "A digital presence for Kritika, focusing on brand identity.",
-    longDescription: "A digital presence for Kritika, focusing on brand identity and online reach.",
-    techStack: ["React", "TailwindCSS"],
-    link: "https://bykritika.com",
-    github: "https://github.com/soumyyy/bykritika.com",
-  },
-  // --- Other Key Projects ---
-  {
-    id: "billinsight",
-    title: "BillInsight",
-    description: "AI invoice and expense management, built as client work. On-device receipt detection in front of a durable extraction pipeline.",
-    longDescription: "A mobile expense-ingestion pipeline built for a client. A two-stage MobileNetV3 TensorFlow Lite classifier runs on-device to filter the camera roll, so only candidate receipts are ever sent up for multimodal extraction — cheaper, faster, and private by default. Behind it sits a durable FastAPI/Postgres processing system: idempotent uploads, job claims, exponential-backoff retries, background reconciliation, Clerk auth, and PII-scrubbed observability through Sentry and Grafana. Private repositories.",
-    techStack: ["Expo", "React Native", "FastAPI", "Neon Postgres", "TensorFlow Lite", "Gemini", "PaddleOCR", "Clerk", "Sentry", "Grafana"],
-  },
-  {
-    id: "fulcrum",
-    title: "Fulcrum",
-    description: "AI-powered annual report risk analysis system for the Indian credit market.",
-    longDescription: "Upload any company's annual report PDF — Fulcrum extracts ~25 financial fields via Gemini, computes Tier-1A ratios, runs two ML models in parallel (trained on a cohort of wilful defaulters vs. controls), and synthesizes a structured analyst memo, streamed to the UI in real time. Built to replace manual ratio checks in Indian credit underwriting with a grounded, explainable scoring pipeline.",
-    techStack: ["Next.js", "FastAPI", "Gemini", "Python", "ML"],
-    github: "https://github.com/soumyyy/fulcrum",
-  },
+  // --- an audience of one ---
   {
     id: "glai",
-    title: "Glai",
-    description: "Built for my mom's diabetes management — photo-based meal logging with AI nutrition analysis.",
-    longDescription: "Built for my mom's diabetes management. Snap a meal, and Glai runs a two-step OpenAI analysis — first identifying dishes, then estimating weights and nutrition ranges. Data is saved locally in SQLite with optional Supabase sync, with HealthKit/CGM integration planned. Shipped to TestFlight via EAS.",
-    techStack: ["React Native", "Expo", "OpenAI", "SQLite", "Supabase"],
+    name: "glai",
+    who: "my mother.",
+    summary:
+      "photo based meal logging with nutrition analysis, built for her diabetes management.",
+    problem: [
+      "every diabetes app assumes you will weigh your food and look up each ingredient. she was never going to do that, and neither would i.",
+      "so it takes a photograph. one pass identifies the dishes, a second estimates weights and nutrition ranges. ranges rather than fake precision, because a photograph cannot tell you grams.",
+      "everything stays on the device. sync is optional and off by default. a health record for one person did not need a backend.",
+    ],
+    stack: "react native · expo · openai · sqlite",
+    note: "on testflight",
     github: "https://github.com/soumyyy/glai",
-  },
-  {
-    id: "room",
-    title: "Room",
-    description: "iOS app to control my Wiz smart bulbs and IR blaster from one interface.",
-    longDescription: "A personal home automation app that unifies control of my Wiz smart bulbs and IR blaster into a single native iOS interface. Built because the stock apps are slow and fragmented.",
-    techStack: ["TypeScript", "Expo", "iOS", "Wiz API"],
-    github: "https://github.com/soumyyy/Room",
-  },
-  {
-    id: "shit",
-    title: "SHIT",
-    description: "An app for managing academic timetables and tracking attendance, with a native iOS UI.",
-    longDescription: "[Student Helper Integrated Tool] A minimal native app for managing academic timetables and tracking attendance. All data stored locally on-device with no cloud dependencies. Features weekly timetable management, visual attendance tracking, and insights.",
-    techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
-    link: "https://shitsort.com",
-    github: "https://github.com/soumyyy/shit",
-    video: "/demo/SHITdemo.mp4",
-    poster: "/demo/posters/shit.jpg"
-  },
-  {
-    id: "kochimetro",
-    title: "Kochi Metro SIH",
-    description: "Smart India Hackathon project for Kochi Metro.",
-    longDescription: "A Smart India Hackathon (SIH) project developed for Kochi Metro, focusing on improving operational efficiency by solving ops problems like depot stabling & turnout order, and optimizes safety, service readiness, branding exposure and mileage balancing.",
-    techStack: ["Python", "Optimization", "Operations Research", "Algorithm Design"],
-    github: "https://github.com/soumyyy/kochimetro-sih",
-  },
-  {
-    id: "hft",
-    title: "HFT Backtesting Engine",
-    description: "A high-frequency trading backtesting engine for XAU/USD built in Rust.",
-    longDescription: "A high-frequency trading backtesting engine for XAU/USD built in Rust, designed to run efficiently on a Macbook. Optimized for speed and low-latency simulation.",
-    techStack: ["Rust", "HFT", "Backtesting"],
-    github: "https://github.com/soumyyy/hft-backtest-engine",
+    section: "one",
   },
   {
     id: "photocortex",
-    title: "PhotoCortex",
-    description: "AI-powered photo analysis and organization platform.",
-    longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform built on an ensemble of multimodal AI models to help you understand and explore your photo collection in new ways. It combines face, object, scene, and text detection with computer vision — Google Photos, but fully local.",
-    techStack: ["Computer Vision", "AI"],
+    name: "photocortex",
+    who: "me, and eleven years of photographs.",
+    summary: "face, object, scene and text detection across a personal photo library.",
+    problem: [
+      "google photos is genuinely excellent and the price is handing over every photograph you have ever taken.",
+      "this runs the same class of analysis locally, so the library becomes searchable by what is in it rather than only by when it was taken.",
+      "it is slower than the cloud version and always will be. that is the trade, stated plainly.",
+    ],
+    stack: "computer vision · python",
+    note: "fully local",
     github: "https://github.com/soumyyy/PhotoCortex",
     video: "/demo/PhotoCortexDemo.mp4",
-    poster: "/demo/posters/photocortex.jpg"
+    poster: "/demo/posters/photocortex.jpg",
+    section: "one",
+  },
+  {
+    id: "room",
+    name: "room",
+    who: "me, at one in the morning.",
+    summary:
+      "one native ios interface for my whole room. lights, the ac, and everything behind the ir blaster.",
+    problem: [
+      "three apps, two remotes, and a four second cold start to switch off a light or drop the ac two degrees. the hardware was fine. the software between me and the hardware was the problem.",
+      "wiz bulbs speak a simple protocol on the local network, so talking to them directly skips the round trip to a cloud service entirely. the ir blaster covers the ac and everything else older than wifi, so one interface reaches the whole room.",
+      "one screen, one tap, no account. the smallest useful thing i have built, and the one i use most.",
+    ],
+    stack: "typescript · expo · ios · wiz api · ir",
+    github: "https://github.com/soumyyy/Room",
+    section: "one",
   },
   {
     id: "stockportfolio",
-    title: "Stock Portfolio Tracker",
-    description: "A minimalistic, real-time stock portfolio tracker built for personal use.",
-    longDescription: "A minimalistic, real-time stock portfolio tracker based on Zerodha's Kite platform. Track your investments with live updates — automatically fetches your portfolio across multiple Kite accounts so everything is in one place.",
-    techStack: ["Next.js", "TypeScript", "TailwindCSS", "Yahoo Finance API"],
+    name: "stock portfolio tracker",
+    who: "me, and three brokerage accounts.",
+    summary: "a real time tracker pulling several kite accounts into a single view.",
+    problem: [
+      "holdings split across accounts means no single screen shows what you actually own, so you do the arithmetic in your head and get it wrong.",
+      "this fetches all of them and shows one position list with live prices. no advice, no charts, no engagement mechanics.",
+      "it is deliberately boring. that is why it still gets opened.",
+    ],
+    stack: "next.js · typescript · yahoo finance api",
     github: "https://github.com/soumyyy/StockPortfolio",
+    section: "one",
+  },
+  // --- an audience of someone else ---
+  {
+    id: "shit",
+    name: "shit",
+    who: "every student who has lost track of their attendance.",
+    summary: "timetable management and attendance tracking, entirely on device.",
+    problem: [
+      "the college portal tells you your attendance percentage but not the thing everyone actually wants to know, which is how many more classes you can afford to miss.",
+      "so it computes that directly, per subject and combined, and lets you correct a wrong record with a long press instead of an email to an administrator.",
+      "nothing leaves the phone. an attendance record is not worth a server, an account system, or a privacy policy, and a student should not have to trust one.",
+    ],
+    stack: "react native · expo · typescript · mmkv",
+    note: "live at shitsort.com",
+    link: "https://shitsort.com",
+    github: "https://github.com/soumyyy/shit",
+    video: "/demo/SHITdemo.mp4",
+    poster: "/demo/posters/shit.jpg",
+    section: "someone",
+  },
+  {
+    id: "billinsight",
+    name: "billinsight",
+    who: "a client, and a camera roll full of receipts.",
+    summary: "an ai invoice and expense pipeline with a durable server behind it.",
+    problem: [
+      "uploading an entire camera roll to find the receipts in it is expensive, slow, and a privacy problem you then have to explain to a client.",
+      "so a mobilenetv3 classifier runs on the device and filters first. only likely receipts are sent up, which cuts the bill and means holiday photos never leave the phone.",
+      "behind it sits the unglamorous half: idempotent uploads, job claims, backoff retries, background reconciliation, and observability with the personal data scrubbed out. that is what makes it survive real users.",
+    ],
+    stack: "expo · fastapi · neon postgres · tflite",
+    note: "private repositories",
+    section: "someone",
   },
   {
     id: "sih-bel",
-    title: "SIH-BEL Image Chatbot",
-    description: "Smart India Hackathon 2024 project: Conversational Image Recognition Chatbot for Bharat Electronics Limited.",
-    longDescription: "Developed for SIH 2024 (Bharat Electronics Limited). This system integrates YoloV8 for computer vision and Llama 3.1 for NLP to analyze images and generate contextual responses for component identification and retrieve information about the particular part from BEL's official documentation.",
-    techStack: ["YOLOv8", "Llama 3.1", "Python", "Flask"],
+    name: "sih-bel chatbot",
+    who: "a technician holding an unfamiliar part.",
+    summary:
+      "detection and language together, identifying a component and finding its documentation.",
+    problem: [
+      "you have to identify a component before you can look anything up, and the identifying marks are often worn away or facing the wrong direction.",
+      "yolov8 handles recognition, llama 3.1 handles the conversation, and the answer is grounded in bharat electronics own manuals rather than invented.",
+      "the constraint that shaped it: a confident wrong answer about a defence component is far worse than admitting uncertainty.",
+    ],
+    stack: "yolov8 · llama 3.1 · python · flask",
     github: "https://github.com/soumyyy/SIH-BEL",
+    section: "someone",
   },
   {
     id: "imagenerve",
-    title: "ImageNerve",
-    description: "A full-stack photo management application that fetches all your photos.",
-    longDescription: "A native photo management application with AI-powered face recognition. Designed to organize and retrieve only your photos intelligently, Get your photos from any event in just one scan.",
-    techStack: ["React Native", "Expo", "FastAPI", "Face Recognition"],
+    name: "imagenerve",
+    who: "a wedding party, and two thousand photographs.",
+    summary: "face recognition across an event so you get only the photos you are in.",
+    problem: [
+      "after any large event there is a shared drive with two thousand photographs in it, and finding the eleven you appear in means scrolling all two thousand.",
+      "one scan returns only yours. the recognition is the easy part now; the useful part is framing it around a person rather than an album.",
+      "built after a wedding, for the obvious reason.",
+    ],
+    stack: "react native · expo · fastapi",
     github: "https://github.com/soumyyy/ImageNerve",
+    section: "someone",
+  },
+  // --- sometimes the question was enough ---
+  {
+    id: "hft",
+    name: "hft backtesting engine",
+    who: "how much of the latency story is real?",
+    summary: "a high frequency backtester for gold against the dollar, written in rust.",
+    problem: [
+      "backtesting at tick resolution is where a personal project usually dies. the naive version takes hours per run, so you stop iterating, so you stop learning anything.",
+      "rust turned it into something i could run between edits. the point was never a profitable strategy.",
+      "scoped to one instrument on purpose. gold against the dollar is volatile enough to be interesting and liquid enough that the fills are not fiction.",
+    ],
+    stack: "rust · backtesting",
+    note: "runs on a macbook",
+    github: "https://github.com/soumyyy/hft-backtest-engine",
+    section: "question",
+  },
+  {
+    id: "fulcrum",
+    name: "fulcrum",
+    who: "can a model explain why it doubts a company?",
+    summary: "annual report in, structured credit risk memo out, streamed as it is written.",
+    problem: [
+      "indian credit underwriting still runs on an analyst reading a pdf and typing ratios into a spreadsheet. it is slow, inconsistent, and the reasoning evaporates the moment it is finished.",
+      "this pulls around 25 financial fields from any annual report, computes tier 1a ratios, then runs two models trained on a cohort of wilful defaulters against matched controls.",
+      "the output is a memo, not a score. a number nobody can interrogate is worse than no number.",
+    ],
+    stack: "next.js · fastapi · gemini · ml",
+    github: "https://github.com/soumyyy/fulcrum",
+    section: "question",
+  },
+  {
+    id: "kochimetro",
+    name: "kochi metro sih",
+    who: "where should a fleet sleep?",
+    summary: "depot stabling and turnout order, balancing four competing objectives.",
+    problem: [
+      "every night a metro depot decides where each train parks and in what order they leave. get it wrong and you are shunting trains at four in the morning.",
+      "certificates and maintenance windows constrain what can run at all. branding contracts want particular trains on particular lines. mileage wants to stay even so nothing wears out first.",
+      "real constraints and no clean optimum, which is exactly why it was worth doing.",
+    ],
+    stack: "python · operations research",
+    github: "https://github.com/soumyyy/kochimetro-sih",
+    section: "question",
   },
   {
     id: "alphafold-nano",
-    title: "AlphaFold Nano",
-    description: "Protein structure tools mimicking and understanding DeepMind's AlphaFold project.",
-    longDescription: "A compact repository implementing AlphaFold data preparation pipelines and Reinforcement Learning algorithms (Actor-Critic CartPole, Q-Learning FrozenLake). Features a dashboard for visualizing training metrics and comparing toy backbone inferences against AlphaFold traces.",
-    techStack: ["Python", "Streamlit", "PyTorch", "AlphaFold"],
+    name: "alphafold nano",
+    who: "what is the pipeline actually doing?",
+    summary:
+      "a compact reimplementation of alphafold's data preparation, plus reinforcement learning.",
+    problem: [
+      "reading the alphafold paper and understanding it turned out to be different activities, and the gap between them was code.",
+      "so this rebuilds the data preparation pipeline at a scale that fits on one machine, with a dashboard comparing its toy inferences against real traces.",
+      "it does not fold proteins competitively and never intended to. it answers a narrower question.",
+    ],
+    stack: "python · pytorch · streamlit",
     github: "https://github.com/soumyyy/alphafold-nano",
+    section: "question",
   },
   {
     id: "ace-rl",
-    title: "ACE + RL Agent",
-    description: "A terminal-first Agentic Context Engineering agent that plans, executes, and self-tunes via RL.",
-    longDescription: "A terminal-first ACE (Agentic Context Engineering) agent that plans, executes, validates, reflects, and self-tunes via a lightweight reinforcement-learning bandit.",
-    techStack: ["Python", "Reinforcement Learning", "ACE Framework"],
+    name: "ace + rl agent",
+    who: "can an agent notice its own bad habits?",
+    summary: "a terminal first agent that plans, executes, validates, reflects, then adjusts.",
+    problem: [
+      "most agent frameworks fix the strategy at design time. when it fails it fails the same way forever, and you are the one who has to notice.",
+      "this keeps a lightweight reinforcement learning bandit over its own approaches, so tactics that keep working get chosen more often.",
+      "a small idea tested honestly rather than a framework. the interesting result was how fast it learned to stop doing the thing that never worked.",
+    ],
+    stack: "python · reinforcement learning",
     github: "https://github.com/soumyyy/ace-rl",
-  }
+    section: "question",
+  },
 ];

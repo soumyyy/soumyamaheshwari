@@ -11,7 +11,7 @@ export function formatMumbaiTime(d: Date): string {
         .replace(/\s+/g, " ");
 }
 
-/** Coarse relative time. Deliberately vague past a day — precision would be noise. */
+/** Coarse relative time. Deliberately vague past a day, precision would be noise. */
 export function relativeTime(iso: string, now: Date): string {
     const secs = Math.floor((now.getTime() - new Date(iso).getTime()) / 1000);
     if (secs < 60) return "just now";

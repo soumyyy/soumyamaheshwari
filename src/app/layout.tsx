@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     metadataBase: new URL('https://soumyamaheshwari.com'),
     title: 'Soumya Maheshwari',
     description:
-        'agentic systems and product building — agents, trading engines, ios apps, infra and saas.',
+        'agentic systems and product building, agents, trading engines, ios apps, infra and saas.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -18,7 +18,7 @@ export default function Home() {
         <main className="min-h-screen flex flex-col items-center bg-black selection:bg-white selection:text-black">
             <KonamiBoost />
 
-            {/* Background texture blobs — give backdrop-blur something to blur */}
+            {/* Background texture blobs. give backdrop-blur something to blur */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
                 <div className="absolute -top-60 -right-60 w-[800px] h-[800px] rounded-full opacity-[0.045]"
                     style={{ background: 'radial-gradient(circle, rgba(218,196,148,1) 0%, transparent 65%)' }} />
@@ -79,7 +79,7 @@ export default function Home() {
                         </p>
                         <p className="text-neutral-400">
                             now most of my energy goes into agents, ai tooling, and prototypes that take a
-                            weekend. i&rsquo;m a compulsive tinkerer — cloud, infra, webdev, ios, ml, whatever
+                            weekend. i&rsquo;m a compulsive tinkerer, cloud, infra, webdev, ios, ml, whatever
                             the thing needs. i mostly want to know how it works.
                         </p>
                     </div>

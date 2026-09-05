@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   useEffect(() => {
     // Reading matchMedia must happen post-mount, not during render, to avoid a
-    // server/client hydration mismatch — this one-time sync from a browser API
+    // server/client hydration mismatch. this one-time sync from a browser API
     // into state is exactly what this effect is for.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches);

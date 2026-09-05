@@ -54,7 +54,7 @@ export default function OrbitField() {
 
             ctx.clearRect(0, 0, w, h);
 
-            // starfield — density triples while the Konami boost is active
+            // starfield. density triples while the Konami boost is active
             ctx.save();
             ctx.fillStyle = "#fff";
             const density = boost.current ? 3 : 1;

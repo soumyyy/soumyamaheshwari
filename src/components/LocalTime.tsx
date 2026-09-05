@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { formatMumbaiTime } from "@/lib/time";
 
 export default function LocalTime() {
-    // Identical on server and first client render — no hydration mismatch.
+    // Identical on server and first client render, no hydration mismatch.
     const [time, setTime] = useState<string | null>(null);
 
     useEffect(() => {

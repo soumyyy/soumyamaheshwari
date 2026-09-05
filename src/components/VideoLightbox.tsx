@@ -28,7 +28,7 @@ export default function VideoLightbox({
 
   if (!open) return null;
 
-  // Rendered via portal directly under <body> — not as a JSX descendant of the
+  // Rendered via portal directly under <body>, not as a JSX descendant of the
   // triggering card. A `position: fixed` element is positioned relative to the
   // nearest ancestor with a transform/filter/will-change instead of the
   // viewport, and card surfaces here apply `md:scale-[1.02]` on hover, so
