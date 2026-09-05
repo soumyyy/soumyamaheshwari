@@ -199,7 +199,7 @@ Below 820px, one column, and the separation must be unmistakable.
 
 ## Video previews
 
-Only the three projects with recordings. A 92x52 button beside the entry number, showing
+Only the three projects with recordings: `eclipse`, `shit`, `photocortex`. Glai has no recording. A 92x52 button beside the entry number, showing
 the real poster frame, with a red play glyph on hover. Clicking opens `VideoLightbox`.
 Never reserve the space on entries without a recording.
 
@@ -250,7 +250,7 @@ No tally line beneath it.
 
 ### an audience of one
 
-**glai** · *my mother.* · demo · `react native · expo · openai · sqlite` · on testflight
+**glai** · *my mother.* · `react native · expo · openai · sqlite` · on testflight
 Summary: photo based meal logging with nutrition analysis, built for her diabetes management.
 1. every diabetes app assumes you will weigh your food and look up each ingredient. she was never going to do that, and neither would i.
 2. so it takes a photograph. one pass identifies the dishes, a second estimates weights and nutrition ranges. ranges rather than fake precision, because a photograph cannot tell you grams.
