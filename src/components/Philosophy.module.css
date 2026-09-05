@@ -98,7 +98,9 @@
 
 .gloss {
   margin: 0;
-  max-width: 34ch;
+  max-width: 36ch;
+  /* keeps a two line gloss from ending on a single orphaned word */
+  text-wrap: pretty;
   font-size: 0.88rem;
   line-height: 1.58;
   color: #97948E;

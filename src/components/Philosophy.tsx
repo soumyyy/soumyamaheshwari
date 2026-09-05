@@ -1,29 +1,31 @@
 import DotField from "./DotField";
 import styles from "./Philosophy.module.css";
 
-// Four true things, stated plainly. This section used to animate a grid of dots
-// behind a heading; the dots were too faint to see and said nothing. The facts
-// were always the content, so they are the type now.
+// This section sits between the project ledger and the contact line, so its job
+// is the question the ledger leaves open: not what he built, but what he is like
+// to build with. Earlier drafts listed facts about individual projects, which
+// the ledger above already covers at length. These are habits instead, and each
+// one is falsifiable against the record.
 const NOTES = [
   {
     n: "01",
-    text: "everything i touch gets ingested overnight",
-    gloss: "mail, sleep, orders, the journal. by morning the agent already knows",
+    text: "i build the smallest thing i would use myself",
+    gloss: "an audience of one is a low bar, and a very honest one",
   },
   {
     n: "02",
-    text: "i built a trading engine to find out if i could",
-    gloss: "rust, on a laptop. a profitable strategy was never the point",
+    text: "i rewrite instead of patching",
+    gloss: "the same agent five times over, each rewrite keeping the question and dropping the answer",
   },
   {
     n: "03",
-    text: "thirty days from an idea to the app store",
-    gloss: "it started as something i thought only i would use",
+    text: "the problem picks the language",
+    gloss: "rust for the backtester, typescript for the screens, python for anything with a model in it",
   },
   {
     n: "04",
-    text: "eleven years of photographs, searchable at last",
-    gloss: "it runs entirely on my own machine, which is slower and the whole point",
+    text: "i would rather run it than rent it",
+    gloss: "the photos on my own machine, the agent on my own server. slower, and mine.",
   },
 ];
 
@@ -35,8 +37,8 @@ export default function Philosophy() {
       </div>
       <div className={styles.inner}>
         <header className={styles.head}>
-          <h2 id="philosophy-heading">four true things</h2>
-          <p>curiosity is the only through-line</p>
+          <h2 id="philosophy-heading">how i work</h2>
+          <p>not values, habits</p>
         </header>
         <ol className={styles.notes}>
           {NOTES.map((note) => (
