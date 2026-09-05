@@ -7,6 +7,7 @@ export interface Project {
   github?: string;
   image?: string;
   video?: string;
+  poster?: string;
   longDescription: string;
 }
 
@@ -35,7 +36,8 @@ export const projects: Project[] = [
     longDescription: "I run this on a VPS, accessed via a custom PWA. Powered by Cerebras (3000 tokens/sec), it gives me instant access to my memories, past journals, and collections. Considering I treat Obsidian as my second brain, I have a GitHub hook that fetches and ingests my new memories at 2am every day. It bridges the gap between personal AI and my knowledge base beautifully.",
     techStack: ["TypeScript", "Obsidian API", "Cerebras", "PWA"],
     github: "https://github.com/soumyyy/eclipse-obsidian",
-    video: "/demo/EclipseDemo.mp4"
+    video: "/demo/EclipseDemo.mp4",
+    poster: "/demo/posters/eclipse-obsidian.jpg"
   },
   {
     id: "eclipse",
@@ -112,7 +114,8 @@ export const projects: Project[] = [
     techStack: ["React Native", "Expo", "TypeScript", "MMKV"],
     link: "https://shitsort.com",
     github: "https://github.com/soumyyy/shit",
-    video: "/demo/SHITdemo.mp4"
+    video: "/demo/SHITdemo.mp4",
+    poster: "/demo/posters/shit.jpg"
   },
   {
     id: "kochimetro",
@@ -137,7 +140,8 @@ export const projects: Project[] = [
     longDescription: "PhotoCortex is an AI-powered photo analysis and organization platform built on an ensemble of multimodal AI models to help you understand and explore your photo collection in new ways. It combines face, object, scene, and text detection with computer vision — Google Photos, but fully local.",
     techStack: ["Computer Vision", "AI"],
     github: "https://github.com/soumyyy/PhotoCortex",
-    video: "/demo/PhotoCortexDemo.mp4"
+    video: "/demo/PhotoCortexDemo.mp4",
+    poster: "/demo/posters/photocortex.jpg"
   },
   {
     id: "stockportfolio",

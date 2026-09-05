@@ -3,7 +3,8 @@
 :root {
     --background: #000000;
     --foreground: #ffffff;
-    --accent: #555555;
+    --accent: #D9A441;
+    --accent-dim: #8A6A2B;
     --visited: #999999;
     --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
     --font-mono: 'Commit Mono', ui-monospace, monospace;
