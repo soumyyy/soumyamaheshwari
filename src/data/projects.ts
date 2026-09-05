@@ -142,10 +142,10 @@ export const projects: Project[] = [
   {
     id: "stockportfolio",
     name: "stock portfolio tracker",
-    who: "me, and three brokerage accounts.",
-    summary: "a real time tracker pulling several kite accounts into a single view.",
+    who: "me, and the family portfolio i keep getting asked about.",
+    summary: "a real time tracker pulling several kite accounts into one view, so nobody has to ask me for a screenshot.",
     problem: [
-      "holdings split across accounts means no single screen shows what you actually own, so you do the arithmetic in your head and get it wrong.",
+      "i have been the unofficial family portfolio manager for a while, which meant screenshots and p&l summaries on request, all day, forever.",
       "this fetches all of them and shows one position list with live prices. no advice, no charts, no engagement mechanics.",
       "it is deliberately boring. that is why it still gets opened.",
     ],
