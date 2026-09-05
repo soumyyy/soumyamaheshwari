@@ -3,6 +3,7 @@ import CoreProject from "@/components/CoreProject";
 import ProjectGroup from "@/components/ProjectGroup";
 import styles from "./projects.module.css";
 import Philosophy from "@/components/Philosophy";
+import ContributionGrid from "@/components/ContributionGrid";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
 import KonamiBoost from "@/components/KonamiBoost";
@@ -167,6 +168,8 @@ export default function Home() {
                 </div>
                 <div className="edge-bottom" aria-hidden="true" />
             </section>
+
+            <ContributionGrid />
 
             {/* Brain Section (Disabled) */}
             {/* <BrainSection /> */}
