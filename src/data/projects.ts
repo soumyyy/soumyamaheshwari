@@ -93,6 +93,15 @@ export const projects: Project[] = [
       "so it takes a photograph. one pass identifies the dishes, a second estimates weights and nutrition ranges. ranges rather than fake precision, because a photograph cannot tell you grams.",
       "everything stays on the device. sync is optional and off by default. a health record for one person did not need a backend.",
     ],
+    writing: [
+      {
+        title: "people who say calorie and macro tracking takes too much time probably have a point.",
+        excerpt: "that is why i built my mom an app to track her calories and carbs, specifically to help her estimate her insulin dosage more accurately.",
+        handle: "@soumymaheshwri",
+        date: "28 april 2026",
+        url: "https://x.com/Soumymaheshwri/status/2049099940304204066"
+      }
+    ],
     stack: "react native · expo · openai · sqlite",
     note: "on testflight",
     github: "https://github.com/soumyyy/glai",

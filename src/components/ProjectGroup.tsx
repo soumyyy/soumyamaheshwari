@@ -34,6 +34,17 @@ export default function ProjectGroup({
             credit={<><span>{project.stack}</span>{project.note && <span>{project.note}</span>}</>}
           >
             {project.problem.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {project.writing?.map((piece) => (
+              <a key={piece.url} className={styles.writing} href={piece.url}
+                 target="_blank" rel="noopener noreferrer">
+                <span className={styles.writingLabel}>wrote about this</span>
+                <span className={styles.writingTitle}>{piece.title}</span>
+                <span className={styles.writingExcerpt}>{piece.excerpt}</span>
+                <span className={styles.writingMeta}>
+                  {piece.handle} &middot; {piece.date} &middot; read on x &rarr;
+                </span>
+              </a>
+            ))}
           </ProjectEntry>
         ))}
       </div>
