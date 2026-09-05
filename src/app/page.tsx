@@ -4,6 +4,7 @@ import ProjectGroup from "@/components/ProjectGroup";
 import styles from "./projects.module.css";
 import Philosophy from "@/components/Philosophy";
 import ContributionGrid from "@/components/ContributionGrid";
+import Education from "@/components/Education";
 import OrbitField from "@/components/OrbitField";
 import LocalTime from "@/components/LocalTime";
 import KonamiBoost from "@/components/KonamiBoost";
@@ -176,6 +177,8 @@ export default function Home() {
 
             {/* Philosophy Section */}
             <Philosophy />
+
+            <Education />
 
             {/* Footer */}
             <footer className="w-full py-20 border-t border-neutral-900 flex flex-col items-center justify-center text-center px-6">

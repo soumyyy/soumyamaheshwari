@@ -73,23 +73,44 @@ export default function ProjectEntry(props: Props) {
     desktop.addEventListener("change", update);
     const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") close(); };
     document.addEventListener("keydown", onKey);
-    document.addEventListener("scroll", close, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       pointer.removeEventListener("change", update);
       desktop.removeEventListener("change", update);
       document.removeEventListener("keydown", onKey);
-      document.removeEventListener("scroll", close);
       clearTimers();
       if (activePanel === id) setActivePanel(null);
     };
   }, [clearTimers, close, id]);
+
+  // Scrolling closes the panel only where the panel floats over the entry and
+  // would otherwise drift away from what it belongs to. On touch it sits in
+  // the flow, so closing it on scroll would shut it the moment anyone tried
+  // to read past the first line.
+  useEffect(() => {
+    if (!canHover || id === null) return;
+    document.addEventListener("scroll", close, { passive: true });
+    return () => document.removeEventListener("scroll", close);
+  }, [canHover, close, id]);
 
   useEffect(() => {
     if (open && focusPanel.current) closeRef.current?.focus();
     if (!open && panelRef.current?.contains(document.activeElement)) triggerRef.current?.focus();
     focusPanel.current = false;
   }, [open]);
+
+  // On touch the panel opens in the flow below the fold as often as not, so
+  // the tap appears to do nothing. Bring it into view.
+  useEffect(() => {
+    if (!open || canHover) return;
+    const panel = panelRef.current;
+    if (!panel) return;
+    const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const frame = requestAnimationFrame(() => {
+      panel.scrollIntoView({ block: "nearest", behavior: smooth ? "smooth" : "auto" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [open, canHover]);
 
   const closeVideo = useCallback(() => setVideoOpen(false), []);
   const preview = props.video && props.poster ? (
@@ -159,8 +180,8 @@ export default function ProjectEntry(props: Props) {
             else { focusPanel.current = true; setActivePanel(props.id); }
           }}
         >
-          <span className={styles.srOnly}>what i built</span>
-          <span aria-hidden="true">↓</span>
+          <span className={styles.srOnly}>{open ? "hide the detail" : "read the detail"}</span>
+          <span aria-hidden="true">{open ? "↑" : "↓"}</span>
         </button>
       </div>
       <div className={styles.body}>
