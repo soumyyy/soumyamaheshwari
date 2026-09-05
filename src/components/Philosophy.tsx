@@ -12,8 +12,8 @@ const NOTES = [
   },
   {
     n: "02",
-    text: "a rust backtester, on a macbook, because why not",
-    gloss: "the point was never a profitable strategy",
+    text: "i built a trading engine to find out if i could",
+    gloss: "rust, on a laptop. a profitable strategy was never the point",
   },
   {
     n: "03",
@@ -22,8 +22,8 @@ const NOTES = [
   },
   {
     n: "04",
-    text: "five attempts at the same agent, so far",
-    gloss: "each rewrite kept the question and threw away the answer",
+    text: "i keep rebuilding the same agent",
+    gloss: "five times so far, each rewrite keeping the question and dropping the answer",
   },
 ];
 
