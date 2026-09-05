@@ -74,9 +74,15 @@
 /* the label is gone. the glyph alone marks that there is more, and only
    where the reader needs it: on touch, and on keyboard focus. a pointer
    user gets the panel on hover and never needs a control at all. */
+/* sits on the subtitle's line, pushed right. living above the panel means
+   it is never covered by it, so it stays available to close what it opened. */
+.whoRow {
+  display: flex; align-items: baseline; gap: 1rem;
+}
+.whoRow .who { flex: 1; }
 .disclosure {
-  align-self: flex-start; margin-top: 0.85rem;
-  color: var(--red); font: 0.8rem/1 var(--font-mono); cursor: pointer;
+  flex: none; margin-left: auto; padding: 0 0 0 0.25rem;
+  color: var(--red); font: 0.85rem/1 var(--font-mono); cursor: pointer;
   opacity: 0; transition: opacity 0.2s ease;
 }
 .srOnly {

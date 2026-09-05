@@ -27,52 +27,24 @@
 }
 
 /* The boundary between the dark site and this paper section.
-   A straight dark-to-transparent ramp passes through neutral grey and reads
-   as haze. Stepping it through a warm mid tone keeps the whole transition in
-   the paper's own hue family, so it reads as one material lightening rather
-   than two colours dissolving into each other. The hairline at the end makes
-   the edge deliberate instead of merely gradual. */
+   A gradient here is a trap: any ramp from #0A0A0B to #F5F3EA passes through
+   mid tones that read as mud, because no hue looks good halfway between them.
+   So this is a hard edge instead, treated as a sheet of paper laid onto the
+   dark page. The inset shadow along each edge does the work a gradient was
+   failing at, giving the boundary depth without inventing an intermediate
+   colour. */
 .projects-paper .edge-top,
 .projects-paper .edge-bottom {
-    height: 132px;
+    height: 0;
     pointer-events: none;
-    position: relative;
 }
-.projects-paper .edge-top {
-    background: linear-gradient(
-        to bottom,
-        var(--site-dark) 0%,
-        #17150F 26%,
-        #3B3529 52%,
-        #8C8472 74%,
-        #D3CDBC 89%,
-        var(--ground) 100%
-    );
+.projects-paper {
+    box-shadow:
+        inset 0 11px 18px -12px rgba(0, 0, 0, 0.55),
+        inset 0 -11px 18px -12px rgba(0, 0, 0, 0.55);
+    border-top: 1px solid #2A2620;
+    border-bottom: 1px solid #2A2620;
 }
-.projects-paper .edge-bottom {
-    background: linear-gradient(
-        to top,
-        var(--site-dark) 0%,
-        #17150F 26%,
-        #3B3529 52%,
-        #8C8472 74%,
-        #D3CDBC 89%,
-        var(--ground) 100%
-    );
-}
-/* a hairline exactly where the paper begins and ends */
-.projects-paper .edge-top::after,
-.projects-paper .edge-bottom::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--rule);
-    opacity: 0.55;
-}
-.projects-paper .edge-top::after { bottom: 0; }
-.projects-paper .edge-bottom::before { top: 0; }
 
 .projects-paper .edge-top {
     background: linear-gradient(to bottom, var(--site-dark), transparent);

@@ -126,10 +126,8 @@ export default function ProjectEntry(props: Props) {
         {preview}
       </div>
       <h3 id={`project-${props.id}-name`} className={styles.name}>{props.heading}</h3>
-      <p className={styles.who}>{props.subtitle}</p>
-      <div className={styles.body}>
-        <p className={styles.summary}>{props.summary}</p>
-        <div className={styles.credit}>{props.credit}</div>
+      <div className={styles.whoRow}>
+        <p className={styles.who}>{props.subtitle}</p>
         <button
           ref={triggerRef}
           type="button"
@@ -145,6 +143,10 @@ export default function ProjectEntry(props: Props) {
           <span className={styles.srOnly}>what i built</span>
           <span aria-hidden="true">↓</span>
         </button>
+      </div>
+      <div className={styles.body}>
+        <p className={styles.summary}>{props.summary}</p>
+        <div className={styles.credit}>{props.credit}</div>
         <div
           ref={panelRef}
           id={panelId}
