@@ -3,5 +3,11 @@
 .masthead { padding-bottom: 2rem; border-bottom: 3px double var(--ink); }
 .masthead h2 { font: clamp(2.5rem, 6vw, 4.75rem)/1.12 var(--font-display), Georgia, serif; letter-spacing: -0.04em; }
 .masthead p { max-width: 42rem; margin-top: 1.25rem; color: var(--ink-soft); font: italic clamp(1rem, 2vw, 1.25rem)/1.65 var(--font-display), Georgia, serif; }
-.projects ::selection { background: var(--red); color: var(--ground); }
+
+/* The masthead already opens the ledger with a double rule. The first group
+   header carries its own, so without this the section starts with two double
+   rules bracketing an empty band. The masthead rule is the opening one; the
+   first header sits straight under it. */
+.ledger > section:first-of-type { margin-top: 0; }
+.ledger > section:first-of-type > header { border-top: 0; padding-top: 0.85rem; }
 @media (width < 820px) { .ledger { padding: 1.5rem 1.25rem 3rem; } }

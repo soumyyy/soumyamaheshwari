@@ -73,7 +73,7 @@ export default function Home() {
                                 </div>
 
                     <h1 className="font-display text-balance text-4xl lowercase leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
-                        agents, trading engines, ios apps, infra and saas.
+                        agents, ios apps, infra, saas and a backtesting engine.
                     </h1>
 
                     <p className="max-w-xl text-base leading-relaxed text-neutral-400 lowercase md:text-lg">

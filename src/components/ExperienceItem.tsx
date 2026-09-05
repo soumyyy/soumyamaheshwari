@@ -17,7 +17,7 @@ export default function ExperienceItem({ company, role, date, location, summary,
 
     return (
         <div
-            className="group border-l-2 border-neutral-900 pl-6 md:pl-8 py-2 transition-all hover:border-neutral-700 hover:bg-neutral-900/10 rounded-r-lg pr-4 cursor-pointer"
+            className="group border-l-2 border-neutral-900 pl-6 md:pl-8 py-2 transition-all hover:border-neutral-700 hover:bg-neutral-900/10 rounded-r-lg pr-4 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-500"
             onClick={() => setIsOpen(!isOpen)}
             onKeyDown={handleKeyDown}
             role="button"
@@ -27,9 +27,8 @@ export default function ExperienceItem({ company, role, date, location, summary,
         >
             <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
-                    <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors flex items-center gap-2">
+                    <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors">
                         {company}
-                        <ChevronDown className={`w-4 h-4 text-neutral-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                     </h3>
                     <span className="text-xs font-mono text-neutral-500">{date}</span>
                 </div>
@@ -39,6 +38,14 @@ export default function ExperienceItem({ company, role, date, location, summary,
                 <p className="text-neutral-400 leading-relaxed italic pr-4">
                     {summary}
                 </p>
+
+                {/* A lone chevron beside the company name was the only sign these
+                    rows opened, and nobody reads a 16px grey icon as an invitation.
+                    This names what is behind the row instead. */}
+                <span className="label inline-flex items-center gap-1.5 text-neutral-600 group-hover:text-white transition-colors">
+                    {isOpen ? "close" : "what i did here"}
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'group-hover:translate-y-0.5'}`} />
+                </span>
             </div>
 
             <AnimatePresence>
