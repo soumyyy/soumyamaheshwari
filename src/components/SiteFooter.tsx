@@ -16,7 +16,7 @@ export default function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.photo} aria-hidden="true">
         <Image
-          src="/footer/ridge.jpg"
+          src="/footer/ridge.webp"
           alt=""
           fill
           sizes="100vw"
