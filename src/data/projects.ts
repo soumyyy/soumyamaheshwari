@@ -173,6 +173,15 @@ export const projects: Project[] = [
       "so it computes that directly, per subject and combined, and lets you correct a wrong record with a long press instead of an email to an administrator.",
       "nothing leaves the phone. an attendance record is not worth a server, an account system, or a privacy policy, and a student should not have to trust one.",
     ],
+    writing: [
+      {
+        title: "30 days ago i started building an app i thought only i would use. today it is on the app store.",
+        excerpt: "the problem was stupidly specific: my college enforces 80% attendance, and i was tired of waking up panic-calculating whether i could skip the day.",
+        handle: "@soumymaheshwri",
+        date: "11 february 2026",
+        url: "https://x.com/Soumymaheshwri/status/2021612334368931994"
+      }
+    ],
     stack: "react native · expo · typescript · mmkv",
     note: "live at shitsort.com",
     link: "https://shitsort.com",
