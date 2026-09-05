@@ -149,6 +149,15 @@ export const projects: Project[] = [
       "this fetches all of them and shows one position list with live prices. no advice, no charts, no engagement mechanics.",
       "it is deliberately boring. that is why it still gets opened.",
     ],
+    writing: [
+      {
+        title: "i have been the unofficial family portfolio manager for a while now, and i have to send them screenshots and p&l summaries all day long.",
+        excerpt: "been procrastinating a real fix, but last night i sat and did it. built a real time portfolio tracker from scratch, the ui, the apis, mobile and web.",
+        handle: "@soumymaheshwri",
+        date: "19 march 2025",
+        url: "https://x.com/Soumymaheshwri/status/1902344908591280550"
+      }
+    ],
     stack: "next.js · typescript · yahoo finance api",
     github: "https://github.com/soumyyy/StockPortfolio",
     section: "one",
