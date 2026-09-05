@@ -140,10 +140,13 @@
     border-left: 0;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 0.7rem;
+    column-gap: 0.6rem;
     align-items: baseline;
   }
   .markers { grid-row: 1; grid-column: 1; }
+  /* clamp bottoms out at 1.75rem, which is most of a phone's width for one
+     word and dwarfs the number sitting next to it */
+  .name { font-size: 1.45rem; }
   .nameRow { grid-row: 1; grid-column: 2; }
   .whoRow { grid-row: 2; grid-column: 1 / -1; }
   .body { grid-row: 3; grid-column: 1 / -1; }
@@ -152,7 +155,7 @@
   .entry:has(.preview) .whoRow { grid-row: 3; }
   .entry:has(.preview) .body { grid-row: 4; }
   .markers, .markers:has(.preview) { justify-content: flex-start; align-items: center; min-height: 0; padding-right: 0; margin-bottom: 0; }
-  .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 4px; }
+  .number { position: static; align-self: flex-start; color: var(--red); border: 0; border-bottom: 1px solid var(--red); padding: 0 0 3px; }
   /* The lift only exists so a floating panel clears its neighbours. Here the
      panel is in the flow, and the lift beat the sticky group header instead,
      so an open entry printed its text straight over the header. */
