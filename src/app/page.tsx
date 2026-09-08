@@ -2,7 +2,6 @@ import { projects } from "@/data/projects";
 import CoreProject from "@/components/CoreProject";
 import ProjectGroup from "@/components/ProjectGroup";
 import styles from "./projects.module.css";
-import Philosophy from "@/components/Philosophy";
 import ContributionGrid from "@/components/ContributionGrid";
 import Education from "@/components/Education";
 import SiteFooter from "@/components/SiteFooter";
@@ -176,9 +175,6 @@ export default function Home() {
 
             {/* Brain Section (Disabled) */}
             {/* <BrainSection /> */}
-
-            {/* Philosophy Section */}
-            <Philosophy />
 
             <Education />
 
