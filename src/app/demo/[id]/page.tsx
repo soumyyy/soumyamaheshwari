@@ -2,6 +2,7 @@ import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import DemoPlayer from "./DemoPlayer";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -41,16 +42,16 @@ export default async function DemoPage({ params }: Props) {
             </h1>
             <p className="text-sm text-neutral-400 mt-1 max-w-xl">{project.summary}</p>
           </div>
-          <a
+          <Link
             href="/"
             className="text-xs text-neutral-500 hover:text-white transition-colors underline underline-offset-4"
           >
             soumyamaheshwari.com
-          </a>
+          </Link>
         </div>
 
         {/* Video */}
-        <div className="w-full aspect-video bg-neutral-950 rounded-lg overflow-hidden border border-neutral-800 shadow-2xl">
+        <div className={`w-full bg-neutral-950 rounded-lg overflow-hidden border border-neutral-800 shadow-2xl ${project.videoOrientation === "portrait" ? "mx-auto max-w-sm aspect-[9/16]" : "aspect-video"}`}>
           <DemoPlayer src={project.video} />
         </div>
 

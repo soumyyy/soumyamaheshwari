@@ -7,6 +7,7 @@ export interface Project {
   stack: string; // mono, dot separated, already formatted
   note?: string; // "on testflight", "live at shitsort.com", "fully local"
   video?: string;
+  videoOrientation?: "portrait" | "landscape";
   poster?: string;
   github?: string;
   link?: string;
@@ -198,6 +199,7 @@ export const projects: Project[] = [
     link: "https://shitsort.com",
     github: "https://github.com/soumyyy/shit",
     video: "/demo/SHITdemo.mp4",
+    videoOrientation: "portrait",
     poster: "/demo/posters/shit.jpg",
     section: "someone",
   },
