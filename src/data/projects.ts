@@ -32,8 +32,6 @@ export const projects: Project[] = [
     ],
     stack: "",
     github: "https://github.com/soumyyy/eclipse-obsidian",
-    video: "/demo/EclipseDemo.mp4",
-    poster: "/demo/posters/eclipse-obsidian.jpg",
     section: "core",
     writing: [
       {

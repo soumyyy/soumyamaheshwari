@@ -17,7 +17,7 @@ export default function KonamiBoost() {
         const onKey = (e: KeyboardEvent) => {
             if (boosted) {
                 boosted = false;
-                window.dispatchEvent(new CustomEvent("orbit:boost", { detail: false }));
+                window.dispatchEvent(new CustomEvent("reactor:boost", { detail: false }));
                 i = 0;
                 return;
             }
@@ -27,7 +27,7 @@ export default function KonamiBoost() {
                 if (i === SEQUENCE.length) {
                     boosted = true;
                     i = 0;
-                    window.dispatchEvent(new CustomEvent("orbit:boost", { detail: true }));
+                    window.dispatchEvent(new CustomEvent("reactor:boost", { detail: true }));
                 }
             } else {
                 i = e.key === SEQUENCE[0] ? 1 : 0;

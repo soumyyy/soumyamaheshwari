@@ -1,7 +1,6 @@
 /* The same ledger discipline as the section below it: a mono label, a double
-   rule, then the data. The ramp is github's own dark theme green, so the grid
-   is read as what it is on sight rather than needing its label to explain it.
-   These are github's published values, not an approximation. */
+   rule, then the data. The ramp is the site's one colour at four strengths, so
+   a busy week is literally brighter. */
 .section {
   width: 100%;
   padding: clamp(3.5rem, 9vh, 5.5rem) 0 clamp(3rem, 7vh, 4.5rem);
@@ -66,12 +65,12 @@
 .day {
   aspect-ratio: 1;
   border-radius: 2px;
-  background: #161B22;
+  background: #101114;
 }
-.day[data-level="1"] { background: #0E4429; }
-.day[data-level="2"] { background: #006D32; }
-.day[data-level="3"] { background: #26A641; }
-.day[data-level="4"] { background: #39D353; }
+.day[data-level="1"] { background: rgb(159 220 255 / 18%); }
+.day[data-level="2"] { background: rgb(159 220 255 / 38%); }
+.day[data-level="3"] { background: rgb(159 220 255 / 64%); }
+.day[data-level="4"] { background: #CFEEFF; }
 
 .foot {
   margin: 1.4rem 0 0;

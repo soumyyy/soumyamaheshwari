@@ -3,55 +3,18 @@
 :root {
     --background: #000000;
     --foreground: #ffffff;
-    --accent: #E8E6E1;
-    --accent-dim: #6E6B66;
-    --visited: #999999;
+    --fg: #EDEBE6;
+    --dim: #8E8B85;
+    --faint: #5F5C57;
+    --rule: #1F1F25;
+    /* The only colour on the site. It is light, so it is used for things that
+       glow and never for blocks of text. */
+    --light: #9FDCFF;
+    --light-hot: #F2FBFF;
+    --accent: var(--light);
     --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
     --font-mono: 'Commit Mono', ui-monospace, monospace;
     /* --font-display is injected by next/font in layout.tsx */
-}
-
-.projects-paper {
-    --site-dark: #0A0A0B;
-    --ground: #F5F3EA;
-    --lift: #EEEBDD;
-    --ink: #12100C;
-    --ink-soft: #3A362E;
-    --ink-faint: #575249;
-    --rule: #B4AD9B;
-    --hair: #D6D0C1;
-    --red: #9E241C;
-    --accent: var(--red);
-    color: var(--ink);
-    background: var(--ground);
-}
-
-/* The boundary between the dark site and this paper section.
-   A gradient here is a trap: any ramp from #0A0A0B to #F5F3EA passes through
-   mid tones that read as mud, because no hue looks good halfway between them.
-   So this is a hard edge instead, treated as a sheet of paper laid onto the
-   dark page. The inset shadow along each edge does the work a gradient was
-   failing at, giving the boundary depth without inventing an intermediate
-   colour. */
-.projects-paper .edge-top,
-.projects-paper .edge-bottom {
-    height: 0;
-    pointer-events: none;
-}
-.projects-paper {
-    box-shadow:
-        inset 0 11px 18px -12px rgba(0, 0, 0, 0.55),
-        inset 0 -11px 18px -12px rgba(0, 0, 0, 0.55);
-    border-top: 1px solid #2A2620;
-    border-bottom: 1px solid #2A2620;
-}
-
-.projects-paper .edge-top {
-    background: linear-gradient(to bottom, var(--site-dark), transparent);
-}
-
-.projects-paper .edge-bottom {
-    background: linear-gradient(to top, var(--site-dark), transparent);
 }
 
 body {
@@ -74,17 +37,9 @@ body::after {
     z-index: 40;
 }
 
-/* Custom selection color. The dark site selects white on black; the paper
-   section inverts it so the highlight stays the darkest thing on the page
-   rather than washing out against the ground. */
 ::selection {
     background: var(--foreground);
     color: var(--background);
-}
-
-.projects-paper ::selection {
-    background: var(--ink);
-    color: var(--ground);
 }
 
 /* Scrollbar */
@@ -99,6 +54,28 @@ body::after {
 
 ::-webkit-scrollbar-track {
     background: #000;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+/* Blocks rise into place as they enter, driven by scroll position rather than
+   by script. Where the browser cannot do that, they are simply there. */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .rise {
+            animation: rise linear both;
+            animation-timeline: view();
+            animation-range: entry 5% entry 45%;
+        }
+    }
+}
+@keyframes rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
 }
 
 @layer utilities {

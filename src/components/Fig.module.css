@@ -1,0 +1,9 @@
+.fig {
+  display: flex;
+  gap: 0.9rem;
+  margin: 0.9rem 0 0;
+  font: 0.62rem/1.5 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--faint);
+}
+.n { color: var(--dim); white-space: nowrap; }

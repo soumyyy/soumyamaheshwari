@@ -1,0 +1,338 @@
+.main {
+  min-height: 100vh;
+  background: #000;
+  color: var(--fg);
+}
+.main ::selection { background: var(--light); color: #000; }
+
+/* ---------- hero ---------- */
+
+.hero {
+  min-height: 100svh;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 6rem 28px 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* The text arrives after the core has lit, as if the reactor powered it. */
+  animation: power 0.9s 0.5s ease both;
+}
+@keyframes power {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+.ident {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+
+/* Where the name starts. Same face and spacing as the header, half as large
+   again, so docking is a move and a shrink and nothing else. */
+.nameSlot {
+  align-self: flex-start;
+  font: 1.05rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.headline {
+  margin: 0;
+  font: clamp(2.3rem, 5vw, 4.3rem) / 1.05 var(--font-display), Georgia, serif;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.lede {
+  margin: 0;
+  max-width: 40ch;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--dim);
+}
+
+.tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+  margin: 0.4rem 0 0;
+  font: 0.68rem/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+.tally span + span::before {
+  content: "/";
+  margin: 0 0.9rem;
+  color: var(--faint);
+}
+
+.reactor {
+  position: relative;
+  margin: 0;
+  justify-self: end;
+  width: min(100%, 420px);
+}
+.reactorPlate { aspect-ratio: 1; }
+
+/* The halo is a gradient, not a filter on the canvas: nothing repaints. */
+.glow {
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(circle at 50% 46%, rgb(120 200 255 / 22%) 0%, rgb(90 170 255 / 7%) 28%, transparent 58%);
+  animation: ignite 2.2s 0.25s ease-out both;
+  pointer-events: none;
+}
+@keyframes ignite {
+  0% { opacity: 0; transform: scale(0.4); }
+  35% { opacity: 1; }
+  100% { opacity: 0.85; transform: none; }
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(4.5rem, 12vh, 8rem) 28px;
+  border-top: 1px solid var(--rule);
+}
+
+.kicker {
+  margin: 0 0 clamp(2rem, 5vh, 3.5rem);
+  font: 500 0.68rem/1 var(--font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.kicker::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 0.8rem;
+  border-radius: 50%;
+  background: var(--light);
+  box-shadow: 0 0 10px var(--light);
+  vertical-align: 1px;
+}
+
+/* ---------- intro ---------- */
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: start;
+}
+.portrait { margin: 0; }
+.portraitPlate { aspect-ratio: 4 / 5; }
+
+.prose {
+  display: grid;
+  gap: 1.8rem;
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: #DDDAD3;
+  text-wrap: pretty;
+  max-width: 34em;
+}
+.prose p { margin: 0; }
+.quiet { color: var(--dim); }
+
+/* ---------- eclipse ---------- */
+
+.core {
+  display: grid;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: center;
+}
+.corePlate { margin: 0; width: 100%; max-width: 230px; justify-self: center; --underlay: 0.16; }
+.squarePlate { aspect-ratio: 4 / 5; }
+
+.coreName {
+  margin: 0;
+  font: clamp(3.4rem, 9vw, 7rem) / 0.95 var(--font-display), Georgia, serif;
+  letter-spacing: -0.035em;
+}
+.coreName a span { display: inline-block; }
+.coreName a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.coreName a:hover {
+  color: var(--light-hot);
+  text-shadow: 0 0 28px rgb(120 200 255 / 55%);
+}
+
+.who {
+  margin: 0.9rem 0 0;
+  font: italic 1.15rem/1.4 var(--font-display), Georgia, serif;
+  color: var(--dim);
+}
+
+.coreBody {
+  margin: 1.4rem 0 0;
+  max-width: 52ch;
+  line-height: 1.7;
+  color: #C9C6BF;
+}
+
+.go {
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font: 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.1em;
+  color: var(--fg);
+  text-decoration: none;
+}
+.go::after {
+  content: "→";
+  color: var(--light);
+  transition: transform 0.25s ease;
+}
+.go:hover::after { transform: translateX(5px); }
+
+/* ---------- the wall ---------- */
+
+/* A stack of small screens, each tuned to one project. */
+.wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 2rem);
+}
+
+.tile {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.tile:focus-visible { outline: 1px solid var(--light); outline-offset: 6px; }
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px / 18px;
+  border: 1px solid #1B1C22;
+  background: radial-gradient(ellipse at 50% 45%, #0A0C10 0%, #030304 75%);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Scanlines and the darkening toward the corners of a tube. */
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgb(255 255 255 / 3.5%) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 55%) 100%);
+}
+.screenPlate { aspect-ratio: 4 / 3; }
+
+.tile:hover .screen {
+  border-color: rgb(159 220 255 / 55%);
+  box-shadow: 0 0 44px rgb(120 200 255 / 14%), inset 0 0 30px rgb(120 200 255 / 6%);
+  animation: tune 0.32s steps(2) 1;
+}
+@keyframes tune {
+  0% { transform: translateX(-2px) skewX(-0.6deg); filter: brightness(1.5); }
+  50% { transform: translateX(2px); }
+  100% { transform: none; filter: none; }
+}
+
+.tileText {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.95rem 0.2rem 0;
+}
+.number {
+  font: 0.64rem/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  color: var(--faint);
+}
+.tileName {
+  margin: 0;
+  font: clamp(1.35rem, 2.1vw, 1.75rem) / 1.1 var(--font-display), Georgia, serif;
+  letter-spacing: -0.02em;
+  color: #fff;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.tileName span { display: inline-block; }
+.tile:hover .tileName { color: var(--light-hot); text-shadow: 0 0 22px rgb(120 200 255 / 50%); }
+.tileWho {
+  grid-column: 2;
+  margin: 0.35rem 0 0;
+  font: italic 0.95rem/1.35 var(--font-display), Georgia, serif;
+  color: var(--dim);
+}
+
+/* ---------- experience ---------- */
+
+.experience {
+  display: grid;
+  gap: 3.5rem;
+  max-width: 820px;
+}
+
+/* ---------- narrow ---------- */
+
+@media (width < 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 5rem 20px 2.5rem;
+    gap: 1.2rem;
+  }
+  .heroText { gap: 1.3rem; }
+  .tally { gap: 0.4rem 1.4rem; }
+  .tally span + span::before { display: none; }
+  .reactor { order: -1; justify-self: center; width: min(62vw, 280px); }
+  .section { padding-inline: 20px; }
+  .about, .core { grid-template-columns: 1fr; }
+  .portrait { max-width: 200px; }
+  .corePlate { max-width: 150px; justify-self: start; }
+
+  /* On a phone the wall becomes a list: a small screen, then the name. Six
+     entries fit in about one screen of scrolling. */
+  .wall { grid-template-columns: 1fr; gap: 0; }
+  .wall li + li { border-top: 1px solid var(--rule); }
+  .tile {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0;
+  }
+  .screen { border-radius: 9px / 11px; }
+  .tileText { padding: 0; }
+  .tileName { font-size: 1.3rem; }
+  .tileWho { font-size: 0.88rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroText, .glow { animation: none; }
+  .go::after, .coreName a, .tileName, .screen { transition: none; }
+  .tile:hover .screen { animation: none; }
+}

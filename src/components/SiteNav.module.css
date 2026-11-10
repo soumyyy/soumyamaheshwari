@@ -1,0 +1,79 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 28px 1.6rem;
+  font: 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  isolation: isolate;
+  pointer-events: none;
+}
+/* Fades to nothing, so type scrolling under it dims instead of colliding. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, #000 30%, rgb(0 0 0 / 0%));
+  opacity: var(--p, 1);
+}
+
+/* Landing page: the name starts in the hero and docks here on scroll. NavDock
+   drives the four variables. Until it has measured, the name is held back so
+   it never flashes in the corner first. */
+.nav[data-docking] .home {
+  visibility: hidden;
+  transform-origin: left top;
+  transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--s, 1));
+  will-change: transform;
+}
+.nav[data-docking][data-ready] .home { visibility: visible; }
+.nav[data-docking] .links { opacity: var(--p, 1); }
+.nav[data-docking][data-top] a { pointer-events: none; }
+.nav a {
+  pointer-events: auto;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav a:hover { color: var(--fg); }
+.nav a:focus-visible { outline: 1px solid var(--light); outline-offset: 5px; }
+
+.home { color: var(--fg) !important; }
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--light);
+  box-shadow: 0 0 8px var(--light);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
+
+@media (width < 560px) {
+  .nav { padding-inline: 20px; }
+  .links a:nth-child(2) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot { animation: none; }
+  .nav a { transition: none; }
+}
