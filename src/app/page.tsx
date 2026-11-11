@@ -33,7 +33,7 @@ export default function Home() {
                     </div>
 
                     <h1 className={styles.headline}>
-                        i build things now and then. come in.
+                        i build things now and then.
                     </h1>
 
                     <p className={styles.lede}>
@@ -50,7 +50,7 @@ export default function Home() {
             </section>
 
             <section id="about" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>who lives here</Scramble></h2>
+                <h2 className={styles.kicker}><Scramble>whoami</Scramble></h2>
                 <div className={styles.about}>
                     <figure className={styles.portrait}>
                         <Plate kind="image" src="/portrait-wide.webp" tone="paper" size={7}
@@ -74,7 +74,7 @@ export default function Home() {
             </section>
 
             <section id="eclipse" className={styles.section}>
-                <h2 className={styles.lead}>now that you know me, you should meet the agent that runs me.</h2>
+                <h2 className={styles.kicker}><Scramble>now that you know me, meet the agent that runs me</Scramble></h2>
                 <div className={styles.core}>
                     <figure className={styles.corePlate}>
                         <Plate {...plateFor(eclipse)} tone="paper" size={7} className={styles.squarePlate} />
