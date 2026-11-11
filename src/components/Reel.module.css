@@ -1,0 +1,108 @@
+/* Five cards across on a laptop, the middle one forward. The strip runs the full
+   width of the screen; the padding lets the first and last card reach the middle. */
+.strip {
+  --gap: clamp(0.7rem, 1.6vw, 1.25rem);
+  --card: calc((min(100vw, 1120px) - 56px - 4 * var(--gap)) / 5);
+  list-style: none;
+  margin: 0;
+  padding: 1.6rem calc(50% - var(--card) / 2) 2rem;
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.strip::-webkit-scrollbar { display: none; }
+.strip[data-drag] { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+
+.card {
+  flex: 0 0 var(--card);
+  scroll-snap-align: center;
+  opacity: 0.72;
+  transform: scale(0.94);
+  transform-origin: 50% 40%;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.card[data-active] { opacity: 1; transform: scale(1.04); }
+
+.link {
+  display: grid;
+  gap: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+  -webkit-user-drag: none;
+}
+.link:focus-visible { outline: 1px solid var(--light); outline-offset: 6px; }
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px / 15px;
+  border: 1px solid #1B1C22;
+  background: radial-gradient(ellipse at 50% 45%, #0A0C10 0%, #030304 75%);
+  margin-bottom: 0.6rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgb(255 255 255 / 3.5%) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 55%) 100%);
+}
+.plate { aspect-ratio: 4 / 3; }
+.card[data-active] .screen {
+  border-color: rgb(159 220 255 / 55%);
+  box-shadow: 0 0 44px rgb(120 200 255 / 14%), inset 0 0 30px rgb(120 200 255 / 6%);
+}
+
+/* The devices only drift apart on the card that is forward. */
+.card[data-active] .screen img[data-pos="first"] { translate: -3% -2%; }
+.card[data-active] .screen img[data-pos="second"] { translate: 3% -2%; }
+.card[data-active] .screen img[data-pos="only"] { translate: 0 -3%; }
+
+.number {
+  font: 0.62rem/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  color: var(--faint);
+}
+.name {
+  font: clamp(1.1rem, 1.7vw, 1.45rem) / 1.1 var(--font-display), Georgia, serif;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.who {
+  font: italic 0.88rem/1.35 var(--font-display), Georgia, serif;
+  color: var(--dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card:not([data-active]) .who { visibility: hidden; }
+
+/* Phone: the strip is the only thing that scrolls sideways, and it shows as
+   many cards as stay readable. */
+@media (width < 860px) {
+  .strip {
+    --gap: 0.6rem;
+    --card: 27vw;
+    padding-inline: calc(50% - var(--card) / 2);
+  }
+  .card { opacity: 0.75; transform: scale(0.96); }
+  .card[data-active] { transform: scale(1.06); }
+  .screen { border-radius: 8px / 10px; }
+  .name { font-size: 0.95rem; }
+  .who { font-size: 0.74rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .screen { transition: none; }
+}

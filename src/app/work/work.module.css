@@ -2,6 +2,7 @@
   min-height: 100vh;
   background: #000;
   color: var(--fg);
+  overflow-x: clip;
 }
 .main ::selection { background: var(--light); color: #000; }
 .main :focus-visible { outline: 1px solid var(--light); outline-offset: 5px; }
@@ -338,32 +339,11 @@
 }
 .writingExcerpt { color: var(--dim); line-height: 1.6; font-size: 0.98rem; }
 
-.pager {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 28px clamp(4rem, 10vh, 6rem);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-}
-.pager a {
-  display: grid;
-  gap: 0.7rem;
-  padding: 1.8rem 0;
+.reel {
+  padding: 0 0 clamp(3rem, 8vh, 5rem);
   border-top: 1px solid var(--rule);
-  font: clamp(1.4rem, 3vw, 2.2rem) / 1.1 var(--font-display), Georgia, serif;
-  letter-spacing: -0.02em;
-  color: var(--dim);
-  text-decoration: none;
-  transition: color 0.25s ease, border-color 0.25s ease;
+  padding-top: clamp(1.5rem, 4vh, 2.5rem);
 }
-.pager a:last-child { text-align: right; }
-.pager a span {
-  font: 0.64rem/1 var(--font-mono);
-  letter-spacing: 0.14em;
-  color: var(--faint);
-}
-.pager a:hover { color: var(--light-hot); border-top-color: var(--light); }
 
 /* ---------- 404 ---------- */
 
@@ -392,7 +372,7 @@
 /* ---------- narrow ---------- */
 
 @media (width < 860px) {
-  .masthead, .group, .projectHead, .body, .pager { padding-inline: 20px; }
+  .masthead, .group, .projectHead, .body { padding-inline: 20px; }
   .projectHead { grid-template-columns: 1fr; }
   .projectPlate { order: -1; width: 100%; max-width: 320px; justify-self: center; }
   .back { order: -2; }
@@ -409,5 +389,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .row::after, .arrow, .name a, .back, .back::before, .links a, .writing, .pager a { transition: none; }
+  .row::after, .arrow, .name a, .back, .back::before, .links a, .writing { transition: none; }
 }

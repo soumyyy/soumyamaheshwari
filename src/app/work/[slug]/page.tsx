@@ -5,12 +5,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
 import { projects } from "@/data/projects";
-import { GROUPS, LINEAGE_DETAIL, MORE, find, numberOf, ordered, plateFor } from "@/data/work";
+import { GROUPS, LINEAGE_DETAIL, MORE, find, numberOf, plateFor } from "@/data/work";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import Plate from "@/components/Plate";
 import Fig from "@/components/Fig";
 import Scramble from "@/components/Scramble";
+import Reel from "@/components/Reel";
 import styles from "../work.module.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -38,9 +39,6 @@ export default async function ProjectPage({ params }: Props) {
 
     const plate = plateFor(project);
     const group = GROUPS.find((entry) => entry.section === project.section)!;
-    const index = ordered.findIndex((entry) => entry.id === project.id);
-    const previous = ordered[(index - 1 + ordered.length) % ordered.length];
-    const next = ordered[(index + 1) % ordered.length];
     const more = MORE[project.id] ?? [];
     const [lead, ...problem] = project.problem;
 
@@ -162,16 +160,9 @@ export default async function ProjectPage({ params }: Props) {
                 ))}
             </article>
 
-            <nav className={styles.pager} aria-label="more work">
-                <Link href={`/work/${previous.id}`}>
-                    <span>previous</span>
-                    {previous.name}
-                </Link>
-                <Link href={`/work/${next.id}`}>
-                    <span>next</span>
-                    {next.name}
-                </Link>
-            </nav>
+            <section className={styles.reel} aria-label="more work">
+                <Reel current={project.id} />
+            </section>
 
             <SiteFooter />
         </main>

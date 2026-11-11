@@ -127,7 +127,7 @@ export const projects: Project[] = [
   {
     id: "room",
     name: "room",
-    who: "me, at one in the morning.",
+    who: "an app to control my entire room.",
     summary:
       "one native ios interface for my whole room. lights, the ac, and everything behind the ir blaster.",
     problem: [
@@ -204,7 +204,7 @@ export const projects: Project[] = [
   {
     id: "billinsight",
     name: "billinsight",
-    who: "a client, and a camera roll full of receipts.",
+    who: "every invoice, receipt and bill, found and filed for you.",
     summary: "an ai invoice and expense pipeline with a durable server behind it.",
     problem: [
       "uploading an entire camera roll to find the receipts in it is expensive, slow, and a privacy problem you then have to explain to a client.",
@@ -263,7 +263,7 @@ export const projects: Project[] = [
   {
     id: "fulcrum",
     name: "fulcrum",
-    who: "can a model explain why it doubts a company?",
+    who: "a credit risk tool to understand willful defaulters.",
     summary: "annual report in, structured credit risk memo out, streamed as it is written.",
     problem: [
       "indian credit underwriting still runs on an analyst reading a pdf and typing ratios into a spreadsheet. it is slow, inconsistent, and the reasoning evaporates the moment it is finished.",

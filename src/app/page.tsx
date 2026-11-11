@@ -1,9 +1,9 @@
 /// <reference types="react/canary" />
 import Link from "next/link";
 import { ViewTransition } from "react";
-import { FEATURED, SHOTS, find, numberOf, ordered, plateFor } from "@/data/work";
+import { find, plateFor } from "@/data/work";
 import Plate from "@/components/Plate";
-import Shots from "@/components/Shots";
+import Reel from "@/components/Reel";
 import Fig from "@/components/Fig";
 import Scramble from "@/components/Scramble";
 import SiteNav from "@/components/SiteNav";
@@ -17,8 +17,6 @@ import styles from "./home.module.css";
 
 export default function Home() {
     const eclipse = find("eclipse")!;
-    const featured = FEATURED.map((id) => find(id)!);
-    const rest = ordered.filter((project) => project.id !== "eclipse" && !FEATURED.includes(project.id));
 
     return (
         <main className={styles.main}>
@@ -37,8 +35,8 @@ export default function Home() {
                     </h1>
 
                     <p className={styles.lede}>
-                        mostly agents. some ios apps, a rust backtester, and the plumbing
-                        they all ended up needing.
+                        agents, ios apps, saas tools, backtesting engines, a few things for
+                        clients and a few for myself. plus the plumbing they all ended up needing.
                     </p>
                 </div>
 
@@ -95,48 +93,9 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="work" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>on the wall</Scramble></h2>
-
-                <ul className={styles.wall}>
-                    {featured.map((project) => {
-                        const plate = plateFor(project);
-                        return (
-                            <li key={project.id}>
-                                <Link href={`/work/${project.id}`} className={styles.tile}>
-                                    <div className={styles.screen}>
-                                        {SHOTS[project.id] ? (
-                                            <Shots shots={SHOTS[project.id]} />
-                                        ) : (
-                                            <Plate {...plate} tone={plate.kind === "image" ? "paper" : "light"}
-                                                size={8} className={styles.screenPlate} />
-                                        )}
-                                    </div>
-                                    <div className={styles.tileText}>
-                                        <span className={styles.number}>{numberOf(project.id)}</span>
-                                        <h3 className={styles.tileName}>
-                                            <ViewTransition name={`name-${project.id}`}><span>{project.name}</span></ViewTransition>
-                                        </h3>
-                                        <p className={styles.tileWho}>{project.who}</p>
-                                    </div>
-                                </Link>
-                            </li>
-                        );
-                    })}
-                    <li>
-                        <Link href="/work" className={styles.tile}>
-                            <div className={styles.screen}>
-                                <Plate kind="noise" seed={7} size={8}
-                                    label="a screen showing static" className={styles.screenPlate} />
-                            </div>
-                            <div className={styles.tileText}>
-                                <span className={styles.number}>+{rest.length}</span>
-                                <h3 className={styles.tileName}>the attic</h3>
-                                <p className={styles.tileWho}>everything else, and who it was for.</p>
-                            </div>
-                        </Link>
-                    </li>
-                </ul>
+            <section id="work" className={styles.reelSection}>
+                <h2 className={`${styles.kicker} ${styles.reelKicker}`}><Scramble>on the wall</Scramble></h2>
+                <Reel />
             </section>
 
             <section id="experience" className={styles.section}>
@@ -164,6 +123,30 @@ export default function Home() {
                             "Conceptualized and managed the roadmap for components, translating complex health metrics into actionable user insights in React.",
                             "Worked on Go-to-Market strategy for the brand’s digital presence; managed ad budgets and content operations to drive initial user acquisition and engagement.",
                             "Worked the end-to-end development of the brand website and application, optimizing the User Journey (UX) to serve as the primary lead generation funnel.",
+                        ]}
+                    />
+                    <ExperienceItem
+                        company="Freelance"
+                        role="Product & engineering"
+                        date="Ongoing"
+                        location="Remote"
+                        summary="Websites, apps and tools for clients who needed something built end to end."
+                        bullets={[
+                            "Built and shipped websites and mobile apps for individual clients, from first conversation to launch.",
+                            "Turned loosely described needs into working products: an invoice and expense pipeline, a photo archive, brand sites for independent creators.",
+                            "Owned design, build and hand-over, so each client ended up with something they could run without me.",
+                        ]}
+                    />
+                    <ExperienceItem
+                        company="Financial modeling & valuation"
+                        role="Freelance · for a client"
+                        date="Jul – Aug 2026"
+                        location="Remote"
+                        summary="Financial models and valuations for startups getting ready to raise money."
+                        bullets={[
+                            "Built financial models for startups that were about to raise, so their numbers could stand up to an investor's questions.",
+                            "Valued the businesses to help set what they could ask for and how to defend it.",
+                            "Wrote up the assumptions behind every figure in plain language, so the founders could explain them without me.",
                         ]}
                     />
                 </div>
