@@ -33,6 +33,8 @@ export const numberOf = (id: string) =>
 
 export const find = (id: string) => projects.find((project) => project.id === id);
 
+import type { Shot } from "@/components/Shots";
+
 export type PlateSpec = {
     kind: PlateKind | "image";
     src?: string;
@@ -62,6 +64,25 @@ const PLATE: Record<string, Omit<PlateSpec, "seed">> = {
         kind: "image", src: "/demo/posters/photocortex.jpg", fit: "cover",
         label: "photocortex, drawn in characters", caption: "eleven years, indexed",
     },
+};
+
+/** Projects with real screenshots show those on the wall instead of a plate. */
+export const SHOTS: Record<string, [Shot] | [Shot, Shot]> = {
+    shit: [
+        { src: "/projects/shit/ss-schedule.jpg", kind: "phone", alt: "the shit app's schedule: today's lectures, rooms and times" },
+        { src: "/projects/shit/ss-attendance.jpg", kind: "phone", alt: "the shit app's attendance, subject by subject" },
+    ],
+    billinsight: [
+        { src: "/projects/billinsight/analytics.jpg", kind: "phone", alt: "billinsight analytics: a year of spending as one line, and where it goes by category" },
+        { src: "/projects/billinsight/scan.jpg", kind: "phone", alt: "billinsight scanning a photo library and finding the receipts in it" },
+    ],
+    fulcrum: [
+        { src: "/projects/fulcrum/intake.jpg", kind: "screen", alt: "fulcrum's intake page: drop the report, get the risk memo" },
+    ],
+    room: [
+        { src: "/projects/room/app.jpg", kind: "phone", alt: "the room app: temperature, modes and lights" },
+        { src: "/projects/room/widget.jpg", kind: "card", alt: "the room widget: enter, leave, ac and lights" },
+    ],
 };
 
 export function plateFor(project: Project): PlateSpec {

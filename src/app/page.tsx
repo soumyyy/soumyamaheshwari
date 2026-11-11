@@ -1,8 +1,9 @@
 /// <reference types="react/canary" />
 import Link from "next/link";
 import { ViewTransition } from "react";
-import { FEATURED, find, numberOf, ordered, plateFor } from "@/data/work";
+import { FEATURED, SHOTS, find, numberOf, ordered, plateFor } from "@/data/work";
 import Plate from "@/components/Plate";
+import Shots from "@/components/Shots";
 import Fig from "@/components/Fig";
 import Scramble from "@/components/Scramble";
 import SiteNav from "@/components/SiteNav";
@@ -104,8 +105,12 @@ export default function Home() {
                             <li key={project.id}>
                                 <Link href={`/work/${project.id}`} className={styles.tile}>
                                     <div className={styles.screen}>
-                                        <Plate {...plate} tone={plate.kind === "image" ? "paper" : "light"}
-                                            size={8} className={styles.screenPlate} />
+                                        {SHOTS[project.id] ? (
+                                            <Shots shots={SHOTS[project.id]} />
+                                        ) : (
+                                            <Plate {...plate} tone={plate.kind === "image" ? "paper" : "light"}
+                                                size={8} className={styles.screenPlate} />
+                                        )}
                                     </div>
                                     <div className={styles.tileText}>
                                         <span className={styles.number}>{numberOf(project.id)}</span>

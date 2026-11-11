@@ -237,6 +237,9 @@
     radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 55%) 100%);
 }
 .screenPlate { aspect-ratio: 4 / 3; }
+.tile:hover .screen img[data-pos="first"] { translate: -3% -2%; }
+.tile:hover .screen img[data-pos="second"] { translate: 3% -2%; }
+.tile:hover .screen img[data-pos="only"] { translate: 0 -3%; }
 
 .tile:hover .screen {
   border-color: rgb(159 220 255 / 55%);
