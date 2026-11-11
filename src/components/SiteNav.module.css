@@ -107,6 +107,8 @@
 @media (width < 560px) {
   .nav { padding-inline: 20px; }
   .about { display: none; }
+  /* Solid under the name, so text scrolling beneath never shows through it. */
+  .nav::before { background: linear-gradient(to bottom, #000 62%, rgb(0 0 0 / 0%)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

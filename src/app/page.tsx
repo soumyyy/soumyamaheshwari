@@ -1,9 +1,9 @@
 /// <reference types="react/canary" />
 import Link from "next/link";
 import { ViewTransition } from "react";
-import { find, plateFor } from "@/data/work";
+import { FEATURED, SHOTS, find, numberOf, ordered, plateFor } from "@/data/work";
 import Plate from "@/components/Plate";
-import Reel from "@/components/Reel";
+import Shots from "@/components/Shots";
 import Fig from "@/components/Fig";
 import Scramble from "@/components/Scramble";
 import SiteNav from "@/components/SiteNav";
@@ -17,6 +17,8 @@ import styles from "./home.module.css";
 
 export default function Home() {
     const eclipse = find("eclipse")!;
+    const featured = FEATURED.map((id) => find(id)!);
+    const rest = ordered.filter((project) => project.id !== "eclipse" && !FEATURED.includes(project.id));
 
     return (
         <main className={styles.main}>
@@ -57,21 +59,22 @@ export default function Home() {
                     </figure>
                     <div className={`${styles.prose} rise`}>
                         <p>
-                            i&rsquo;m soumya. i spent two years in founders&rsquo; offices at a fintech and a
-                            healthtech startup, translating what the business needed into what the engineers
-                            built. somewhere in there i got tired of writing the spec and handing it over.
+                            hi, i&rsquo;m soumya. i spent a few years in founders&rsquo; offices, first at a
+                            fintech and then a healthtech startup, turning what the business needed into
+                            something engineers could build. somewhere in there i noticed i was writing specs
+                            for things i could just make myself. ai made that easy, so i started.
                         </p>
                         <p className={styles.quiet}>
-                            now most of my energy goes into agents, ai tooling, and prototypes that take a
-                            weekend. cloud, infra, web, ios, ml, whatever the thing needs. i mostly want to
-                            know how it works.
+                            these days it&rsquo;s mostly agents, ios apps and small tools that take a weekend,
+                            for myself and a few clients. i like knowing how all of it works, from the models
+                            running on a phone to the agent that never sleeps on my server.
                         </p>
                     </div>
                 </div>
             </section>
 
             <section id="eclipse" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>the one i keep rebuilding</Scramble></h2>
+                <h2 className={styles.lead}>now that you know me, you should meet the agent that runs me.</h2>
                 <div className={styles.core}>
                     <figure className={styles.corePlate}>
                         <Plate {...plateFor(eclipse)} tone="paper" size={7} className={styles.squarePlate} />
@@ -93,9 +96,48 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="work" className={styles.reelSection}>
-                <h2 className={`${styles.kicker} ${styles.reelKicker}`}><Scramble>on the wall</Scramble></h2>
-                <Reel />
+            <section id="work" className={styles.section}>
+                <h2 className={styles.kicker}><Scramble>on the wall</Scramble></h2>
+
+                <ul className={styles.wall}>
+                    {featured.map((project) => {
+                        const plate = plateFor(project);
+                        return (
+                            <li key={project.id}>
+                                <Link href={`/work/${project.id}`} className={styles.tile}>
+                                    <div className={styles.screen}>
+                                        {SHOTS[project.id] ? (
+                                            <Shots shots={SHOTS[project.id]} />
+                                        ) : (
+                                            <Plate {...plate} tone={plate.kind === "image" ? "paper" : "light"}
+                                                size={8} className={styles.screenPlate} />
+                                        )}
+                                    </div>
+                                    <div className={styles.tileText}>
+                                        <span className={styles.number}>{numberOf(project.id)}</span>
+                                        <h3 className={styles.tileName}>
+                                            <ViewTransition name={`name-${project.id}`}><span>{project.name}</span></ViewTransition>
+                                        </h3>
+                                        <p className={styles.tileWho}>{project.who}</p>
+                                    </div>
+                                </Link>
+                            </li>
+                        );
+                    })}
+                    <li>
+                        <Link href="/work" className={styles.tile}>
+                            <div className={styles.screen}>
+                                <Plate kind="noise" seed={7} size={8}
+                                    label="a screen showing static" className={styles.screenPlate} />
+                            </div>
+                            <div className={styles.tileText}>
+                                <span className={styles.number}>+{rest.length}</span>
+                                <h3 className={styles.tileName}>the attic</h3>
+                                <p className={styles.tileWho}>everything else, and who it was for.</p>
+                            </div>
+                        </Link>
+                    </li>
+                </ul>
             </section>
 
             <section id="experience" className={styles.section}>
