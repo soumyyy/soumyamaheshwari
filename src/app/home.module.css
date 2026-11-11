@@ -63,20 +63,6 @@
   color: var(--dim);
 }
 
-.tally {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0;
-  margin: 0.4rem 0 0;
-  font: 0.68rem/1.4 var(--font-mono);
-  letter-spacing: 0.08em;
-  color: var(--dim);
-}
-.tally span + span::before {
-  content: "/";
-  margin: 0 0.9rem;
-  color: var(--faint);
-}
 
 .reactor {
   position: relative;
@@ -323,8 +309,6 @@
   .heroText { position: relative; z-index: 1; gap: 1.1rem; animation-duration: 0.5s; animation-delay: 0.1s; }
   .headline { font-size: clamp(2.3rem, 10.5vw, 3rem); }
   .section { padding-block: 3.4rem; }
-  .tally { gap: 0.4rem 1.4rem; }
-  .tally span + span::before { display: none; }
   .reactor {
     position: absolute;
     top: 5svh;

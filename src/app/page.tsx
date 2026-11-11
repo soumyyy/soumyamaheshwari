@@ -1,7 +1,6 @@
 /// <reference types="react/canary" />
 import Link from "next/link";
 import { ViewTransition } from "react";
-import { projects } from "@/data/projects";
 import { FEATURED, find, numberOf, ordered, plateFor } from "@/data/work";
 import Plate from "@/components/Plate";
 import Fig from "@/components/Fig";
@@ -37,14 +36,8 @@ export default function Home() {
                     </h1>
 
                     <p className={styles.lede}>
-                        agents mostly. also ios apps, a backtester in rust, and whatever infra
-                        those turned out to need.
-                    </p>
-
-                    <p className={styles.tally}>
-                        <span>{projects.length} built</span>
-                        <span>1 on the app store</span>
-                        <span>1 rewritten {eclipse.lineage?.length ?? 0} times</span>
+                        mostly agents. some ios apps, a rust backtester, and the plumbing
+                        they all ended up needing.
                     </p>
                 </div>
 
