@@ -18,7 +18,6 @@
 - **Reduced motion:** every animation must check `prefers-reduced-motion: reduce` and degrade to a static state with no `requestAnimationFrame` loop scheduled.
 - **Deleted for good:** typewriter sequence, `Hello.` reveal, 5s auto-scroll, `soumysphere` background text, Space Grotesk, `SatelliteOrbit.tsx`, `src/app/type/`.
 - **Storage:** every `localStorage` access wrapped in try/catch; the page must render correctly when it throws or returns nothing.
-- **Commit style:** end every commit message with the Co-Authored-By and Claude-Session trailers already used in this repo's history.
 - **Lint gate (controller ruling):** `npm run lint` FAILS on the base commit with 20 pre-existing errors in files this plan never touches. Never run a whole-repo lint gate and never "fix" unrelated files. Gate on `npx eslint <only the files you changed>` — that must be clean.
 
 ## File Structure
@@ -157,9 +156,6 @@ Add Vitest and seeded PRNG
 
 The project had no test infrastructure. Vitest covers pure logic only;
 canvas and layout behaviour is verified in the browser.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -298,9 +294,6 @@ Replace Space Grotesk with Zodiak / Instrument Sans / Commit Mono
 Self-hosted via next/font so there is no third-party request and no
 swap flash. Adds the .label small-caps utility that replaces the
 uppercase+tracking label pattern.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -488,9 +481,6 @@ Angular velocity scales as 1/r² so the satellite accelerates through
 perigee — the detail that makes the motion read as physics rather than
 as a CSS animation. Cursor gravity uses inverse-square falloff with a
 hard displacement cap.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -780,9 +770,6 @@ inverse-square falloff and eased tracking. Seeded stars remove the
 hydration mismatch the old component masked with a mounted flag.
 Loop pauses off-screen and on tab hide; reduced motion draws one
 static frame and never schedules rAF.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -906,9 +893,6 @@ Expected: PASS.
 git add src/lib/time.ts src/lib/__tests__/time.test.ts
 git commit -m "$(cat <<'EOF'
 Add Mumbai clock and relative time formatting
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -968,9 +952,6 @@ Add live Mumbai local time
 
 Renders a stable placeholder on server and first client render, then
 fills in after mount, so there is no hydration mismatch.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1095,9 +1076,6 @@ soumysphere text. The hero is now four layered pieces — name, role,
 location, range, tail — with the range set large and the humility set
 quiet. page.tsx becomes a server component; interactivity moves into
 client islands so a server-side BuildLog can nest inside it.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1179,9 +1157,6 @@ Add portrait to the intro section
 Resized from 8.6MB to a shippable asset. A radial mask dissolves the
 background-removal fringe rather than letting it read as a halo
 against the black ground.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1265,9 +1240,6 @@ Rewrite copy and replace uppercase labels with small caps
 
 Every uppercase+tracking label becomes .label. Copy is rewritten to be
 specific enough that it could not appear on anyone else's site.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1360,9 +1332,6 @@ Only 3 of 19 projects have video, so the card branches rather than
 applying one treatment that would leave 16 cards looking broken.
 Surfaces Glai's "built for my mom" detail from longDescription into
 the visible description.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1534,9 +1503,6 @@ Add live GitHub build log
 Server component, cached for an hour so the unauthenticated rate limit
 is never approached and no token is needed. Renders null on any failure
 rather than showing a broken widget.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1616,9 +1582,6 @@ Add now strip
 
 Shows its own updated date deliberately — a stale now strip is worse
 than none, and visible staleness prompts a fix.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1673,9 +1636,6 @@ Replace philosophy slogans with true facts
 "think different" is Apple's slogan and the rest were generic filler,
 sitting at the emotional climax of the page. Four specific facts
 instead — a motivational component that refuses to be motivational.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1821,9 +1781,6 @@ Add return-visitor badge and Konami orbit boost
 Components talk to OrbitField through a window event so neither needs a
 shared store. localStorage access is wrapped — private windows and
 blocked site data both throw, and the page must not care.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```
@@ -1899,9 +1856,6 @@ Remove typeface specimen route
 
 Served its purpose selecting the Zodiak / Instrument Sans / Commit Mono
 stack. Verification sweep passes on the production build.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ
 EOF
 )"
 ```

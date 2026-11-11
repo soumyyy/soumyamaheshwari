@@ -20,7 +20,6 @@
 - **No ancestor of the detail panel may set `transform`, `filter` or `overflow: hidden`** or the panel is clipped or mispositioned.
 - **Hover gated to `(hover: hover) and (pointer: fine)`**, read via `matchMedia` inside an effect, never during render.
 - **Lint gate:** `npm run lint` fails on this branch's base with pre-existing errors in untouched files. Gate on `npx eslint <changed files>` only. Never touch `src/app/demo/[id]/page.tsx`.
-- **Commit trailers:** every commit ends with `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>` and `Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ`.
 
 ---
 

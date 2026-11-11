@@ -21,7 +21,6 @@
 - **Reduced motion:** no scale, no transition, no video autoplay.
 - **Accessibility:** the expand control needs `aria-expanded`, keyboard operation, and a visible accent focus ring. The same omission was a review finding on the experience accordion in the previous plan — do not repeat it.
 - **Lint gate:** `npm run lint` fails on this branch with pre-existing errors in untouched files. Gate on `npx eslint <changed files>` only. Never fix unrelated files. Never touch `src/app/demo/[id]/page.tsx`.
-- **Commit trailers:** every commit message ends with `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>` on one line and `Claude-Session: https://claude.ai/code/session_01KYWRNmfBWfhVP1gF31pnrZ` on the next.
 
 ## File Structure
 
