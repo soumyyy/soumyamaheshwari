@@ -34,6 +34,8 @@ type Props = {
     tone?: "light" | "paper";
     /** How the image is fitted into the plate. */
     fit?: "cover" | "contain";
+    /** Where a cropped image is anchored horizontally, 0 (left) to 1 (right). */
+    focus?: number;
     className?: string;
 };
 
@@ -47,7 +49,7 @@ const OVERSCAN = 0.14; // the canvas extends past the plate so scattered glyphs 
 const CURSOR_RADIUS = 110;
 
 export default function Plate({
-    kind, src, reveal = true, seed = 1, label, boot = false, size = 9, tone = "light", fit = "cover", className,
+    kind, src, reveal = true, seed = 1, label, boot = false, size = 9, tone = "light", fit = "cover", focus = 0.5, className,
 }: Props) {
     const wrapRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -63,8 +65,9 @@ export default function Plate({
         const colours = TONES[tone];
         const fn = kind === "image" ? null : PLATES[kind];
 
-        const cellW = size * 0.62;
-        const cellH = size * 1.18;
+        // Set in layout(): a small plate gets smaller characters, so a thumbnail
+        // still has enough cells to hold a shape.
+        let glyph = size, cellW = size * 0.62, cellH = size * 1.18, thumb = false;
 
         let cols = 0, rows = 0, width = 0, height = 0, padX = 0, padY = 0;
         let offX = new Float32Array(0), offY = new Float32Array(0), delay = new Float32Array(0);
@@ -93,7 +96,7 @@ export default function Plate({
                 : Math.min(width / image.naturalWidth, height / image.naturalHeight);
             const dw = (image.naturalWidth * scale) / cellW;
             const dh = (image.naturalHeight * scale) / cellH;
-            o.drawImage(image, (cols - dw) / 2, (rows - dh) / 2, dw, dh);
+            o.drawImage(image, (cols - dw) * focus, (rows - dh) / 2, dw, dh);
             const data = o.getImageData(0, 0, cols, rows).data;
             const out = new Float32Array(cols * rows);
             const sorted: number[] = [];
@@ -120,13 +123,17 @@ export default function Plate({
             width = rect.width;
             height = rect.height;
             if (width === 0 || height === 0) return;
+            glyph = Math.min(size, Math.max(4.5, width / 30));
+            thumb = glyph < size;
+            cellW = glyph * 0.62;
+            cellH = glyph * 1.18;
             padX = width * OVERSCAN;
             padY = height * OVERSCAN;
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             canvas.width = Math.round((width + padX * 2) * dpr);
             canvas.height = Math.round((height + padY * 2) * dpr);
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            ctx.font = `${size}px "Commit Mono", ui-monospace, Menlo, monospace`;
+            ctx.font = `${glyph}px "Commit Mono", ui-monospace, Menlo, monospace`;
             ctx.textBaseline = "middle";
             ctx.textAlign = "center";
 
@@ -181,8 +188,20 @@ export default function Plate({
                     const homeY = (row + 0.5) * cellH + (height - rows * cellH) / 2;
 
                     let v: number;
-                    if (fn) v = fn((homeX - width / 2) / half, (homeY - height / 2) / half, t, seed, bootP);
-                    else v = base ? base[i] : 0;
+                    if (fn) {
+                        const u = (homeX - width / 2) / half;
+                        const w = (homeY - height / 2) / half;
+                        v = fn(u, w, t, seed, bootP);
+                        // On a scaled-down plate a thin line can fall between cell
+                        // centres and vanish. Take the brightest of a few points
+                        // inside the cell instead of the centre alone.
+                        if (thumb) {
+                            const du = cellW / 3 / half;
+                            const dw = cellH / 3 / half;
+                            v = Math.max(v, fn(u, w - dw, t, seed, bootP), fn(u, w + dw, t, seed, bootP),
+                                fn(u - du, w, t, seed, bootP), fn(u + du, w, t, seed, bootP));
+                        }
+                    } else v = base ? base[i] : 0;
                     if (v < 0.07) continue;
 
                     // Each cell arrives on its own schedule, so the plate condenses rather than fades.
@@ -209,17 +228,17 @@ export default function Plate({
                         }
                     }
 
-                    let glyph = glyphFor(v);
+                    let char = glyphFor(v);
                     // A few cells in the bright parts keep changing character, so a still plate is never dead.
                     if (animated && v > 0.45 && hash(i * 17 + shimmerTick) < 0.02) {
-                        glyph = RAMP[4 + Math.floor(hash(i + shimmerTick * 3) * (RAMP.length - 4))];
+                        char = RAMP[4 + Math.floor(hash(i + shimmerTick * 3) * (RAMP.length - 4))];
                     }
-                    if (local < 1) glyph = RAMP[1 + Math.floor(hash(i * 5 + Math.floor(local * 6)) * (RAMP.length - 1))];
+                    if (local < 1) char = RAMP[1 + Math.floor(hash(i * 5 + Math.floor(local * 6)) * (RAMP.length - 1))];
 
                     const next = v > 0.9 || boosted ? colours.hot : colours.base;
                     if (next !== style) { ctx.fillStyle = next; style = next; }
                     ctx.globalAlpha = Math.min(1, alpha);
-                    ctx.fillText(glyph, x + padX, y + padY);
+                    ctx.fillText(char, x + padX, y + padY);
                 }
             }
             ctx.globalAlpha = 1;
@@ -286,7 +305,7 @@ export default function Plate({
             window.removeEventListener("reactor:boost", onBoost);
             document.removeEventListener("visibilitychange", onVisibility);
         };
-    }, [kind, src, seed, boot, size, tone, fit]);
+    }, [kind, src, seed, boot, size, tone, fit, focus]);
 
     return (
         <div
@@ -299,7 +318,8 @@ export default function Plate({
             <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
             {kind === "image" && src && reveal && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img className={styles.reveal} data-fit={fit} src={src} alt="" loading="lazy" decoding="async" />
+                <img className={styles.reveal} data-fit={fit} src={src} alt="" loading="lazy" decoding="async"
+                    style={{ objectPosition: `${focus * 100}% 50%` }} />
             )}
         </div>
     );

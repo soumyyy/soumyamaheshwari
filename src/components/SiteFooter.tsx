@@ -11,7 +11,7 @@ export default function SiteFooter() {
   return (
     <footer className={styles.footer}>
       <div className={styles.view}>
-        <Plate kind="image" src="/footer/ridge.webp" tone="paper" size={7}
+        <Plate kind="image" src="/footer/ridge.webp" tone="paper" size={7} focus={0.36}
           label="a figure on a ridge looking out over cloud, drawn in characters"
           className={styles.photo} />
         <div className={styles.scrim} aria-hidden="true" />

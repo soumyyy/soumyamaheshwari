@@ -1,6 +1,14 @@
 .fig {
   display: flex;
+  justify-content: center;
   gap: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
+  /* A caption can be wider than a small figure. It stays on one line and
+     centred on it, spilling evenly to both sides. */
+  width: max-content;
+  max-width: calc(100vw - 40px);
+  align-self: center;
   margin: 0.9rem 0 0;
   font: 0.62rem/1.5 var(--font-mono);
   letter-spacing: 0.08em;

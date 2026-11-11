@@ -144,15 +144,16 @@
   padding: clamp(6.5rem, 16vh, 9rem) 28px clamp(3rem, 8vh, 5rem);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-  gap: clamp(2rem, 7vw, 6rem);
+  gap: clamp(1.6rem, 4vw, 3rem) clamp(2rem, 7vw, 6rem);
   align-items: center;
 }
 
 .back {
+  grid-column: 1 / -1;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 2.4rem;
   font: 0.7rem/1 var(--font-mono);
   letter-spacing: 0.1em;
   color: var(--dim);
@@ -205,7 +206,7 @@
 .links a::after { content: " ↗"; color: var(--light); }
 .links a:hover { color: var(--light-hot); border-bottom-color: var(--light); }
 
-.projectPlate { margin: 0; }
+.projectPlate { margin: 0; display: flex; flex-direction: column; align-items: center; }
 /* A mark rather than a picture: it sits small beside the title. */
 .mark { max-width: 240px; justify-self: center; --underlay: 0.16; }
 .mark .plate { aspect-ratio: 4 / 5; }
@@ -393,8 +394,10 @@
 @media (width < 860px) {
   .masthead, .group, .projectHead, .body, .pager { padding-inline: 20px; }
   .projectHead { grid-template-columns: 1fr; }
-  .projectPlate { order: -1; max-width: 420px; }
-  .mark { max-width: 150px; justify-self: start; }
+  .projectPlate { order: -1; width: 100%; max-width: 320px; justify-self: center; }
+  .back { order: -2; }
+  .projectHead { gap: 1.6rem; }
+  .mark { max-width: 150px; }
   .row {
     grid-template-columns: 2.2rem minmax(0, 1fr);
     row-gap: 0.4rem;

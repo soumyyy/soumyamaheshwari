@@ -49,8 +49,8 @@ export default async function ProjectPage({ params }: Props) {
             <SiteNav />
 
             <header className={styles.projectHead}>
+                <Link href="/work" className={styles.back}>all work</Link>
                 <div className={styles.projectTitle}>
-                    <Link href="/work" className={styles.back}>all work</Link>
                     <p className={styles.kicker}>
                         <Scramble>{`${numberOf(project.id)} · ${group.title}`}</Scramble>
                     </p>
