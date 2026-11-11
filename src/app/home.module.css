@@ -23,7 +23,7 @@
   flex-direction: column;
   gap: 2rem;
   /* The text arrives after the core has lit, as if the reactor powered it. */
-  animation: power 0.9s 0.5s ease both;
+  animation: power 0.7s 0.25s ease both;
 }
 @keyframes power {
   from { opacity: 0; transform: translateY(14px); }
@@ -94,7 +94,7 @@
   position: absolute;
   inset: -12%;
   background: radial-gradient(circle at 50% 46%, rgb(120 200 255 / 22%) 0%, rgb(90 170 255 / 7%) 28%, transparent 58%);
-  animation: ignite 2.2s 0.25s ease-out both;
+  animation: ignite 1.5s 0.1s ease-out both;
   pointer-events: none;
 }
 @keyframes ignite {
@@ -302,16 +302,37 @@
 /* ---------- narrow ---------- */
 
 @media (width < 860px) {
+  /* On a phone the reactor is the whole first screen: larger than the screen
+     is wide, sitting behind, with the words set against its lower edge. */
   .hero {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    padding: 5rem 20px 2.5rem;
-    gap: 1.2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100svh;
+    padding: 0 20px 2.2rem;
+    overflow: hidden;
   }
-  .heroText { gap: 1.3rem; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 38%, rgb(0 0 0 / 82%) 62%, #000 80%);
+    pointer-events: none;
+  }
+  .heroText { position: relative; z-index: 1; gap: 1.1rem; animation-duration: 0.5s; animation-delay: 0.1s; }
+  .headline { font-size: clamp(2.3rem, 10.5vw, 3rem); }
+  .section { padding-block: 3.4rem; }
   .tally { gap: 0.4rem 1.4rem; }
   .tally span + span::before { display: none; }
-  .reactor { order: -1; justify-self: center; width: min(62vw, 280px); }
+  .reactor {
+    position: absolute;
+    top: 5svh;
+    left: 50%;
+    width: min(128vw, 560px);
+    translate: -50% 0;
+  }
+  .reactor p { display: none; }
   .section { padding-inline: 20px; }
   .about, .core { grid-template-columns: 1fr; }
   .portrait { max-width: 200px; }

@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 28px 1.6rem;
+  padding: 0.75rem 28px 1.4rem;
   font: 0.7rem/1 var(--font-mono);
   letter-spacing: 0.08em;
   isolation: isolate;
@@ -33,6 +33,35 @@
 }
 .nav[data-docking][data-ready] .home { visibility: visible; }
 .nav[data-docking] .links { opacity: var(--p, 1); }
+
+/* Where the browser can tie an animation to the scroll position, the docking
+   runs there instead of in script. Script can only react after a scroll has
+   already happened, which on a phone shows as the name trailing the page by a
+   frame. This runs on the compositor with the scroll itself. NavDock supplies
+   the three starting values and nothing else. */
+@supports (animation-timeline: scroll()) {
+  .nav[data-docking][data-native] .home {
+    transform: none;
+    animation: dock linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0px var(--dy0, 300px);
+  }
+  .nav[data-docking][data-native] .links,
+  .nav[data-docking][data-native]::before {
+    opacity: 1;
+    animation: appear linear both;
+    animation-timeline: scroll(root block);
+    animation-range: calc(var(--dy0, 300px) * 0.6) var(--dy0, 300px);
+  }
+}
+@keyframes dock {
+  from { transform: translate(var(--dx0, 0px), var(--dy0, 0px)) scale(var(--s0, 1)); }
+  to { transform: none; }
+}
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .nav[data-docking][data-top] a { pointer-events: none; }
 .nav a {
   pointer-events: auto;
@@ -54,8 +83,15 @@
 .open {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid #2E2E36;
+  border-radius: 6px;
+  background: rgb(0 0 0 / 55%);
+  color: var(--fg) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+.open:hover { border-color: var(--light); box-shadow: 0 0 22px rgb(120 200 255 / 22%); }
 .dot {
   width: 6px;
   height: 6px;
@@ -70,10 +106,10 @@
 
 @media (width < 560px) {
   .nav { padding-inline: 20px; }
-  .links a:nth-child(2) { display: none; }
+  .about { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .dot { animation: none; }
-  .nav a { transition: none; }
+  .nav a, .open { transition: none; }
 }

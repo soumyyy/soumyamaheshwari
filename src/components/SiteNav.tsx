@@ -16,8 +16,7 @@ export default function SiteNav({ docking = false }: { docking?: boolean }) {
         >
             <Link href="/" className={styles.home} data-nav-name="">soumya maheshwari</Link>
             <div className={styles.links}>
-                <Link href="/work">work</Link>
-                <Link href="/#about">about</Link>
+                <Link href="/#about" className={styles.about}>about</Link>
                 <a href="mailto:soumyamaheshwari1234@gmail.com" className={styles.open}>
                     <span className={styles.dot} aria-hidden="true" />
                     open to work

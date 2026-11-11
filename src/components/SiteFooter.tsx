@@ -1,5 +1,3 @@
-import BuildLog from "./BuildLog";
-import LocalTime from "./LocalTime";
 import Plate from "./Plate";
 import styles from "./SiteFooter.module.css";
 
@@ -32,25 +30,11 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className={styles.inner}>
-        <div className={styles.columns}>
-          <div>
-            <h3>elsewhere</h3>
-            <ul>
-              <li><a href="https://twitter.com/soumymaheshwri" target="_blank" rel="noopener noreferrer">x / twitter</a></li>
-              <li><a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">github</a></li>
-              <li><a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" rel="noopener noreferrer">linkedin</a></li>
-            </ul>
-          </div>
-          <div className={styles.log}>
-            <BuildLog />
-          </div>
-          <div>
-            <h3>here</h3>
-            <LocalTime />
-          </div>
-        </div>
-      </div>
+      <ul className={styles.social}>
+        <li><a href="https://twitter.com/soumymaheshwri" target="_blank" rel="noopener noreferrer">x / twitter</a></li>
+        <li><a href="https://github.com/soumyyy" target="_blank" rel="noopener noreferrer">github</a></li>
+        <li><a href="https://linkedin.com/in/soumya-maheshwari-b194161a3/" target="_blank" rel="noopener noreferrer">linkedin</a></li>
+      </ul>
 
       <p className={styles.colophon}>
         <span>soumya maheshwari, 2026</span>

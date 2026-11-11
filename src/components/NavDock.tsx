@@ -19,6 +19,10 @@ export default function NavDock() {
 
         let frame = 0;
         let slotTop = 0, slotLeft = 0, scale = 1, baseX = 0, baseY = 0;
+        // With scroll-driven animations the browser moves the name itself, in
+        // step with the scroll. Script then only measures where it starts.
+        const native = typeof CSS !== "undefined" && CSS.supports("animation-timeline: scroll()");
+        if (native) nav.setAttribute("data-native", "");
 
         const measure = () => {
             const rect = slot.getBoundingClientRect();
@@ -28,6 +32,9 @@ export default function NavDock() {
             baseX = name.offsetLeft;
             baseY = name.offsetTop;
             scale = name.offsetHeight ? rect.height / name.offsetHeight : 1;
+            nav.style.setProperty("--dx0", `${slotLeft - baseX}px`);
+            nav.style.setProperty("--dy0", `${Math.max(1, slotTop - baseY)}px`);
+            nav.style.setProperty("--s0", String(scale));
         };
 
         const update = () => {
@@ -35,12 +42,13 @@ export default function NavDock() {
             const travel = Math.max(1, slotTop - baseY);
             const dy = Math.max(0, slotTop - window.scrollY - baseY);
             const p = 1 - Math.min(1, dy / travel);
+            nav.toggleAttribute("data-top", p < 0.8);
+            if (native) return;
             const ease = p * p * (3 - 2 * p);
             nav.style.setProperty("--dy", `${dy}px`);
             nav.style.setProperty("--dx", `${(slotLeft - baseX) * (1 - ease)}px`);
             nav.style.setProperty("--s", String(1 + (scale - 1) * (1 - ease)));
             nav.style.setProperty("--p", String(Math.max(0, (p - 0.55) / 0.45)));
-            nav.toggleAttribute("data-top", p < 0.8);
         };
         const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
         const remeasure = () => { measure(); schedule(); };
@@ -71,6 +79,7 @@ export default function NavDock() {
             window.removeEventListener("resize", remeasure);
             slot.style.visibility = "";
             nav.removeAttribute("data-ready");
+            nav.removeAttribute("data-native");
         };
     }, []);
 

@@ -81,6 +81,8 @@ export default function Plate({
         let lastP = -1;
         let dirty = true;
         let boosted = false;
+        let spin = 0;
+        let lastScroll = window.scrollY;
         let cursorX = -9999, cursorY = -9999, cursorActive = false;
 
         const sample = () => {
@@ -160,8 +162,8 @@ export default function Plate({
             const rect = wrap.getBoundingClientRect();
             const vh = window.innerHeight;
             const leaving = Math.min(1, Math.max(0, (rect.bottom - vh * 0.04) / (vh * 0.32)));
-            if (boot) return Math.min(leaving, Math.min(1, (now - started) / 2400));
-            const entering = Math.min(1, Math.max(0, (vh * 0.98 - rect.top) / (vh * 0.42)));
+            if (boot) return Math.min(leaving, Math.min(1, (now - started) / 1400));
+            const entering = Math.min(1, Math.max(0, (vh * 1.02 - rect.top) / (vh * 0.24)));
             return Math.min(entering, leaving);
         };
 
@@ -175,8 +177,13 @@ export default function Plate({
             ctx.clearRect(0, 0, width + padX * 2, height + padY * 2);
             if (p <= 0) return;
 
-            const t = reduced ? 8 : (now - started) / 1000 * (boosted ? 7 : 1);
-            const bootP = boot && !reduced ? Math.min(1, (now - started) / 2600) : 1;
+            // Scrolling winds a drawn plate forward, so the page answers a thumb
+            // the way it answers a cursor.
+            const scrollY = window.scrollY;
+            spin += Math.min(60, Math.abs(scrollY - lastScroll)) * 0.012;
+            lastScroll = scrollY;
+            const t = reduced ? 8 : (now - started) / 1000 * (boosted ? 7 : 1) + spin;
+            const bootP = boot && !reduced ? Math.min(1, (now - started) / 1600) : 1;
             const half = Math.min(width, height) / 2;
             const shimmerTick = Math.floor(now / 140);
             let style = "";

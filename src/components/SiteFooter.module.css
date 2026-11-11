@@ -45,12 +45,6 @@
 }
 .content { grid-column: 2; }
 
-.inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 28px;
-}
-
 .kicker {
   margin: 0 0 1.6rem;
   font: 0.68rem/1 var(--font-mono);
@@ -106,35 +100,32 @@
 .resume::after { content: " ↗"; color: var(--light); }
 .resume:hover { color: var(--fg); border-bottom-color: var(--light); }
 
-.columns {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem clamp(1.5rem, 5vw, 4rem);
-  padding-top: 1.6rem;
+.social {
+  list-style: none;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.6rem 28px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
   border-top: 1px solid var(--rule);
-  font: 0.72rem/1.9 var(--font-mono);
-  letter-spacing: 0.06em;
-  color: var(--dim);
+  font: 0.72rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
 }
-.columns h3 {
-  margin: 0 0 0.6rem;
-  font: inherit;
-  color: var(--faint);
-}
-.columns ul { list-style: none; margin: 0; padding: 0; }
-.columns a {
+.social a {
   color: #C9C6BF;
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.columns a:hover { color: var(--light-hot); }
+.social a::after { content: " ↗"; color: var(--light); }
+.social a:hover { color: var(--light-hot); }
 
 .colophon {
   position: relative;
   z-index: 1;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 3rem 28px 1.6rem;
+  padding: 2.2rem 28px 1.6rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -158,11 +149,10 @@
   }
   .over { grid-template-columns: 1fr; padding: 3rem 20px 2.5rem; }
   .content { grid-column: 1; }
-  .inner { padding-inline: 20px; }
-  .columns { grid-template-columns: 1fr 1fr; }
+  .social { padding-inline: 20px; }
   .colophon { padding-inline: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mail, .mail::after, .resume, .columns a { transition: none; }
+  .mail, .mail::after, .resume, .social a { transition: none; }
 }
