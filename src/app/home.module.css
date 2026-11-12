@@ -255,7 +255,7 @@
 
 .tileText {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: 0.8rem;
   align-items: baseline;
   padding: 0.95rem 0.2rem 0;
@@ -267,12 +267,14 @@
 }
 .tileName {
   margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
   font: clamp(1.35rem, 2.1vw, 1.75rem) / 1.1 var(--font-display), Georgia, serif;
   letter-spacing: -0.02em;
   color: #fff;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
-.tileName span { display: inline-block; }
+.tileName span { display: block; }
 .tile:hover .tileName { color: var(--light-hot); text-shadow: 0 0 22px rgb(120 200 255 / 50%); }
 .tileWho {
   grid-column: 2;
