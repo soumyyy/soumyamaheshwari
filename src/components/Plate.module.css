@@ -1,6 +1,8 @@
 .plate {
   position: relative;
   width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Larger than the plate on every side, so glyphs that have not yet arrived can

@@ -12,7 +12,7 @@ export default function Shots({ shots }: { shots: [Shot] | [Shot, Shot] }) {
       <div className={styles.glow} aria-hidden="true" />
       {shots.map((shot, i) => (
         // eslint-disable-next-line @next/next/no-img-element
-        <img key={shot.src} src={shot.src} alt={shot.alt} loading="lazy" decoding="async"
+        <img key={shot.src} src={shot.src} alt={shot.alt} loading="lazy" decoding="async" draggable={false}
           data-pos={shots.length === 1 ? "only" : i === 0 ? "first" : "second"}
           className={`${styles.device} ${styles[shot.kind]} ${shots.length === 1 ? styles.only : i === 0 ? styles.first : styles.second}`} />
       ))}

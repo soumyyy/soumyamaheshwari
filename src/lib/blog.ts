@@ -10,8 +10,9 @@ export interface PostData {
     id: string;
     date: string;
     title: string;
+    description?: string;
     contentHtml?: string;
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 export function getSortedPostsData(): PostData[] {

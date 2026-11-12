@@ -16,7 +16,7 @@ export default function BlogIndex() {
                 </h1>
 
                 <div className="space-y-12">
-                    {allPostsData.map(({ id, date, title, description }: any) => (
+                    {allPostsData.map(({ id, date, title, description }) => (
                         <Link href={`/blog/${id}`} key={id} className="group block">
                             <article className="border-t border-neutral-900 py-8 group-hover:bg-neutral-900/30 transition-colors px-4 -mx-4 rounded-lg">
                                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">

@@ -18,7 +18,7 @@ export default function SiteFooter() {
           <div className={`${styles.content} rise`}>
             <p className={styles.kicker}>one more thing.</p>
             <h2 className={styles.heading}>
-              got something half built? i&rsquo;d like to see it.
+              working on something cool?
             </h2>
             <div className={styles.actions}>
               <a className={styles.mail} href="mailto:soumyamaheshwari1234@gmail.com">say hello</a>

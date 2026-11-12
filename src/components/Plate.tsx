@@ -325,7 +325,7 @@ export default function Plate({
             <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
             {kind === "image" && src && reveal && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img className={styles.reveal} data-fit={fit} src={src} alt="" loading="lazy" decoding="async"
+                <img className={styles.reveal} data-fit={fit} src={src} alt="" loading="lazy" decoding="async" draggable={false}
                     style={{ objectPosition: `${focus * 100}% 50%` }} />
             )}
         </div>

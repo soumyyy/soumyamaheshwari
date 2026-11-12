@@ -347,11 +347,9 @@
      screen of scrolling, and each plate stays large enough to read. */
   .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 0.9rem; }
   .screen { border-radius: 10px / 13px; }
-  .tileText { grid-template-columns: 1fr; padding: 0.65rem 0.1rem 0; }
-  .number { margin-bottom: 0.35rem; }
+  .tileText { padding: 0.65rem 0.1rem 0; }
   .tileName { font-size: 1.2rem; }
   .tileWho {
-    grid-column: 1;
     font-size: 0.82rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
