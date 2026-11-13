@@ -5,7 +5,6 @@ import { FEATURED, SHOTS, find, numberOf, ordered, plateFor } from "@/data/work"
 import Plate from "@/components/Plate";
 import Shots from "@/components/Shots";
 import Fig from "@/components/Fig";
-import Scramble from "@/components/Scramble";
 import SiteNav from "@/components/SiteNav";
 import ContributionGrid from "@/components/ContributionGrid";
 import Education from "@/components/Education";
@@ -44,13 +43,13 @@ export default function Home() {
 
                 <figure className={styles.reactor}>
                     <div className={styles.glow} aria-hidden="true" />
-                    <Plate kind="reactor" boot size={8} label="an arc reactor drawn in characters, turning slowly" className={styles.reactorPlate} />
+                    <Plate kind="reactor" tone="reactor" boot size={8} label="an arc reactor drawn in characters, turning slowly" className={styles.reactorPlate} />
                     <Fig n="01" boosted="1.21 gigawatts.">power source.</Fig>
                 </figure>
             </section>
 
             <section id="about" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>whoami</Scramble></h2>
+                <h2 className={styles.kicker}>whoami</h2>
                 <div className={styles.about}>
                     <figure className={styles.portrait}>
                         <Plate kind="image" src="/portrait-wide.webp" tone="paper" size={7}
@@ -74,7 +73,7 @@ export default function Home() {
             </section>
 
             <section id="eclipse" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>now that you know me, meet the agent that runs me</Scramble></h2>
+                <h2 className={styles.kicker}>now that you know me, meet the agent that runs me</h2>
                 <div className={styles.core}>
                     <figure className={styles.corePlate}>
                         <Plate {...plateFor(eclipse)} tone="paper" size={7} className={styles.squarePlate} />
@@ -97,7 +96,7 @@ export default function Home() {
             </section>
 
             <section id="work" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>on the wall</Scramble></h2>
+                <h2 className={styles.kicker}>on the wall</h2>
 
                 <ul className={styles.wall}>
                     {featured.map((project) => {
@@ -141,7 +140,7 @@ export default function Home() {
             </section>
 
             <section id="experience" className={styles.section}>
-                <h2 className={styles.kicker}><Scramble>experience</Scramble></h2>
+                <h2 className={styles.kicker}>experience</h2>
                 <div className={`${styles.experience} rise`}>
                     <ExperienceItem
                         company="Komma Financial Technologies"

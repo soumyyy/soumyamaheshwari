@@ -91,13 +91,12 @@
   color: var(--fg) !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.open:hover { border-color: var(--light); box-shadow: 0 0 22px rgb(120 200 255 / 22%); }
+.open:hover { border-color: var(--light); }
 .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--light);
-  box-shadow: 0 0 8px var(--light);
   animation: pulse 2.4s ease-in-out infinite;
 }
 @keyframes pulse {
@@ -106,7 +105,6 @@
 
 @media (width < 560px) {
   .nav { padding-inline: 20px; }
-  .about { display: none; }
   /* Solid under the name, so text scrolling beneath never shows through it. */
   .nav::before { background: linear-gradient(to bottom, #000 62%, rgb(0 0 0 / 0%)); }
 }

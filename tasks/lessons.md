@@ -9,3 +9,4 @@
 - On a phone, entrances must finish fast (under about a second) and the first screen needs one large thing, not a small figure above text.
 - Do not replace an asset Soumya chose (the brain favicon) with a new design. Improve the existing one.
 - Footer stays minimal: no activity feed, no clock.
+- When Soumya says a figure "doesn't look good", ask or check what they mean (shape, framing) before reprocessing the asset. They wanted an oval frame, not a new cutout of the photo.

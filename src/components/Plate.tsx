@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { PLATES, RAMP, glyphFor, hash, type PlateKind } from "@/lib/plates";
 import styles from "./Plate.module.css";
+import { optimised } from "@/lib/image";
 
 /* One picture, drawn in characters.
 
@@ -30,8 +31,8 @@ type Props = {
     boot?: boolean;
     /** Glyph size in css pixels. */
     size?: number;
-    /** Tint: the reactor light, or the neutral off-white used for photographs. */
-    tone?: "light" | "paper";
+    /** Tint: the parchment accent, the reactor blue, or the neutral off-white used for photographs. */
+    tone?: "light" | "paper" | "reactor";
     /** How the image is fitted into the plate. */
     fit?: "cover" | "contain";
     /** Where a cropped image is anchored horizontally, 0 (left) to 1 (right). */
@@ -40,7 +41,8 @@ type Props = {
 };
 
 const TONES = {
-    light: { base: "#9fdcff", hot: "#f2fbff" },
+    light: { base: "#e3d5b8", hot: "#f4eddd" },
+    reactor: { base: "#9fdcff", hot: "#f2fbff" },
     paper: { base: "#d9d6cf", hot: "#ffffff" },
 };
 
@@ -135,7 +137,7 @@ export default function Plate({
             canvas.width = Math.round((width + padX * 2) * dpr);
             canvas.height = Math.round((height + padY * 2) * dpr);
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            ctx.font = `${glyph}px "Commit Mono", ui-monospace, Menlo, monospace`;
+            ctx.font = `${glyph}px ${getComputedStyle(document.documentElement).getPropertyValue("--font-mono") || "monospace"}`;
             ctx.textBaseline = "middle";
             ctx.textAlign = "center";
 
@@ -273,7 +275,7 @@ export default function Plate({
             img.decoding = "async";
             img.onload = () => { image = img; sample(); wake(); };
             // The optimiser's 256px rendition: a few kilobytes, and more than the grid can resolve.
-            img.src = `/_next/image?url=${encodeURIComponent(src)}&w=256&q=75`;
+            img.src = optimised(src, 256);
         }
 
         const io = new IntersectionObserver(([entry]) => {
@@ -325,7 +327,7 @@ export default function Plate({
             <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
             {kind === "image" && src && reveal && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img className={styles.reveal} data-fit={fit} src={src} alt="" loading="lazy" decoding="async" draggable={false}
+                <img className={styles.reveal} data-fit={fit} src={optimised(src, 640)} alt="" loading="lazy" decoding="async" draggable={false}
                     style={{ objectPosition: `${focus * 100}% 50%` }} />
             )}
         </div>

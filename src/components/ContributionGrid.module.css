@@ -67,10 +67,11 @@
   border-radius: 2px;
   background: #101114;
 }
-.day[data-level="1"] { background: rgb(159 220 255 / 18%); }
-.day[data-level="2"] { background: rgb(159 220 255 / 38%); }
-.day[data-level="3"] { background: rgb(159 220 255 / 64%); }
-.day[data-level="4"] { background: #CFEEFF; }
+/* The one green on the site: a muted sage, so it reads as GitHub without the neon. */
+.day[data-level="1"] { background: rgb(124 184 118 / 22%); }
+.day[data-level="2"] { background: rgb(124 184 118 / 42%); }
+.day[data-level="3"] { background: rgb(124 184 118 / 68%); }
+.day[data-level="4"] { background: #8FCB86; }
 
 .foot {
   margin: 1.4rem 0 0;

@@ -56,7 +56,7 @@ const PLATE: Record<string, Omit<PlateSpec, "seed">> = {
     billinsight: { kind: "receipt", label: "a receipt being scanned, drawn in characters", caption: "one receipt, read once" },
     fulcrum: { kind: "fulcrum", label: "a beam balancing on a pivot, drawn in characters", caption: "a report against a verdict" },
     room: {
-        kind: "image", src: "/projects/room/app.png", fit: "contain",
+        kind: "image", src: "/projects/room/app.jpg", fit: "contain",
         label: "the room app, drawn in characters", caption: "the whole room, one screen",
     },
     hft: { kind: "chart", label: "a candlestick chart drawn in characters", caption: "xau/usd, tick by tick" },

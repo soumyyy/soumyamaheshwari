@@ -7,7 +7,7 @@
   interpolate-size: allow-keywords;
 }
 .item:last-child { border-bottom: 1px solid var(--rule); }
-.item:hover, .item[open] { border-top-color: rgb(159 220 255 / 45%); }
+.item:hover, .item[open] { border-top-color: rgb(var(--light-rgb) / 45%); }
 
 .item summary {
   display: flex;

@@ -59,8 +59,8 @@
 }
 .plate { aspect-ratio: 4 / 3; }
 .card[data-active] .screen {
-  border-color: rgb(159 220 255 / 55%);
-  box-shadow: 0 0 44px rgb(120 200 255 / 14%), inset 0 0 30px rgb(120 200 255 / 6%);
+  border-color: rgb(var(--light-rgb) / 40%);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
 }
 
 /* The devices only drift apart on the card that is forward. */

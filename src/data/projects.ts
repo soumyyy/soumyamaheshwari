@@ -137,12 +137,12 @@ export const projects: Project[] = [
     ],
     shots: [
       {
-        src: "/projects/room/widget.png", alt: "Room home screen widget showing enter, leave, the ac at 24 degrees and lights at 100 percent",
-        w: 760, h: 396, caption: "the widget. two taps for the whole room."
+        src: "/projects/room/widget.jpg", alt: "Room home screen widget with enter and leave, the ac at 26 degrees, the fan on, lights at 100 percent and the tube light",
+        w: 1000, h: 468, caption: "the widget. two taps for the whole room."
       },
       {
-        src: "/projects/room/app.png", alt: "Room app screen with a power button, temperature at 24 degrees, ice day and night presets, mode and fan speed rows, and left and right light tiles",
-        w: 600, h: 1130, caption: "presets, modes, fan speed, and both lights on one screen."
+        src: "/projects/room/app.jpg", alt: "Room app screen with a power button, temperature at 26 degrees, ice, day and night presets, mode and airflow, fan and tube tiles, lights at 100 percent and a leave room button",
+        w: 537, h: 1100, caption: "presets, mode, airflow, the fan, the tube and the lights on one screen."
       }
     ],
     stack: "typescript · expo · ios · wiz api · ir",

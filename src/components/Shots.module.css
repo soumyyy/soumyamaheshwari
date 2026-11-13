@@ -10,7 +10,7 @@
   position: absolute;
   inset: auto -10% -35% -10%;
   height: 80%;
-  background: radial-gradient(ellipse at 50% 100%, rgb(120 200 255 / 22%), transparent 65%);
+  background: radial-gradient(ellipse at 50% 100%, rgb(var(--light-rgb) / 8%), transparent 65%);
 }
 
 .device {

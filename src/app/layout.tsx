@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import '@fontsource-variable/instrument-sans';
-import '@fontsource/commit-mono';
 import './globals.css';
 
 const zodiak = localFont({
@@ -13,6 +11,21 @@ const zodiak = localFont({
     display: 'swap',
 });
 
+const instrument = localFont({
+    src: '../../public/fonts/instrument-sans-latin.woff2',
+    weight: '400 700',
+    variable: '--font-instrument',
+    display: 'swap',
+});
+
+const commit = localFont({
+    src: '../../public/fonts/commit-mono-latin.woff2',
+    weight: '400',
+    variable: '--font-commit',
+    display: 'swap',
+    adjustFontFallback: false,
+});
+
 export const metadata: Metadata = {
     metadataBase: new URL('https://soumyamaheshwari.com'),
     title: 'Soumya Maheshwari',
@@ -22,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`dark ${zodiak.variable}`}>
+        <html lang="en" data-scroll-behavior="smooth" className={`dark ${zodiak.variable} ${instrument.variable} ${commit.variable}`}>
             <body>{children}</body>
         </html>
     );

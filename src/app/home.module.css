@@ -114,7 +114,6 @@
   margin-right: 0.8rem;
   border-radius: 50%;
   background: var(--light);
-  box-shadow: 0 0 10px var(--light);
   vertical-align: 1px;
 }
 
@@ -127,7 +126,12 @@
   align-items: start;
 }
 .portrait { margin: 0 auto; width: 100%; }
-.portraitPlate { aspect-ratio: 4 / 5; }
+/* An oval with a soft edge, so the portrait fades out instead of ending at a square. */
+.portraitPlate {
+  aspect-ratio: 4 / 5;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 72%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 72%, transparent 100%);
+}
 
 .prose {
   display: grid;
@@ -162,11 +166,10 @@
 .coreName a {
   color: #fff;
   text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.25s ease;
 }
 .coreName a:hover {
   color: var(--light-hot);
-  text-shadow: 0 0 28px rgb(120 200 255 / 55%);
 }
 
 .who {
@@ -243,8 +246,8 @@
 .tile:hover .screen img[data-pos="only"] { translate: 0 -3%; }
 
 .tile:hover .screen {
-  border-color: rgb(159 220 255 / 55%);
-  box-shadow: 0 0 44px rgb(120 200 255 / 14%), inset 0 0 30px rgb(120 200 255 / 6%);
+  border-color: rgb(var(--light-rgb) / 40%);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   animation: tune 0.32s steps(2) 1;
 }
 @keyframes tune {
@@ -272,10 +275,10 @@
   font: clamp(1.35rem, 2.1vw, 1.75rem) / 1.1 var(--font-display), Georgia, serif;
   letter-spacing: -0.02em;
   color: #fff;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.25s ease;
 }
 .tileName span { display: block; }
-.tile:hover .tileName { color: var(--light-hot); text-shadow: 0 0 22px rgb(120 200 255 / 50%); }
+.tile:hover .tileName { color: var(--light-hot); }
 .tileWho {
   grid-column: 2;
   margin: 0.35rem 0 0;

@@ -10,7 +10,6 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import Plate from "@/components/Plate";
 import Fig from "@/components/Fig";
-import Scramble from "@/components/Scramble";
 import Reel from "@/components/Reel";
 import styles from "../work.module.css";
 
@@ -50,7 +49,7 @@ export default async function ProjectPage({ params }: Props) {
                 <Link href="/work" className={styles.back}>all work</Link>
                 <div className={styles.projectTitle}>
                     <p className={styles.kicker}>
-                        <Scramble>{`${numberOf(project.id)} · ${group.title}`}</Scramble>
+                        {`${numberOf(project.id)} · ${group.title}`}
                     </p>
                     <h1>
                         <ViewTransition name={`name-${project.id}`}>

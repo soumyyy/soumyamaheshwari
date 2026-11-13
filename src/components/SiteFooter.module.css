@@ -77,7 +77,7 @@
   align-items: center;
   gap: 0.7rem;
   padding: 0.95rem 1.5rem;
-  border: 1px solid rgb(159 220 255 / 45%);
+  border: 1px solid rgb(var(--light-rgb) / 45%);
   border-radius: 999px;
   color: var(--light-hot);
   text-decoration: none;
@@ -85,9 +85,8 @@
 }
 .mail::after { content: "→"; transition: transform 0.25s ease; }
 .mail:hover {
-  background: rgb(159 220 255 / 8%);
+  background: rgb(var(--light-rgb) / 8%);
   border-color: var(--light);
-  box-shadow: 0 0 36px rgb(120 200 255 / 28%);
 }
 .mail:hover::after { transform: translateX(4px); }
 .resume {

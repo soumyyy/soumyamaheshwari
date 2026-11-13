@@ -7,13 +7,16 @@
     --dim: #8E8B85;
     --faint: #5F5C57;
     --rule: #1F1F25;
-    /* The only colour on the site. It is light, so it is used for things that
-       glow and never for blocks of text. */
-    --light: #9FDCFF;
-    --light-hot: #F2FBFF;
+    /* The accent: parchment. Used for small marks (dots, arrows, rules, hover
+       states), never for blocks of text. */
+    --light: #E3D5B8;
+    --light-hot: #F4EDDD;
+    --light-rgb: 227 213 184;
+    /* The arc reactor keeps its own blue. Nothing else uses it. */
+    --reactor: #9FDCFF;
     --accent: var(--light);
-    --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
-    --font-mono: 'Commit Mono', ui-monospace, monospace;
+    --font-body: var(--font-instrument), system-ui, sans-serif;
+    --font-mono: var(--font-commit), ui-monospace, monospace;
     /* --font-display is injected by next/font in layout.tsx */
 }
 

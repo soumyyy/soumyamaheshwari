@@ -6,7 +6,6 @@ import { projects } from "@/data/projects";
 import { GROUPS, numberOf } from "@/data/work";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
-import Scramble from "@/components/Scramble";
 import styles from "./work.module.css";
 
 export const metadata: Metadata = {
@@ -19,7 +18,7 @@ export default function Work() {
         <main className={styles.main}>
             <SiteNav />
             <header className={styles.masthead}>
-                <p className={styles.kicker}><Scramble>{`index · ${projects.length} entries`}</Scramble></p>
+                <p className={styles.kicker}>{`index · ${projects.length} entries`}</p>
                 <h1>things i built</h1>
                 <p>
                     grouped by who they were for. one i keep rebuilding, a few people paid for, and

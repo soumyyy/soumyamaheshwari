@@ -104,13 +104,13 @@
 .name a {
   color: #fff;
   text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.25s ease;
 }
 .name a span { display: block; }
 .name a::after { content: ""; position: absolute; inset: 0; }
 .name a:focus-visible { outline: none; }
 .name a:focus-visible::after { outline: 1px solid var(--light); outline-offset: 2px; }
-.row:hover .name a { color: var(--light-hot); text-shadow: 0 0 24px rgb(120 200 255 / 50%); }
+.row:hover .name a { color: var(--light-hot); }
 
 .who {
   grid-column: 2;
@@ -203,7 +203,7 @@
 .links a {
   color: var(--fg);
   text-decoration: none;
-  border-bottom: 1px solid rgb(159 220 255 / 40%);
+  border-bottom: 1px solid rgb(var(--light-rgb) / 40%);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .links a::after { content: " ↗"; color: var(--light); }
@@ -249,7 +249,6 @@
   margin-right: 0.7rem;
   border-radius: 50%;
   background: var(--light);
-  box-shadow: 0 0 8px var(--light);
   vertical-align: 1px;
 }
 
@@ -328,7 +327,7 @@
   text-decoration: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.writing:hover { border-color: var(--light); box-shadow: 0 0 40px rgb(120 200 255 / 12%); }
+.writing:hover { border-color: var(--light); }
 .writingLabel, .writingMeta {
   font: 0.64rem/1.4 var(--font-mono);
   letter-spacing: 0.1em;
