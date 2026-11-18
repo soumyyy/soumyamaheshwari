@@ -250,7 +250,7 @@ export const MORE: Record<string, Section[]> = {
         {
             h: "what it is built from",
             p: [
-                "expo on the phone, fastapi behind it, insightface for the recognition, postgres for the records and s3 for the photographs. the face model takes thirty to sixty seconds to load when the backend starts.",
+                "expo on the phone and web, fastapi behind it, insightface for recognition, postgres with pgvector for matching, and cloudflare r2 for the photographs.",
             ],
         },
     ],

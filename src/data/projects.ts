@@ -31,7 +31,6 @@ export const projects: Project[] = [
       "i have rebuilt it five times over several years. each rewrite kept the same question and threw away the answer.",
     ],
     stack: "",
-    github: "https://github.com/soumyyy/eclipse-obsidian",
     section: "core",
     writing: [
       {
@@ -83,6 +82,21 @@ export const projects: Project[] = [
   },
   // --- an audience of one ---
   {
+    id: "vital",
+    name: "vital",
+    who: "anyone wondering what is slowing down their mac.",
+    summary: "a lightweight menu bar monitor for apple silicon macs.",
+    problem: [
+      "when a mac slows down, finding the app responsible can take more work than stopping it.",
+      "vital brings cpu, memory, storage and heat into one view, with an app breakdown and the option to quit a process from there.",
+      "it keeps a day of history locally and has a command line for people and agents. no account, analytics or telemetry.",
+    ],
+    stack: "swift · swiftui · macos",
+    link: "https://soumyyy.github.io/vital/",
+    github: "https://github.com/soumyyy/vital",
+    section: "someone",
+  },
+  {
     id: "glai",
     name: "glai",
     who: "my mother.",
@@ -119,7 +133,6 @@ export const projects: Project[] = [
     ],
     stack: "computer vision · python",
     note: "fully local",
-    github: "https://github.com/soumyyy/PhotoCortex",
     video: "/demo/PhotoCortexDemo.mp4",
     poster: "/demo/posters/photocortex.jpg",
     section: "one",
@@ -169,6 +182,7 @@ export const projects: Project[] = [
       }
     ],
     stack: "next.js · typescript · yahoo finance api",
+    link: "https://soumya-stock-portfolio.vercel.app",
     github: "https://github.com/soumyyy/StockPortfolio",
     section: "one",
   },
@@ -195,7 +209,6 @@ export const projects: Project[] = [
     stack: "react native · expo · typescript · mmkv",
     note: "live at shitsort.com",
     link: "https://shitsort.com",
-    github: "https://github.com/soumyyy/shit",
     video: "/demo/SHITdemo.mp4",
     videoOrientation: "portrait",
     poster: "/demo/posters/shit.jpg",
@@ -213,6 +226,7 @@ export const projects: Project[] = [
     ],
     stack: "expo · fastapi · neon postgres · tflite",
     note: "private repositories",
+    link: "https://soumyyy.github.io/billinsight/",
     section: "client",
   },
   {
@@ -232,7 +246,7 @@ export const projects: Project[] = [
   },
   {
     id: "imagenerve",
-    name: "imagenerve",
+    name: "kin",
     who: "a wedding party, and two thousand photographs.",
     summary: "face recognition across an event so you get only the photos you are in.",
     problem: [
@@ -241,7 +255,6 @@ export const projects: Project[] = [
       "built after a wedding, for the obvious reason.",
     ],
     stack: "react native · expo · fastapi",
-    github: "https://github.com/soumyyy/ImageNerve",
     section: "someone",
   },
   // --- sometimes the question was enough ---
