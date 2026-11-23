@@ -271,7 +271,7 @@ export const MORE: Record<string, Section[]> = {
             h: "how a photo moves",
             p: [
                 "photos go from the photographer's device straight to a private cloudflare r2 bucket, never through kin's server. nobody reads one without a short lived signed link.",
-                "a background worker makes a preview, a screen copy and a web copy, and finds every face with insightface. the queue it pulls from is the postgres database itself, so there is no separate queue service to run.",
+                "a background worker makes a preview, a screen copy and a web copy, and finds every face in it. the queue it pulls from is the postgres database itself, so there is no separate queue service to run.",
                 "there is also a desktop uploader for mac and windows. pick a folder and it uploads in the background, checking every file against its sha-256.",
             ],
         },

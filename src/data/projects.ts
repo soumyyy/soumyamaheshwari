@@ -309,7 +309,7 @@ export const projects: Project[] = [
         w: 692, h: 1352, caption: "the selfie can be retaken or removed from settings."
       },
     ],
-    stack: "expo · react native · fastapi · insightface · pgvector · cloudflare r2",
+    stack: "expo · react native · fastapi · pgvector · cloudflare r2",
     note: "live at kinforphotos.com",
     link: "https://kinforphotos.com",
     section: "someone",
