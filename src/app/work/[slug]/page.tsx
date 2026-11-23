@@ -40,6 +40,10 @@ export default async function ProjectPage({ params }: Props) {
     const group = GROUPS.find((entry) => entry.section === project.section)!;
     const more = MORE[project.id] ?? [];
     const [lead, ...problem] = project.problem;
+    const shotCount = project.shots?.length ?? 0;
+    const shotSizes = shotCount > 2 ? "200px"
+        : shotCount === 1 ? "(min-width: 860px) 720px, 92vw"
+        : "(min-width: 860px) 360px, 80vw";
 
     return (
         <main className={styles.main}>
@@ -136,11 +140,11 @@ export default async function ProjectPage({ params }: Props) {
                 {project.shots && (
                     <section className="rise">
                         <h2>what it looks like</h2>
-                        <div className={styles.shots}>
+                        <div className={`${styles.shots} ${shotCount > 2 ? styles.strip : ""}`}>
                             {project.shots.map((shot) => (
                                 <figure key={shot.src}>
                                     <Image src={shot.src} alt={shot.alt} width={shot.w} height={shot.h}
-                                        sizes="(min-width: 860px) 360px, 80vw" />
+                                        sizes={shotSizes} />
                                     <figcaption>{shot.caption}</figcaption>
                                 </figure>
                             ))}

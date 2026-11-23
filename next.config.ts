@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     // Lets a project's name carry across from a list into its own page.
     viewTransition: true,
   },
+  async redirects() {
+    return [{ source: "/work/imagenerve", destination: "/work/kin", permanent: true }];
+  },
 };
 
 export default nextConfig;

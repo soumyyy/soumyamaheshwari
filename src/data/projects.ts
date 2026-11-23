@@ -122,6 +122,35 @@ export const projects: Project[] = [
     section: "one",
   },
   {
+    id: "splice",
+    name: "splice",
+    who: "me, after my whoop subscription ran out.",
+    summary: "turns a whoop 5.0 band into a standard bluetooth heart rate strap, so strava records heart rate and zones again.",
+    problem: [
+      "the subscription expired and the band kept working. it still reads heart rate perfectly well. it just had nowhere to send it.",
+      "splice tells the band to broadcast standard bluetooth heart rate, the same signal a chest strap sends, so strava pairs with it as a sensor and my runs get heart rate and zones again. no whoop app and no subscription.",
+      "it is one switch. it finds the band, reconnects after drops or a relaunch, and restarts the stream if it stalls. live heart rate and the current zone also sit on the lock screen and in the dynamic island.",
+    ],
+    shots: [
+      {
+        src: "/projects/splice/banner.jpg", alt: "Splice on an iPhone: the WHOOP 5 streaming to Strava at 85 percent battery, 103 bpm in the recovery zone, a live trace and the last hour's history",
+        w: 1600, h: 900, caption: "live heart rate, zones and a week of history."
+      },
+    ],
+    writing: [
+      {
+        title: "built a lil app behind my whoop since the subscription expired.",
+        excerpt: "it turns the band into a regular heart-rate strap: live hr on my phone and as live activity, and connects it to strava as a sensor, so my runs get heart rate and zones again.",
+        handle: "@soumymaheshwri",
+        date: "23 november 2026",
+        url: "https://x.com/Soumymaheshwri/status/2124936997840265631"
+      }
+    ],
+    stack: "swift · swiftui · core bluetooth · activitykit",
+    github: "https://github.com/soumyyy/splice",
+    section: "one",
+  },
+  {
     id: "photocortex",
     name: "photocortex",
     who: "me, and eleven years of photographs.",
@@ -245,16 +274,44 @@ export const projects: Project[] = [
     section: "hackathon",
   },
   {
-    id: "imagenerve",
+    id: "kin",
     name: "kin",
-    who: "a wedding party, and two thousand photographs.",
-    summary: "face recognition across an event so you get only the photos you are in.",
+    who: "every guest at an event, and the photographer who shot it.",
+    summary: "one link or qr code for a whole shoot. each guest takes a selfie and sees only the photos they are in.",
     problem: [
-      "after any large event there is a shared drive with two thousand photographs in it, and finding the eleven you appear in means scrolling all two thousand.",
-      "one scan returns only yours. the recognition is the easy part now; the useful part is framing it around a person rather than an album.",
-      "built after a wedding, for the obvious reason.",
+      "after any large event there is a shared drive with two thousand photographs in it, and finding the eleven you appear in means scrolling all two thousand. the photographer spends the week after answering requests for them.",
+      "with kin the photographer uploads the shoot and shares one link or qr code. a guest opens it in any browser, signs in with an email code, takes a selfie, and sees only the photos they are in, under the studio's name. photos added later find them on their own.",
+      "the selfie becomes a face signature that is only compared against the events that person joined. a guest can say that is not me, or delete the face data from settings, at any time.",
     ],
-    stack: "react native · expo · fastapi",
+    shots: [
+      {
+        src: "/projects/kin/guest-selfie.jpg", alt: "Kin asking a guest for a selfie before showing their photos from Diwali Night, with a take a selfie button and a choose a photo button",
+        w: 692, h: 1352, caption: "one selfie finds a guest in every event they join."
+      },
+      {
+        src: "/projects/kin/photographer-qr.jpg", alt: "Kin's share sheet for Diwali Night with a QR code, the event link, copy, share, save QR card and invite by email",
+        w: 692, h: 1352, caption: "the whole shoot behind one link and one qr code."
+      },
+      {
+        src: "/projects/kin/guest-albums.jpg", alt: "A guest's photos in Kin: Diwali Night, Riya and Arjun's Sangeet, Holi in the Park and Rooftop Dinner, each with its studio, date, city and photo count",
+        w: 692, h: 1352, caption: "every event a guest is in, in one place."
+      },
+      {
+        src: "/projects/kin/studio-events.jpg", alt: "A studio's events in Kin: Diwali Night, Riya and Arjun's Sangeet, Haldi Morning and Family Puja, with a button to add an event",
+        w: 692, h: 1352, caption: "a studio's shoots, under its own name."
+      },
+      {
+        src: "/projects/kin/invitations.jpg", alt: "Kin's studio profile with the latest event, two events that have people in their photos but no guests yet, and the year's photos, guests and events",
+        w: 692, h: 1352, caption: "which events have faces in them and no guests yet."
+      },
+      {
+        src: "/projects/kin/selfie-controls.jpg", alt: "Kin settings with the guest's selfie and a retake button, notifications, brand and contact, storage and appearance",
+        w: 692, h: 1352, caption: "the selfie can be retaken or removed from settings."
+      },
+    ],
+    stack: "expo · react native · fastapi · insightface · pgvector · cloudflare r2",
+    note: "live at kinforphotos.com",
+    link: "https://kinforphotos.com",
     section: "someone",
   },
   // --- sometimes the question was enough ---

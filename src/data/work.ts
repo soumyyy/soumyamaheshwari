@@ -12,7 +12,7 @@ import { seedFrom, type PlateKind } from "@/lib/plates";
 export type Section = { h: string; p: string[] };
 
 /** Homepage order. */
-export const FEATURED = ["shit", "billinsight", "fulcrum", "room", "hft"];
+export const FEATURED = ["shit", "kin", "fulcrum", "room", "hft"];
 
 export const GROUPS: { section: Project["section"]; title: string; blurb: string }[] = [
     { section: "core", title: "the one i keep rebuilding", blurb: "five attempts, one question" },
@@ -55,6 +55,14 @@ const PLATE: Record<string, Omit<PlateSpec, "seed">> = {
     },
     billinsight: { kind: "receipt", label: "a receipt being scanned, drawn in characters", caption: "one receipt, read once" },
     fulcrum: { kind: "fulcrum", label: "a beam balancing on a pivot, drawn in characters", caption: "a report against a verdict" },
+    kin: {
+        kind: "image", src: "/projects/kin/guest-albums.jpg", fit: "contain",
+        label: "kin's photos screen, drawn in characters", caption: "every event you are in",
+    },
+    splice: {
+        kind: "image", src: "/projects/splice/app.jpg", fit: "contain",
+        label: "splice's heart rate screen, drawn in characters", caption: "103 bpm, streaming to strava",
+    },
     room: {
         kind: "image", src: "/projects/room/app.jpg", fit: "contain",
         label: "the room app, drawn in characters", caption: "the whole room, one screen",
@@ -75,6 +83,10 @@ export const SHOTS: Record<string, [Shot] | [Shot, Shot]> = {
     billinsight: [
         { src: "/projects/billinsight/analytics.jpg", kind: "phone", alt: "billinsight analytics: a year of spending as one line, and where it goes by category" },
         { src: "/projects/billinsight/scan.jpg", kind: "phone", alt: "billinsight scanning a photo library and finding the receipts in it" },
+    ],
+    kin: [
+        { src: "/projects/kin/guest-albums.jpg", kind: "phone", alt: "kin's photos screen: every event a guest is in, each with its studio, date and photo count" },
+        { src: "/projects/kin/invitations.jpg", kind: "phone", alt: "kin's studio profile: the latest event, and the events whose guests still need an invite" },
     ],
     fulcrum: [
         { src: "/projects/fulcrum/intake.jpg", kind: "screen", alt: "fulcrum's intake page: drop the report, get the risk memo" },
@@ -246,11 +258,51 @@ export const MORE: Record<string, Section[]> = {
             ],
         },
     ],
-    imagenerve: [
+    kin: [
         {
-            h: "what it is built from",
+            h: "two sides, one account",
             p: [
-                "expo on the phone and web, fastapi behind it, insightface for recognition, postgres with pgvector for matching, and cloudflare r2 for the photographs.",
+                "everyone starts as a guest. becoming a photographer is a separate step: choose a plan, name a studio. after that the same account switches between your photos and your studio.",
+                "the studio side creates events, uploads the shoot, and shows which events have people in their photos but no guests yet, so the photographer knows who still needs the link.",
+                "guests never have to install anything. the event page works in any browser, and an event can take an optional four digit pin.",
+            ],
+        },
+        {
+            h: "how a photo moves",
+            p: [
+                "photos go from the photographer's device straight to a private cloudflare r2 bucket, never through kin's server. nobody reads one without a short lived signed link.",
+                "a background worker makes a preview, a screen copy and a web copy, and finds every face with insightface. the queue it pulls from is the postgres database itself, so there is no separate queue service to run.",
+                "there is also a desktop uploader for mac and windows. pick a folder and it uploads in the background, checking every file against its sha-256.",
+            ],
+        },
+        {
+            h: "the matching",
+            p: [
+                "each face becomes a vector of 512 numbers in postgres with pgvector. a guest matches a photo when any face in it is close enough to their selfie.",
+                "the search is scoped to one event and is exact rather than approximate, so nobody is ever matched against another event's photos.",
+            ],
+        },
+        {
+            h: "where it runs",
+            p: [
+                "one server running docker: the web app, the api, the worker and postgres, behind caddy. the database is dumped every hour and an encrypted copy leaves the server.",
+                "a deploy backs up the database, switches to the new images, checks each service is healthy, and goes back to the previous version by itself if one is not.",
+            ],
+        },
+    ],
+    splice: [
+        {
+            h: "how the band is controlled",
+            p: [
+                "commands go to the band's private bluetooth service as framed packets. one turns the standard heart rate broadcast on or off, which is what strava pairs with. another starts a private one second stream with bpm, beat to beat intervals and a timestamp, which splice uses for its own screen.",
+                "the band protocol and the zones live in a small swift package that is tested on a mac, so most of it is checked without a phone.",
+            ],
+        },
+        {
+            h: "using it with strava",
+            p: [
+                "turn on the stream in splice. in strava, record, then sensors, then heart rate, and pick the whoop. strava records heart rate and zones itself, the same way it would from a chest strap.",
+                "splice is an independent project and is not affiliated with whoop or strava.",
             ],
         },
     ],
